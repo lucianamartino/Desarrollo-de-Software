@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="C:\Users\Administrator\Desktop\Grupo 9 Desarrollo de SW\css\styles.css"> <!-- Asegúrate de incluir el CSS -->
+    <title>Agregar Nuevo Post</title>
+</head>
+<body class="agregar-post-body">
+    <h1 class="agregar-post-header">Agregar Nuevo Post</h1>
+    <form id="postForm" class="agregar-post-form" method="POST" action="http://localhost:3000/add-post">
+        <label for="postTitle">Nombre del Post:</label>
+        <input type="text" id="postTitle" name="postTitle" required>
+        
+        <label for="postCategory">Rubro:</label>
+        <select id="postCategory" name="postCategory" required>
+            <option value="">Seleccionar Rubro</option>
+            <option value="tecnologia">Tecnología</option>
+            <option value="salud">Salud</option>
+            <option value="educacion">Educación</option>
+            <option value="finanzas">Finanzas</option>
+            <option value="arte">Arte</option>
+            <option value="turismo">Turismo</option>
+            <option value="ciencia">Ciencia</option>
+            <option value="marketing">Marketing</option>
+            <option value="deportes">Deportes</option>
+            <option value="alimentacion">Alimentación</option>
+        </select>
+    
+        <label for="postDescription">Descripción:</label>
+        <textarea id="postDescription" name="postDescription" required></textarea>
+    
+        <div class="agregar-post-button-container">
+            <button type="submit">Guardar Post</button>
+            <button type="button" onclick="window.history.back()">Cancelar</button>
+        </div>
+    </form>    
+</body>
+</html>
+
