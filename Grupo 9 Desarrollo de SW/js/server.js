@@ -37,6 +37,17 @@ app.post('/add-post', (req, res) => {
     });
 });
 
+//Trae todos los post de cada usuario (hay que modificar la consulta SQL para que nos traiga lo que querramos )
+app.get('/api/posts', async (req, res) => {
+    try {
+      const [rows] = await pool.query('SELECT * FROM Post'); 
+      res.json(rows);
+    } catch (error) {
+      console.error('Error al obtener los posts:', error);
+      res.status(500).json({ error: 'Error al obtener los posts' });
+    }
+  });
+
 // Iniciar el servidor
 app.listen(port, () => {
     console.log(`Servidor corriendo en http://localhost:${port}`);
