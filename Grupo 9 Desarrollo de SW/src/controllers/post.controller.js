@@ -11,14 +11,14 @@ export const createPost = async (req, res) => {
 };
 
 // Devuelve todos los perfiles
-export const getPosts = async (req, res) => {
-    try {
-        const [rows] = await pool.query('SELECT * FROM post');
-        res.json(rows);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error al obtener post' });
+export const getPosts = async (req, res, asData = false) => {
+    const [rows] = await pool.query('SELECT * FROM post');
+
+    if (asData) {
+        return rows;
     }
+
+    res.json(rows);
 };
 
 // Devuelve un perfil por ID

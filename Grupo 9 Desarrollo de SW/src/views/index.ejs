@@ -1,5 +1,25 @@
 <%- include('partials/_header'); %>
 
+
+<div class="contenedor-posts">  
+    <% posts.forEach(post => { %>
+    <div class="post">
+        <div class="contenido-post">
+            <p><%= post.descripcion %></p>
+            <p><%= post.foto %></p>
+            <p><%= post.valoracion %></p>
+
+
+            <a href="" class="boton-amarillo-block">
+                Ver Post
+            </a>
+        </div><!--contenido-anuncio-->
+    </div><!--anuncio-->
+    <% }) %>
+</div>
+
+
+
 <h1>Lista de Usuarios</h1>
 
 <table>
