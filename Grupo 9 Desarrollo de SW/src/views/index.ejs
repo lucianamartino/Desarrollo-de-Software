@@ -1,0 +1,33 @@
+<%- include('partials/_header'); %>
+
+<h1>Lista de Usuarios</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% usuarios.forEach(usuario => { %>
+        <tr>
+            <td><%= usuario.idUsuario %></td>
+            <td><%= usuario.nombre %></td>
+            <td><%= usuario.apellido %></td>
+            <td><%= usuario.email %></td>
+            <td><%= usuario.contraseña %></td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>
+
+<a href="api/usuarios/create" class="">Agregar Nuevo Usuario</a>
+
+
+
+<%- include('partials/_footer'); %>
