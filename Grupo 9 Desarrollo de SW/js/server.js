@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 
@@ -52,3 +52,4 @@ app.get('/api/posts', async (req, res) => {
 app.listen(port, () => {
     console.log(`Servidor corriendo en http://localhost:${port}`);
 });
+*/
