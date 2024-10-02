@@ -2,26 +2,26 @@ import {pool} from '../db.js'
 
 // Crea una nueva provincia
 export const createLocalidad = async (req, res) => {
-    const { nombre, provinciaId, perfilId } = req.body;
+    const { nombre, provinciaId } = req.body;
     const [rows] = await pool.query(
-        'INSERT INTO localidad (nombre, Provincia_idProvincia, Perfil_idPerfil) VALUES (?, ?)', 
-        [nombre, provinciaId, perfilId])
+        'INSERT INTO localidad (nombre, Provincia_idProvincia) VALUES (?, ?)', 
+        [nombre, provinciaId])
 
         res.redirect('/');
 };
 
-// Devuelve todos las provincias
-export const getLocalidades = async (req, res) => {
-    try {
-        const [rows] = await pool.query('SELECT * FROM localidad');
-        res.json(rows);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error al obtener localidades' });
+// Devuelve todos las localidades
+export const getLocalidades = async (req, res, asData = false) => {
+    const [rows] = await pool.query('SELECT * FROM localidad');
+
+    if (asData) {
+        return rows;
     }
+
+    res.json(rows);
 };
 
-// Devuelve un perfil por ID
+// Devuelve una localidad por ID
 export const getLocalidad = async (req, res) => {
     try {
         const [rows] = await pool.query('SELECT * FROM provincia WHERE idLocalidad = ?', [req.params.id]);

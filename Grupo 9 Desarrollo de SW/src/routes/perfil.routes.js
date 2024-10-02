@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { createPerfil, getPerfiles, getPerfil, showCreatePerfilForm } from '../controllers/perfil.controller.js';
+import { getLocalidades } from '../controllers/localidad.controller.js';
 
 const router = Router();
 

@@ -2,6 +2,15 @@
 
 <h1>Crear Perfil</h1>
     <form action="/perfiles/create" method="POST">
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required>
+        <br>
+
         <label for="descripcion">Descripción:</label>
         <input type="text" id="descripcion" name="descripcion" required>
         <br>
@@ -12,6 +21,14 @@
 
         <label for="telefono">Teléfono:</label>
         <input type="tel" id="telefono" name="telefono" required>
+        <br>
+
+        <label for="localidadId">Localidad:</label>
+        <select id="localidadId" name="localidadId">
+            <% localidades.forEach(localidad => { %>
+                <option value="<%= localidad.idLocalidad %>"><%= localidad.nombre %></option>
+            <% }) %>
+        </select>
         <br>
 
         <label for="fechaNacimiento">Fecha de Nacimiento:</label>

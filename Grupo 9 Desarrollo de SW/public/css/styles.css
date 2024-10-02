@@ -87,3 +87,32 @@ select {
 button {
     cursor: pointer;
 }
+
+
+
+
+/* ESTILOS VISTA POST */
+.post {
+    /* background-color: lighten(, 5);
+    border: 1px solid darken($gris, 10); */
+    margin-bottom: 2rem;
+
+    .contenido-post {
+        padding: 2rem;
+    }
+
+    h3, p {
+        margin: 0;
+    }
+}
+.contenedor-posts {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+img,
+picture {
+    width: 100%;
+    display: block;
+}

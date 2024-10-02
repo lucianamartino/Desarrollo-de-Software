@@ -2,10 +2,14 @@ import {pool} from '../db.js'
 
 // Crea un nuevo post
 export const createPost = async (req, res) => {
-    const { descripcion, foto, rubroId, usuarioId, fecha, valoracion } = req.body;
+    const { descripcion, oficioId, valoracion } = req.body;
+    const usuarioId = 1
+    const foto = req.file ? req.file.filename : null; // Obtén el nombre del archivo subido
+
+    // Inserta los datos en la base de datos
     const [rows] = await pool.query(
-        'INSERT INTO post (descripcion, foto, Rubro_idOficio, Usuario_idUsuario, fecha, valoracion) VALUES (?, ?, ?, ?, ?, ?)', 
-        [descripcion, foto, rubroId, usuarioId, fecha, valoracion])
+        'INSERT INTO post (despcripcion, foto, Oficio_idOficio, Usuario_idUsuario, valoracion) VALUES (?, ?, ?, ?, ?)',
+        [descripcion, foto, oficioId, usuarioId, valoracion])
 
         res.redirect('/');
 };

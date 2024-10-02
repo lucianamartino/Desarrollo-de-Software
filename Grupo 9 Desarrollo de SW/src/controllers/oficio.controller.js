@@ -6,19 +6,19 @@ export const createOficio = async (req, res) => {
     const [rows] = await pool.query(
         'INSERT INTO oficio (nombre, descripcion) VALUES (?, ?)', 
         [nombre, descripcion])
-
+        
         res.redirect('/');
 };
 
 // Devuelve todos los oficios
-export const getOficios = async (req, res) => {
-    try {
-        const [rows] = await pool.query('SELECT * FROM oficio');
-        res.json(rows);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error al obtener oficios' });
+export const getOficios = async (req, res, asData = false) => {
+    const [rows] = await pool.query('SELECT * FROM oficio');
+    
+    if (asData) {
+        return rows;
     }
+
+    res.json(rows);
 };
 
 // Devuelve un oficio por ID

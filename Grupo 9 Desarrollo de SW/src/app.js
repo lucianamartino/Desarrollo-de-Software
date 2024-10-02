@@ -1,5 +1,5 @@
 import express from 'express'
-import path from 'path';
+import path from 'path'
 
 import indexRoutes from './routes/index.routes.js'
 import localidadRoutes from './routes/localidad.routes.js'
@@ -24,6 +24,7 @@ const __dirname = path.dirname(__filename);
 
 // Configurar archivos estáticos
 app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Configurar EJS como motor de vistas
 app.set('view engine', 'ejs');

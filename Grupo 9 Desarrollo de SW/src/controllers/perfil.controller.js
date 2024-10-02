@@ -1,17 +1,19 @@
 import {pool} from '../db.js'
+import { getLocalidades } from '../controllers/localidad.controller.js';
 
 // Funcion para mostrar el formulario de creacion de perfil
-export const showCreatePerfilForm = (req, res) => {
+export const showCreatePerfilForm = async (req, res) => {
     const usuarioId = req.query.usuarioId; // Obtener el ID del usuario de la consulta de la URL
-    res.render('perfiles/createPerfil', { usuarioId }); // Pasar el ID del usuario a la vista
+    const localidades = await getLocalidades(req, res, true)
+    res.render('perfiles/createPerfil', { usuarioId, localidades }); // Pasar el ID del usuario a la vista
 };
 
 // Crea un nuevo perfil
 export const createPerfil = async (req, res) => {
-    const { descripcion, valoracionPromedio, telefono, fechaNacimiento, usuarioId } = req.body;
+    const { descripcion, valoracionPromedio, telefono, nombre, apellido, fechaNacimiento, usuarioId, localidadId } = req.body;
     const [rows] = await pool.query(
-        'INSERT INTO perfil (descripcion, valoracionPromedio, telefono, fechaNacimiento, Usuario_idUsuario) VALUES (?, ?, ?, ?, ?)', 
-        [descripcion, valoracionPromedio, telefono, fechaNacimiento, usuarioId])
+        'INSERT INTO perfil (descripcion, valoracionPromedio, telefono, nombre, apellido, fechaNacimiento, Usuario_idUsuario, Localidad_idLocalidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', 
+        [descripcion, valoracionPromedio, telefono, nombre, apellido, fechaNacimiento, usuarioId, localidadId])
 
         res.redirect('/');
 };

@@ -5,9 +5,9 @@
     <% posts.forEach(post => { %>
     <div class="post">
         <div class="contenido-post">
+            <img src="/uploads/<%= post.foto %>" alt="Foto del post">
             <p><%= post.descripcion %></p>
-            <p><%= post.foto %></p>
-            <p><%= post.valoracion %></p>
+            <p>Valoracion: <%= post.valoracion %></p>
 
 
             <a href="" class="boton-amarillo-block">
