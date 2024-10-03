@@ -12,6 +12,9 @@ router.get('/create', showCreatePerfilForm);
 router.post('/create', createPerfil);
 
 router.get('/', getPerfiles); // Obtener todos los perfiles
-router.get('/:id', getPerfil); // Obtener perfil por ID
+router.get('/:id', async (req, res) => {
+    const perfil = await getPerfil(req, res, true)
+    res.render('perfiles/verPerfil', { perfil })
+})
 
 export default router;

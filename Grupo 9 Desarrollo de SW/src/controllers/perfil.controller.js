@@ -30,16 +30,18 @@ export const getPerfiles = async (req, res) => {
 };
 
 // Devuelve un perfil por ID
-export const getPerfil = async (req, res) => {
+export const getPerfil = async (req, res, asData = false) => {
     try {
         const [rows] = await pool.query('SELECT nombre,apellido,descripcion,telefono,Localidad_idLocalidad,valoracionPromedio FROM perfil WHERE Usuario_idUsuario = ?', [req.params.id]);
         
         if (rows.length <= 0) {
             return res.status(404).json({ message: 'Perfil no encontrado' });
         }
-        //res.render('perfil', { perfil: rows[0] });
-        //res.render('perfil', { perfil: result[0] });
-        res.json(rows[0]);
+
+        if (asData) {
+            return rows[0];
+        }
+
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error al obtener el perfil' });
