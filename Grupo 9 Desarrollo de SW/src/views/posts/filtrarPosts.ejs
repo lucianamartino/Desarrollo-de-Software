@@ -1,12 +1,15 @@
-<%- include('partials/_header'); %>
+<%- include('../partials/_header'); %>
 
 <select id="oficioId" name="oficioId" onchange="location = '/posts/f/' + this.options[this.selectedIndex].text;">
-    <option disabled selected>Selecciona un oficio</option>
+    <option disabled>Selecciona un oficio</option>
     <% oficios.forEach(oficio => { %>
-        <option value="<%= oficio.idOficio %>"><%= oficio.nombre %></option>
+        <!-- compara idOficio actual con idOficio q se selecciono antes, si es igual queda como selected -->
+        <option value="<%= oficio.idOficio %>" <%= oficio.idOficio === oficioSeleccionado?.idOficio ? 'selected' : '' %>><%= oficio.nombre %></option>
     <% }) %>
 </select>
 <br>
+
+<h1>Posts del oficio: <%= nombreOficio %></h1>
 
 <div class="contenedor-posts">  
     <% posts.forEach(post => { %>
@@ -16,7 +19,6 @@
             <img src="/uploads/<%= post.foto %>" alt="Foto del post">
             <p>Descripcion: <%= post.despcripcion %></p>
             <p>Valoracion: <%= post.valoracion %></p>
-
 
             <a href="" class="boton-amarillo-block">
                 Ver Post
@@ -32,35 +34,4 @@
 </div>
 
 
-
-<h1>Lista de Usuarios</h1>
-
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Email</th>
-            <th>Password</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% usuarios.forEach(usuario => { %>
-        <tr>
-            <td><%= usuario.idUsuario %></td>
-            <td><%= usuario.nombre %></td>
-            <td><%= usuario.apellido %></td>
-            <td><%= usuario.email %></td>
-            <td><%= usuario.contraseña %></td>
-        </tr>
-        <% }) %>
-    </tbody>
-</table>
-
-<a href="api/usuarios/create" class="">Agregar Nuevo Usuario</a>
-
-
-
-<%- include('partials/_footer'); %>
+<%- include('../partials/_footer'); %>

@@ -40,3 +40,14 @@ export const getPost = async (req, res) => {
         res.status(500).json({ message: 'Error al obtener el post' });
     }
 };
+
+// Devuelve todos los posts por oficio
+export const getPostsPorOficio = async (req, res) => {
+    const { nombreOficio } = req.params; // Obtener el nombre del oficio desde la URL
+    const [rows] = await pool.query(
+        'SELECT * FROM post WHERE Oficio_idOficio = (SELECT idOficio FROM oficio WHERE nombre = ?)',
+        [nombreOficio] // Filtrar por nombre de oficio
+    );
+
+    return rows; 
+};
