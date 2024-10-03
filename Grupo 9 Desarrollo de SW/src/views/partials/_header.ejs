@@ -3,16 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles.css">
-    <title>Gestión de Posts</title>
+    <link rel="stylesheet" href="/Grupo 9 Desarrollo de SW/public/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title></title>
 </head>
 <body>
     <header>
-        <div class="header-left">
-            <a href="/" class="">Grupo 9 Desarrollo de Software UTN 2024</a>
+        <div class="container-logo">
+            <a href="../index.ejs" class="logo">
+                <p class="nombre">SKILL MARKET</p>
+                <p class="slogan">Oficios Conectados</p>
+            </a>
         </div>
-
-        <div>
-            <a href="/posts/create" class="">Crear Post</a>
+        <div class="container-menu">
+            <ul>
+                <li>
+                    <a href="">
+                        <p>Buscar por rubro</p>
+                        <select id="oficioId" name="oficioId" onchange="location = '/posts/f/' + this.options[this.selectedIndex].text;">
+                            <option disabled>Selecciona un oficio</option>
+                            <% oficios.forEach(oficio => { %>
+                                <!-- compara idOficio actual con idOficio q se selecciono antes, si es igual queda como selected -->
+                                <option value="<%= oficio.idOficio %>" <%= oficio.idOficio === oficioSeleccionado?.idOficio ? 'selected' : '' %>><%= oficio.nombre %></option>
+                            <% }) %>
+                        </select>
+                        
+                    </a>
+                </li>
+                <li>
+                    <a href="/Grupo 9 Desarrollo de SW/src/views/posts/createPost.ejs">
+                        <p>Crear post</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Grupo 9 Desarrollo de SW/src/views/usuarios/createUsuario.ejs">
+                        <p>Registrarme</p>
+                    </a>
+                </li>
+            </ul>
         </div>
     </header>
+</body>

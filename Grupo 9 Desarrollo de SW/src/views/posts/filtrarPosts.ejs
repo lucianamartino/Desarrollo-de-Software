@@ -1,14 +1,13 @@
 <%- include('../partials/_header'); %>
-
+<!--
 <select id="oficioId" name="oficioId" onchange="location = '/posts/f/' + this.options[this.selectedIndex].text;">
     <option disabled>Selecciona un oficio</option>
     <% oficios.forEach(oficio => { %>
-        <!-- compara idOficio actual con idOficio q se selecciono antes, si es igual queda como selected -->
+         compara idOficio actual con idOficio q se selecciono antes, si es igual queda como selected 
         <option value="<%= oficio.idOficio %>" <%= oficio.idOficio === oficioSeleccionado?.idOficio ? 'selected' : '' %>><%= oficio.nombre %></option>
     <% }) %>
 </select>
-<br>
-
+-->
 <h1>Posts del oficio: <%= nombreOficio %></h1>
 
 <div class="contenedor-posts">  

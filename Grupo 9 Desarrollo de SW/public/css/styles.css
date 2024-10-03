@@ -1,118 +1,80 @@
-body {
-    font-family: Arial, sans-serif;
+*{
     margin: 0;
-    padding: 0;
 }
 
-header {
+header{
+    background-color: rgb(230, 227, 221);
+    width: 100%;
+    height: auto;
     display: flex;
-    justify-content: space-between;
-    align-items: center; /* Alinear verticalmente */
-    padding: 10px 20px;
-    background-color: #f8f8f8;
-    border-bottom: 1px solid #ddd;
+    padding: 5px;
 }
 
-.header-left {
-    font-size: 18px;
-    color: #333;
-}
-
-.header-right {
+.container-logo{
+    width: 40%;
     display: flex;
-    gap: 5px; /* Espacio reducido entre los botones y el desplegable */
+    align-items: center; 
 }
 
-button, select {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #007BFF;
-    color: white;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-select {
-    border: 1px solid #ccc;
-    background-color: #fff;
+.logo{
+    text-decoration: none;
     color: black;
-}
-
-#postsContainer {
-    padding: 20px;
-}
-/* Estilos generales para el cuerpo de la ventana de agregar post */
-.agregar-post-body {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra verticalmente */
-    align-items: center; /* Centra horizontalmente */
-    height: 100vh; /* Altura completa de la ventana */
-    margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
+    align-items: center;
+    padding-left: 5px;
 }
-
-/* Estilos para el encabezado */
-.agregar-post-header {
-    margin-bottom: 20px;
+.logo .nombre{
+    font-family: "Montserrat", system-ui;
+    font-optical-sizing: auto;
+    font-size: 1.6rem;
+    font-style: normal;
 }
+.logo .slogan{
+    font-family: "Montserrat", system-ui;
+    font-optical-sizing: auto;
+    font-size: 0.7rem;
+    font-style: normal;
 
-/* Estilos para el formulario */
-.agregar-post-form {
-    width: 100%;
-    max-width: 400px; /* Ancho máximo del formulario */
+}
+.container-menu{
     display: flex;
-    flex-direction: column;
-}
-
-/* Botones dentro del contenedor */
-.agregar-post-button-container {
-    display: flex;
-    justify-content: flex-end; /* Botones a la derecha */
-    margin-top: 20px; /* Espacio entre botones y el formulario */
-}
-
-.agregar-post-button-container button {
-    margin-left: 10px; /* Espacio entre los botones */
-    padding: 10px 15px; /* Aumenta el tamaño de los botones si lo deseas */
-}
-
-/* Estilos generales para botones */
-button {
-    cursor: pointer;
-}
-
-
-
-
-/* ESTILOS VISTA POST */
-.post {
-    /* background-color: lighten(, 5);
-    border: 1px solid darken($gris, 10); */
-    margin-bottom: 2rem;
-
-    .contenido-post {
-        padding: 2rem;
-    }
-
-    h3, p {
-        margin: 0;
-    }
-}
-.contenedor-posts {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(3, 1fr);
-}
-
-img,
-picture {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
     width: 100%;
-    display: block;
+    align-items: center;
+}
+
+ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+ul li{
+    list-style: none;
+    margin: 0 10px;
+}
+ul li a{
+    color: black;
+    text-decoration: none;
+    
+}
+
+ul li a p:hover{
+    text-decoration: white underline 2px; 
+    transition: ease-out 0.2s;
+    color: white;
+    font-size: 1rem;
+    font-weight: semi-bold;
+}
+  
+ul li a p{
+    font-family: "Montserrat", system-ui;
+    font-optical-sizing: auto;
+    font-size: 0.9rem;
+    font-style: normal;
 }
