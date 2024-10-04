@@ -1,48 +1,105 @@
-.formulario {
+.nombre-form{
+    font-family: "Montserrat", system-ui;
+    font-size: 1.6rem;
+    font-style: thin;
+    color: rgb(111, 109, 103) ;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(230, 227, 221);
+    width: 93%;
+    height: 400px;
+    padding: 10px;
+}
+.formulario fieldset{
+    height: 400px;
     width: 60%;
-    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-left: 20px;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    
+}
+.formulario legend{
+    font-family: "Montserrat", system-ui;
+    font-size: 1.6rem;
+    font-style: thin;
+    color: rgb(111, 109, 103) ;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  
+}
+.formulario fieldset{
+    display: flex;
+    flex-direction: column;
+}
+.container-label{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
 
-    p {
-        font-size: 1.4rem;
-        color: $grisOscuro;
-        margin: 2rem 0 0 0;
-    }
+.container-label label{
+    font-family: "Montserrat", system-ui;
+    font-size: 1rem;
+    font-style: thin;
+    color: rgb(111, 109, 103) ;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 20px;
+   
+}
 
-    legend {
-        font-size: 2rem;
-        color: $grisOscuro;
-    }
+.container-label input, select, textarea{
+    font-family: "Montserrat", system-ui;
+    font-size: 0.7rem;
+    font-style: thin;
+    color: rgb (230, 227, 221) ;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+    border-radius: 10px;
+    width: 50%;
+    height: 25px;
+    display: flex;
+    float: left;
+}
+.container-label input:focus{
+    outline: none;
+    border: 1px solid rgb(111, 109, 103);
+}
 
-    label {
-        // font-weight: $bold;
-        text-transform: uppercase;
-        display: block;
-    }
+button[type="submit"]{
+    background-color: rgb(111, 109, 103);
+    color: white;
+    font-size: 1.2rem;
+    font-style: thin;
+    border: none;
+    border-radius: 10px;
+    width: 30%;
+    height: 30px;
+    margin: 20px;
+}
 
-    input:not([type="submit"]),
-    textarea,
-    select {
-        padding: 1rem;
-        display: block;
-        width: 100%;
-        background-color: $blanco;
-        border: 1px solid $gris;
-        border-radius: 1rem;
-        margin-bottom: 2rem;
-    }
-
-    textarea {
-        height: 20rem;
-    }
-
-    .forma-contacto {
-        max-width: 30rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    input[type="radio"] {
-        margin: 0;
-        width: auto;
-    }
+button[type="submit"]:hover{
+    background-color: rgb(230, 227, 221);
+    color: rgb(111, 109, 103);
+    border: 1px solid rgb(111, 109, 103);
 }

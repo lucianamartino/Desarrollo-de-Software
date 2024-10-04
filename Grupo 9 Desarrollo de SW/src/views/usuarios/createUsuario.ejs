@@ -1,20 +1,25 @@
 <%- include('../partials/_header'); %>
 
-<h1>Crear Usuario</h1>
-<form action="/api/usuarios/create" method="POST">
+<h1 class="nombre-form">Crear Usuario</h1>
 
-    <label for="nombreUsuario">Nombre Usuario:</label>
-    <input type="text" id="nombreUsuario" name="nombreUsuario" required>
-    <br>
+<form class="formulario" action="/api/usuarios/create" method="POST">
+    <fieldset>
+        <div class="container-label">
+            <label for="nombreUsuario">Nombre Usuario:</label>
+            <input type="text" id="nombreUsuario" name="nombreUsuario" required>
+        </div>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    <br>
+        <div class="container-label">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
 
-    <label for="contraseña">Contraseña:</label>
-    <input type="password" id="contraseña" name="contraseña" required>
-    <br>
-    
+        <div class="container-label">
+            <label for="contraseña">Contraseña:</label>
+            <input type="password" id="contraseña" name="contraseña" required>
+        </div>
+
+    </fieldset>
     <button type="submit">Crear Usuario</button>
 </form>
 
