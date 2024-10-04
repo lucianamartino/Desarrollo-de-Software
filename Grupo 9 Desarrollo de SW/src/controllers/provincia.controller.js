@@ -11,14 +11,14 @@ export const createProvincia = async (req, res) => {
 };
 
 // Devuelve todas las provincias
-export const getProvincias = async (req, res) => {
-    try {
-        const [rows] = await pool.query('SELECT * FROM provincia');
-        res.json(rows);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error al obtener oficios' });
+export const getProvincias = async (req, res, asData = false) => {
+    const [rows] = await pool.query('SELECT * FROM provincia');
+
+    if (asData) {
+        return rows;
     }
+
+    res.json(rows);
 };
 
 // Devuelve una provincia por ID

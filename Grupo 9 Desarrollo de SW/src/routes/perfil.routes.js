@@ -1,12 +1,14 @@
 import { Router } from "express";
 import { createPerfil, getPerfiles, getPerfil, getPerfilPorUsuarioId } from '../controllers/perfil.controller.js';
 import { getLocalidades } from '../controllers/localidad.controller.js';
+import { getProvincias } from '../controllers/provincia.controller.js';
 import { getOficios } from '../controllers/oficio.controller.js';
 
 const router = Router();
 
 router.get('/create', async (req, res) =>{
     const usuarioId = req.query.usuarioId; // Obtener el ID del usuario de la consulta de la URL
+    const provincias = await getProvincias(req, res, true)
     const localidades = await getLocalidades(req, res, true)
     const oficios = await getOficios(req, res, true);
 
@@ -14,7 +16,7 @@ router.get('/create', async (req, res) =>{
     // Obtener el id del oficio que seleccionaste
     const oficioSeleccionado = oficios.find(oficio => oficio.nombre === nombreOficio);
 
-    res.render('perfiles/createPerfil', { usuarioId, localidades, oficioSeleccionado, oficios }); // Pasar el ID del usuario a la vista
+    res.render('perfiles/createPerfil', { usuarioId, provincias, localidades, oficioSeleccionado, oficios }); // Pasar el ID del usuario a la vista
 })
 
 // Ruta para manejar la creación de perfil (POST)

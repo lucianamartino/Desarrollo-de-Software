@@ -2,7 +2,8 @@ import {pool} from '../db.js'
 
 // Crea un nuevo perfil
 export const createPerfil = async (req, res) => {
-    const { descripcion, valoracionPromedio, telefono, nombre, apellido, fechaNacimiento, usuarioId, localidadId } = req.body;
+    const { descripcion, telefono, nombre, apellido, fechaNacimiento, usuarioId, localidadId } = req.body;
+    const valoracionPromedio = 5
     const [rows] = await pool.query(
         'INSERT INTO perfil (descripcion, valoracionPromedio, telefono, nombre, apellido, fechaNacimiento, Usuario_idUsuario, Localidad_idLocalidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', 
         [descripcion, valoracionPromedio, telefono, nombre, apellido, fechaNacimiento, usuarioId, localidadId])

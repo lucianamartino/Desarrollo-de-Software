@@ -1,42 +1,73 @@
-<%- include('partials/_header'); %>
+<%- include('../partials/_header'); %>
 
 <h1>Crear Perfil</h1>
-    <form action="/perfiles/create" method="POST">
 
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
+<form action="/perfiles/create" method="POST">
+
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+    <br>
     
-       
-        <label for="apellido">Apellido:</label>
-        <input type="text" id="apellido" name="apellido" required>
-        
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" required>
+    <br>
 
-        <label for="descripcion">Descripción:</label>
-        <input type="text" id="descripcion" name="descripcion" required>
-        
+    <label for="descripcion">Descripción:</label>
+    <input type="text" id="descripcion" name="descripcion" required>
+    <br>
 
-        <label for="valoracionPromedio">Valoración Promedio:</label>
-        <input type="number" step="0.1" id="valoracionPromedio" name="valoracionPromedio" required>
-      
+    <label for="telefono">Teléfono:</label>
+    <input type="tel" id="telefono" name="telefono" required>
+    <br>
 
-        <label for="telefono">Teléfono:</label>
-        <input type="tel" id="telefono" name="telefono" required>
+    <label for="provinciaId">Provincia:</label>
+    <select id="provinciaId" name="provinciaId" onchange="filtrarLocalidades()">
+        <option selected disabled>Seleccione una provincia</option>
+        <% provincias.forEach(provincia => { %>
+            <option value="<%= provincia.idProvincia %>">
+                <%= provincia.nombre %>
+            </option>
+        <% }) %>
+    </select>
+    <br>
 
+    <label for="localidadId">Localidad:</label>
+    <select id="localidadId" name="localidadId">
+        <option selected disabled>Seleccione una localidad</option>
+    </select>
+    <br>
 
-        <label for="localidadId">Localidad:</label>
-        <select id="localidadId" name="localidadId">
-            <% localidades.forEach(localidad => { %>
-                <option value="<%= localidad.idLocalidad %>"><%= localidad.nombre %></option>
-            <% }) %>
-        </select>
+    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+    <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+    <br>
+    
+    <!-- Campo oculto para el ID del usuario -->
+    <input type="hidden" name="usuarioId" value="<%= usuarioId %>"> <!-- Aquí se pasa el ID del usuario -->
 
-        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-        <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
-     
-        <!-- Campo oculto para el ID del usuario -->
-        <input type="hidden" name="usuarioId" value="<%= usuarioId %>"> <!-- Aquí se pasa el ID del usuario -->
+    <button type="submit">Crear Perfil</button>
+</form>
+    
+<script>
+    const localidades = <%- JSON.stringify(localidades) %>; // Convertir localidades a un objeto JS
 
-        <button type="submit">Crear Perfil</button>
-    </form>
+    function filtrarLocalidades() {
+        const provinciaId = document.getElementById('provinciaId').value;
+        const localidadSelect = document.getElementById('localidadId');
 
-<%- include('partials/_footer'); %>
+        // Limpiar las opciones previas
+        localidadSelect.innerHTML = '<option selected disabled>Seleccione una localidad</option>'; 
+
+        // Filtrar localidades por la provincia seleccionada
+        const localidadesFiltradas = localidades.filter(localidad => localidad.Provincia_idProvincia == provinciaId);
+
+        // Agregar las localidades filtradas al select
+        localidadesFiltradas.forEach(localidad => {
+            const option = document.createElement('option');
+            option.value = localidad.idLocalidad;
+            option.textContent = localidad.nombre;
+            localidadSelect.appendChild(option);
+        });
+    }
+</script>
+
+<%- include('../partials/_footer'); %>
