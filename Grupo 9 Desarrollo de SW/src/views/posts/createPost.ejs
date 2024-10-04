@@ -2,29 +2,36 @@
 
 <h1>Crear Post</h1>
 
-<form action="/posts/create" method="POST" enctype="multipart/form-data">
-    <label for="descripcion">Descripción:</label>
-    <textarea name="descripcion" id="descripcion"></textarea>
-    <br>
-   
-    <label for="foto">Foto:</label>
-        <input type="file" name="foto" id="foto">
-    <br>
-  
+<form class="formulario" action="/posts/create" method="POST" enctype="multipart/form-data">
+    <fieldset>
 
-    <label for="oficioId">Oficio:</label>
-    <select id="oficioId" name="oficioId">
-        <% oficios.forEach(oficio => { %>
-            <option value="<%= oficio.idOficio %>"><%= oficio.nombre %></option>
-        <% }) %>
-    </select>
-    <br>
+        <legend>Informacion General</legend>
 
-    <label for="valoracion">valoracion:</label>
-    <input type="number" id="valoracion" name="valoracion" required>
-    <br>
+        <label for="descripcion">Descripción:</label>
+        <textarea name="descripcion" id="descripcion"></textarea>
+        <br>
+    
+        <label for="foto">Foto:</label>
+            <input type="file" name="foto" id="foto">
+        <br>
+    
+
+        <label for="oficioId">Oficio:</label>
+        <select id="oficioId" name="oficioId">
+            <option selected disabled>-- Elige un oficio --</option>
+            <% oficios.forEach(oficio => { %>
+                <option value="<%= oficio.idOficio %>"><%= oficio.nombre %></option>
+            <% }) %>
+        </select>
+        <br>
+
+        <label for="valoracion">valoracion:</label>
+        <input type="number" id="valoracion" name="valoracion" required>
+        <br>
+    </fieldset>
 
     <button type="submit">Crear Post</button>
 </form>
+
 
 <%- include('../partials/_footer'); %>

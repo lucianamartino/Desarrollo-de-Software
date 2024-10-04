@@ -3,8 +3,10 @@
 <div class="contenedor-posts">  
     <% posts.forEach(post => { %>
     <div class="post">
+
+        <img src="/uploads/<%= post.foto %>" alt="Foto del post">
+
         <div class="contenido-post">
-            <img src="/uploads/<%= post.foto %>" alt="Foto del post">
             <p>Descripcion: <%= post.despcripcion %></p>
             <p>Valoracion: <%= post.valoracion %></p>
 
@@ -12,10 +14,7 @@
             <!-- <a href="" class="boton-amarillo-block">
                 Ver Post
             </a> -->
-            <p><a href="/perfiles/<%= post.Usuario_idUsuario %>" class="boton-amarillo-block">
-                Ver Perfil
-            </a>
-            </p>
+            <a href="/perfiles/<%= post.Usuario_idUsuario %>" class="boton-amarillo-block">Ver Perfil</a>
             
         </div><!--contenido-post-->
     </div><!--post-->

@@ -13,9 +13,11 @@
 <div class="contenedor-posts">  
     <% posts.forEach(post => { %>
     <div class="post">
+
+        <img src="/uploads/<%= post.foto %>" alt="Foto del post">
+        
         <div class="contenido-post">
             <!--<p>VER PERFIL <%= post.Usuario_idUsuario %></p>-->
-            <img src="/uploads/<%= post.foto %>" alt="Foto del post">
             <p>Descripcion: <%= post.despcripcion %></p>
             <p>Valoracion: <%= post.valoracion %></p>
 
