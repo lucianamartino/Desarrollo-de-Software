@@ -51,7 +51,7 @@ ul{
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
-    align-items: flex-end;
+    align-items: center;
     
 }
 
@@ -89,4 +89,6 @@ ul li select{
     background-color: rgb(230, 227, 221);
     border: none;
     border-radius: 5px;
+    width: 100%;
+    height: 30px;
 }
