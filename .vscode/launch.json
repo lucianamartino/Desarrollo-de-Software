@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "chrome",
+            "name": "http://127.0.0.1:3000/Grupo%209%20Desarrollo%20de%20SW/src/views/perfiles/createPerfil.ejs",
+            "request": "launch",
+            "url": "http://127.0.0.1:3000/Grupo%209%20Desarrollo%20de%20SW/src/views/perfiles/createPerfil.ejs"
+        }
+    ]
+}

@@ -13,6 +13,7 @@ import notify from 'gulp-notify';
 import cache from 'gulp-cache';
 import webp from 'gulp-webp';
 
+
 const sass = gulpSass(dartSass);
 
 const paths = {
@@ -31,7 +32,7 @@ export function css() {
 }
 
 export function javascript() {
-    return gulp.src(paths.js)
+    return gulp.src(paths.js, { allowEmpty: true })
         .pipe(sourcemaps.init())
         .pipe(concat('bundle.js'))
         .pipe(terser())
