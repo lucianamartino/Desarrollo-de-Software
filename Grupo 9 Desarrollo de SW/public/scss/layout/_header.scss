@@ -52,11 +52,13 @@ ul{
     flex-wrap: nowrap;
     justify-content: space-around;
     align-items: flex-end;
+    
 }
 
 ul li{
     list-style: none;
     margin: 0 10px;
+    padding: 5px;
 }
 ul li a{
     color: black;
@@ -77,4 +79,14 @@ ul li a p{
     font-optical-sizing: auto;
     font-size: 0.9rem;
     font-style: normal;
+}
+ul li select{
+    font-family: "Montserrat", system-ui;
+    font-optical-sizing: auto;
+    font-size: 0.9rem;
+    font-style: normal;
+    color: black;
+    background-color: rgb(230, 227, 221);
+    border: none;
+    border-radius: 5px;
 }
