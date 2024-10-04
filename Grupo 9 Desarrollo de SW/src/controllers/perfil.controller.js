@@ -39,3 +39,20 @@ export const getPerfil = async (req, res, asData = false) => {
         res.status(500).json({ message: 'Error al obtener el perfil' });
     }
 };
+
+export const getPerfilPorUsuarioId = async (usuarioId, req, res) => {
+    try {
+        const [perfil] = await pool.query('SELECT * FROM perfil WHERE Usuario_idUsuario = ?', [usuarioId]);
+
+        // Verifica que el perfil fue encontrado
+        if (perfil.length === 0) {
+            return null; // No se encontró el perfil
+        }
+
+        return perfil[0]; // Retorna el primer perfil encontrado
+    } catch (error) {
+        console.error('Error al obtener el perfil:', error);
+        res.status(500).send('Error del servidor');
+        return null; // Manejo de error, retornar null
+    }
+};

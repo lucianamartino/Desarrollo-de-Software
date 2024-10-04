@@ -4,55 +4,22 @@
     <% posts.forEach(post => { %>
     <div class="post">
         <div class="contenido-post">
-            <!--<p>VER PERFIL <%= post.Usuario_idUsuario %></p>-->
             <img src="/uploads/<%= post.foto %>" alt="Foto del post">
             <p>Descripcion: <%= post.despcripcion %></p>
             <p>Valoracion: <%= post.valoracion %></p>
 
 
-            <a href="" class="boton-amarillo-block">
+            <!-- <a href="" class="boton-amarillo-block">
                 Ver Post
-            </a>
+            </a> -->
             <p><a href="/perfiles/<%= post.Usuario_idUsuario %>" class="boton-amarillo-block">
                 Ver Perfil
             </a>
             </p>
             
-        </div><!--contenido-anuncio-->
-    </div><!--anuncio-->
+        </div><!--contenido-post-->
+    </div><!--post-->
     <% }) %>
-</div>
-
-
-
-<h1>Lista de Usuarios</h1>
-
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Email</th>
-            <th>Password</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% usuarios.forEach(usuario => { %>
-        <tr>
-            <td><%= usuario.idUsuario %></td>
-            <td><%= usuario.nombre %></td>
-            <td><%= usuario.apellido %></td>
-            <td><%= usuario.email %></td>
-            <td><%= usuario.contraseña %></td>
-        </tr>
-        <% }) %>
-    </tbody>
-</table>
-
-<a href="api/usuarios/create" class="">Agregar Nuevo Usuario</a>
-
-
+</div><!--contenedor-post-->
 
 <%- include('partials/_footer'); %>
