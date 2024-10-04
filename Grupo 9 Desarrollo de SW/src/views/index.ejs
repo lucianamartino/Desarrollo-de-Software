@@ -1,13 +1,5 @@
 <%- include('partials/_header'); %>
 
-<select id="oficioId" name="oficioId" onchange="location = '/posts/f/' + this.options[this.selectedIndex].text;">
-    <option disabled selected>Selecciona un oficio</option>
-    <% oficios.forEach(oficio => { %>
-        <option value="<%= oficio.idOficio %>"><%= oficio.nombre %></option>
-    <% }) %>
-</select>
-<br>
-
 <div class="contenedor-posts">  
     <% posts.forEach(post => { %>
     <div class="post">

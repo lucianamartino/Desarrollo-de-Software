@@ -8,7 +8,13 @@ const router = Router();
 // Ruta para mostrar el formulario de creación de posts
 router.get('/create', async (req, res) => {
     const oficios = await getOficios(req, res, true); // Obtener los oficios de la BD
-    res.render('posts/createPost', { oficios }); 
+
+    const nombreOficio = req.params.nombreOficio;
+
+    // Obtener el id del oficio que seleccionaste
+    const oficioSeleccionado = oficios.find(oficio => oficio.nombre === nombreOficio);
+
+    res.render('posts/createPost', { oficios, oficioSeleccionado }); 
 });
 
 // Ruta para crear un post con la subida de imagen

@@ -12,37 +12,40 @@
 <body>
     <header>
         <div class="container-logo">
-            <a href="../index.ejs" class="logo">
+            <a href="/" class="logo">
                 <p class="nombre">SKILL MARKET</p>
                 <p class="slogan">Oficios Conectados</p>
             </a>
         </div>
+
+        <!-- <select id="oficioId" name="oficioId" onchange="location = '/posts/f/' + this.options[this.selectedIndex].text;">
+            <option disabled selected>Selecciona un oficio</option>
+            <% oficios.forEach(oficio => { %>
+                <option value="<%= oficio.idOficio %>"><%= oficio.nombre %></option>
+            <% }) %>
+        </select>
+        <br> -->
+
+        <select id="oficioId" name="oficioId" onchange="location = '/posts/f/' + this.options[this.selectedIndex].text;">
+            <option disabled selected>Selecciona un oficio</option>
+            <% oficios.forEach(oficio => { %>
+                <option value="<%= oficio.idOficio %>" <%= oficio.idOficio === oficioSeleccionado?.idOficio ? 'selected' : '' %>><%= oficio.nombre %></option>
+            <% }) %>
+        </select>
+        <br>
+
         <div class="container-menu">
             <ul>
                 <li>
-                    <a href="">
-                        <p>Buscar por rubro</p>
-                        <select id="oficioId" name="oficioId" onchange="location = '/posts/f/' + this.options[this.selectedIndex].text;">
-                            <option disabled>Selecciona un oficio</option>
-                            <% oficios.forEach(oficio => { %>
-                                <!-- compara idOficio actual con idOficio q se selecciono antes, si es igual queda como selected -->
-                                <option value="<%= oficio.idOficio %>" <%= oficio.idOficio === oficioSeleccionado?.idOficio ? 'selected' : '' %>><%= oficio.nombre %></option>
-                            <% }) %>
-                        </select>
-                        
-                    </a>
-                </li>
-                <li>
-                    <a href="/Grupo 9 Desarrollo de SW/src/views/posts/createPost.ejs">
+                    <a href="/posts/create">
                         <p>Crear post</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/Grupo 9 Desarrollo de SW/src/views/usuarios/createUsuario.ejs">
+                    <a href="api/usuarios/create">
                         <p>Registrarme</p>
                     </a>
                 </li>
             </ul>
         </div>
     </header>
-</body>

@@ -5,31 +5,35 @@
 
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
+        <br>
        
         <label for="apellido">Apellido:</label>
         <input type="text" id="apellido" name="apellido" required>
-    
+        <br>
 
         <label for="descripcion">Descripción:</label>
         <input type="text" id="descripcion" name="descripcion" required>
-    
+        <br>
 
         <label for="valoracionPromedio">Valoración Promedio:</label>
         <input type="number" step="0.1" id="valoracionPromedio" name="valoracionPromedio" required>
-  
+        <br>
+
         <label for="telefono">Teléfono:</label>
         <input type="tel" id="telefono" name="telefono" required>
-        
+        <br>
+
         <label for="localidadId">Localidad:</label>
         <select id="localidadId" name="localidadId">
             <% localidades.forEach(localidad => { %>
                 <option value="<%= localidad.idLocalidad %>"><%= localidad.nombre %></option>
             <% }) %>
         </select>
-   
+        <br>
+
         <label for="fechaNacimiento">Fecha de Nacimiento:</label>
         <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
-     
+     <br>
 
         <!-- Campo oculto para el ID del usuario -->
         <input type="hidden" name="usuarioId" value="<%= usuarioId %>"> <!-- Aquí se pasa el ID del usuario -->
