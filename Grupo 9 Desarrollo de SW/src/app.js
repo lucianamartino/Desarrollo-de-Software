@@ -24,6 +24,7 @@ const __dirname = path.dirname(__filename);
 
 // Configurar archivos estáticos
 app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../build')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Configurar EJS como motor de vistas
