@@ -3,7 +3,7 @@ import {pool} from '../db.js'
 // Crea un nuevo post
 export const createPost = async (req, res) => {
     const { descripcion, oficioId } = req.body;
-    const usuarioId = 2
+    const usuarioId = 1
     const valoracion = 5
     const foto = req.file ? req.file.filename : null; // Obtén el nombre del archivo subido
 

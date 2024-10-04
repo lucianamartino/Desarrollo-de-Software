@@ -8,7 +8,7 @@
     <% }) %>
 </select>
 -->
-<h1>Posts del oficio: <%= nombreOficio %></h1>
+<h1 class="nombre-form">Posts del oficio: <%= nombreOficio %></h1>
 
 <div class="contenedor-posts">  
     <% posts.forEach(post => { %>
@@ -21,12 +21,10 @@
             <p>Descripcion: <%= post.despcripcion %></p>
             <p>Valoracion: <%= post.valoracion %></p>
 
-            <a href="" class="boton-amarillo-block">
-                Ver Post
-            </a>
-            <p><a href="/perfiles/<%= post.Usuario_idUsuario %>" class="boton-amarillo-block">
+            <p class="ver-perfil">
+                <a href="/perfiles/<%= post.Usuario_idUsuario %>" class="boton-amarillo-block">
                 Ver Perfil
-            </a>
+                </a>
             </p>
             
         </div><!--contenido-anuncio-->

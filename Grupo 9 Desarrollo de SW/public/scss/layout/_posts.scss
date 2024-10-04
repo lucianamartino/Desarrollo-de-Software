@@ -6,22 +6,43 @@
         padding-top: 2rem;
     }
 }
-
+.contenedor-posts{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: 10px;
+}
 .post {
     background-color: color.scale($gris, $lightness: 5%);
     border: 1px solid color.scale($gris, $lightness: -10%); 
+    padding: 4px;
     margin-bottom: 2rem;
-    width: 90%;
+    width: 20%;
     margin: 0 auto;
 
     .contenido-post {
         padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     h3, p {
-        margin: 0;
+        font-family: "Montserrat", system-ui;
+        font-size: 1rem;
+        font-style: thin;
+        color: rgb(111, 109, 103) ;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      
+        text-align: center;
+        width: 100%;
     }
-
+    .contenido-post p a .ver-perfil{
+        text-align: center;
+        
+    }
     a {
         @include boton($grisOscuro, inline-block);
     }

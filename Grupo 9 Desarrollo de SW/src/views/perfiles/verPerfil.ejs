@@ -1,8 +1,12 @@
 <%- include('../partials/_header'); %>
 
-<h1>Perfil de <%= perfil.nombre %> <%= perfil.apellido %></h1>
-<p>Teléfono: <%= perfil.telefono %></p>
-<p>Descripción: <%= perfil.descripcion %></p>
-<p>Valoración: <%= perfil.valoracionPromedio %></p>
+<h1 class="nombre-form">Perfil de <%= perfil.nombre %> <%= perfil.apellido %></h1>
+
+<div class="container-perfil">
+    <p>Teléfono: <%= perfil.telefono %></p>
+    <p>Descripción: <%= perfil.descripcion %></p>
+    <p>Valoración: <%= perfil.valoracionPromedio %></p>
+</div>
+
 
 <%- include('../partials/_footer'); %>
