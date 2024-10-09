@@ -2,19 +2,30 @@
 
 <div class="slideshow-container">
 
-    <div class="mySlides fade">
+    <div class="mySlides">
       <img src="/img/jardinero.avif">
-      <div class="text">Caption Text</div>
+      <div class="container-destacado">
+        <p class="text">Emiliano Rios</p>
+        <p class="text2">Jardinero destacado del mes!</p>
+      </div>
+      
     </div>
     
-    <div class="mySlides fade">
-      <img src="/img/electricista.avif">
-      <div class="text">Caption Two</div>
+    <div class="mySlides">
+        <img src="/img/electricista.avif">
+        <div class="container-destacado">
+            <p class="text">Facundo Pierrard</p>
+            <p class="text2">Electricista destacado del mes!</p>
+        </div>
     </div>
     
-    <div class="mySlides fade">
+    <div class="mySlides">
       <img src="/img/pintor.avif">
-      <div class="text">Caption Three</div>
+      <div class="container-destacado">
+            <p class="text">Luciano Martino</p>
+            <p class="text2">Pintor destacado del mes!</p>
+      </div>
+
     </div>
     <!-- Botones de navegación -->
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -30,43 +41,44 @@
 <script>
     let slideIndex = 0;
     let slideTimer;
-    
+
     function showSlides() {
         let i;
         let slides = document.getElementsByClassName("mySlides");
         let dots = document.getElementsByClassName("dot");
-        
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-        }
-        slideIndex++;
-        if (slideIndex > slides.length) {slideIndex = 1}    
-        
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex-1].style.display = "flex";  
-        dots[slideIndex-1].className += " active";
-        
-        // Reinicia el temporizador para mantener la reproducción automática
-        clearTimeout(slideTimer);
-        slideTimer = setTimeout(showSlides, 3000); // Cambia de imagen cada 3 segundos
-    }
 
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.animation = "";
+            slides[i].style.opacity = 0;  // Cambiar la opacidad para que salga
+        }
+        
+        slideIndex++;
+        
+        if (slideIndex > slides.length) { slideIndex = 1; }    
+
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace("active", "");
+        }
+
+        // Activar la nueva diapositiva
+        slides[slideIndex - 1].style.animation = "slideIn 0.3s forwards"; // Aplica la animación de entrada
+        slides[slideIndex - 1].style.opacity = 1; // Hacerla visible inmediatamente
+        dots[slideIndex - 1].className += " active";
+        // Espera que termine la animación de entrada antes de cambiar
+        setTimeout(() => {
+            slides[slideIndex - 1].style.animation = "slideOut 0.3s forwards"; // Aplica la animación de salida
+            setTimeout(showSlides); // Espera que termine la animación antes de cambiar
+        }, 4000); // Cambia de imagen cada 3 segundos 
+    }
     // Función para mover las diapositivas manualmente
     function plusSlides(n) {
         slideIndex += n - 1; // Ajusta el índice
         showSlides();
     }
 
-    // Función para ir a una diapositiva específica
-    function currentSlide(n) {
-        slideIndex = n - 1;
-        showSlides();
-    }
-
     // Inicia la reproducción automática
     showSlides();
+
 </script>
 
 <div class="contenedor-posts">  
