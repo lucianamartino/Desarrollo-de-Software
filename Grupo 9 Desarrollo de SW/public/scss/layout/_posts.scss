@@ -18,6 +18,8 @@ body{
         padding-top: 2rem;
     }
 }
+
+
 .contenedor-posts{
     display: flex;
     flex-direction: row;
@@ -45,10 +47,9 @@ body{
         font-family: "Montserrat", system-ui;
         font-size: 1rem;
         font-style: thin;
-        color: rgb(111, 109, 103) ;
+        color: rgb(46, 45, 42) ;
         padding-top: 5px;
         padding-bottom: 5px;
-      
         text-align: center;
         width: 100%;
     }

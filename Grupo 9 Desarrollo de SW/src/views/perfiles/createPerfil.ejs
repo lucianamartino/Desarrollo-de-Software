@@ -1,60 +1,61 @@
 <%- include('../partials/_header'); %>
 
 <h1 class="nombre-form">Crear Perfil</h1>
+<div class="container-form">
+    <form class="formulario" action="/perfiles/create" method="POST">
+        <fieldset>
+                <div class="container-label">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                
+                <div class="container-label">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" required>
+                </div>
 
-<form class="formulario" action="/perfiles/create" method="POST">
-    <fieldset>
-            <div class="container-label">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-            </div>
+                <div class="container-label">
+                    <label for="descripcion">Descripción:</label>
+                    <input type="text" id="descripcion" name="descripcion" required>
+                </div>
+
+                <div class="container-label">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+
+                <div class="container-label">
+                    <label for="provinciaId">Provincia:</label>
+                    <select id="provinciaId" name="provinciaId" onchange="filtrarLocalidades()">
+                        <option selected disabled>Seleccione una provincia</option>
+                        <% provincias.forEach(provincia => { %>
+                            <option value="<%= provincia.idProvincia %>">
+                                <%= provincia.nombre %>
+                            </option>
+                        <% }) %>
+                    </select>
+                </div>
+
+                <div class="container-label">
+                    <label for="localidadId">Localidad:</label>
+                    <select id="localidadId" name="localidadId">
+                        <option selected disabled>Seleccione una localidad</option>
+                    </select>
+                </div>
+
+                <div class="container-label">
+                    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                    <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+                </div>
+                
+                <!-- Campo oculto para el ID del usuario -->
+                <input type="hidden" name="usuarioId" value="<%= usuarioId %>"> <!-- Aquí se pasa el ID del usuario -->
             
-            <div class="container-label">
-                <label for="apellido">Apellido:</label>
-                <input type="text" id="apellido" name="apellido" required>
-            </div>
-
-            <div class="container-label">
-                <label for="descripcion">Descripción:</label>
-                <input type="text" id="descripcion" name="descripcion" required>
-            </div>
-
-            <div class="container-label">
-                <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" required>
-            </div>
-
-            <div class="container-label">
-                <label for="provinciaId">Provincia:</label>
-                <select id="provinciaId" name="provinciaId" onchange="filtrarLocalidades()">
-                    <option selected disabled>Seleccione una provincia</option>
-                    <% provincias.forEach(provincia => { %>
-                        <option value="<%= provincia.idProvincia %>">
-                            <%= provincia.nombre %>
-                        </option>
-                    <% }) %>
-                </select>
-            </div>
-
-            <div class="container-label">
-                <label for="localidadId">Localidad:</label>
-                <select id="localidadId" name="localidadId">
-                    <option selected disabled>Seleccione una localidad</option>
-                </select>
-            </div>
-
-            <div class="container-label">
-                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-                <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
-            </div>
+            </fieldset>
+        <button type="submit">Crear Perfil</button>
             
-            <!-- Campo oculto para el ID del usuario -->
-            <input type="hidden" name="usuarioId" value="<%= usuarioId %>"> <!-- Aquí se pasa el ID del usuario -->
-           
-        </fieldset>
-    <button type="submit">Crear Perfil</button>
-         
-</form>
+    </form>
+</div>
 <script>
     const localidades = <%- JSON.stringify(localidades) %>; // Convertir localidades a un objeto JS
 

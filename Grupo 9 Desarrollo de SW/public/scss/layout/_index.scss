@@ -1,0 +1,113 @@
+* {box-sizing: border-box;}
+
+/* Slideshow container */
+
+.slideshow-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 400px; /* Ajusta el alto según tus necesidades */
+    margin-top: 40px; /* Espaciado desde arriba */
+}
+
+/* Ajustar las imágenes dentro del slideshow */
+.mySlides {
+/* Cambia flex por block */
+    width: 50%;
+    height: 100%;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Ajuste de las imágenes */
+.mySlides img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Asegura que la imagen se ajuste sin deformarse */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* The dots/bullets/indicators */
+.puntos{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  text-align: center;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+
+/* Botones de navegación */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.prev {
+    left: 250px;
+    border-radius: 3px 0 0 3px;
+}
+
+.next {
+    right: 250px;
+    border-radius: 0 3px 3px 0;
+}
+
+/* Hover effects on navigation buttons */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}

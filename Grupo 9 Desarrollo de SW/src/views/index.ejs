@@ -1,5 +1,74 @@
 <%- include('partials/_header.ejs'); %>
 
+<div class="slideshow-container">
+
+    <div class="mySlides fade">
+      <img src="/img/jardinero.avif">
+      <div class="text">Caption Text</div>
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="/img/electricista.avif">
+      <div class="text">Caption Two</div>
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="/img/pintor.avif">
+      <div class="text">Caption Three</div>
+    </div>
+    <!-- Botones de navegación -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<div class="puntos">
+    <span class="dot"></span> 
+    <span class="dot"></span> 
+    <span class="dot"></span> 
+</div>
+    
+<script>
+    let slideIndex = 0;
+    let slideTimer;
+    
+    function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "flex";  
+        dots[slideIndex-1].className += " active";
+        
+        // Reinicia el temporizador para mantener la reproducción automática
+        clearTimeout(slideTimer);
+        slideTimer = setTimeout(showSlides, 3000); // Cambia de imagen cada 3 segundos
+    }
+
+    // Función para mover las diapositivas manualmente
+    function plusSlides(n) {
+        slideIndex += n - 1; // Ajusta el índice
+        showSlides();
+    }
+
+    // Función para ir a una diapositiva específica
+    function currentSlide(n) {
+        slideIndex = n - 1;
+        showSlides();
+    }
+
+    // Inicia la reproducción automática
+    showSlides();
+</script>
+
 <div class="contenedor-posts">  
     <% posts.forEach(post => { %>
     <div class="post">

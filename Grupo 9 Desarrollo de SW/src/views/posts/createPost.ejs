@@ -1,35 +1,36 @@
 <%- include('../partials/_header'); %>
 
 <h1 class="nombre-form">Crear Post</h1>
+<div class="container-form">
 
-<form class="formulario" action="/posts/create" method="POST" enctype="multipart/form-data">
-    <fieldset>
+    <form class="formulario" action="/posts/create" method="POST" enctype="multipart/form-data">
+        <fieldset>
 
-        <legend>Informacion General</legend>
+            <legend>Informacion General</legend>
 
-        <div class="container-label">
-            <label for="descripcion">Descripción:</label>
-            <textarea name="descripcion" id="descripcion"></textarea>
-        </div>
-    
-        <div class="container-label">
-            <label for="foto">Foto:</label>
-            <input type="file" name="foto" id="foto">
-        </div>
+            <div class="container-label">
+                <label for="descripcion">Descripción:</label>
+                <textarea name="descripcion" id="descripcion"></textarea>
+            </div>
+        
+            <div class="container-label">
+                <label for="foto">Foto:</label>
+                <input type="file" name="foto" id="foto">
+            </div>
 
-        <div class="container-label">
-           <label for="oficioId">Oficio:</label>
-            <select id="oficioId" name="oficioId">
-                <option selected disabled>-- Elige un oficio --</option>
-                <% oficios.forEach(oficio => { %>
-                    <option value="<%= oficio.idOficio %>"><%= oficio.nombre %></option>
-                <% }) %>
-            </select> 
-        </div>
-    </fieldset>
+            <div class="container-label">
+            <label for="oficioId">Oficio:</label>
+                <select id="oficioId" name="oficioId">
+                    <option selected disabled>-- Elige un oficio --</option>
+                    <% oficios.forEach(oficio => { %>
+                        <option value="<%= oficio.idOficio %>"><%= oficio.nombre %></option>
+                    <% }) %>
+                </select> 
+            </div>
+        </fieldset>
 
-    <button type="submit">Crear Post</button>
-</form>
+        <button type="submit">Crear Post</button>
+    </form>
 
-
+</div>
 <%- include('../partials/_footer'); %>
