@@ -30,11 +30,8 @@ router.get('/:id', async (req, res) => {
         return res.status(404).send('Perfil no encontrado');
     }
 
+    const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
 
-    const oficios = await getOficios(req, res, true);
-    const nombreOficio = req.params.nombreOficio;
-    // Obtener el id del oficio que seleccionaste
-    const oficioSeleccionado = oficios.find(oficio => oficio.nombre === nombreOficio);
     res.render('perfiles/verPerfil', { perfil, oficios, oficioSeleccionado })
 })
 
