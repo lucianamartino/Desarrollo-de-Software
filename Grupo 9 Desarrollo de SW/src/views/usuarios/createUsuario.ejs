@@ -8,11 +8,17 @@
                 <label for="nombreUsuario">Nombre Usuario:</label>
                 <input type="text" id="nombreUsuario" name="nombreUsuario" required>
             </div>
+            <% if (error && error.nombreUsuario) { %>
+                <div class="error"><%= error.nombreUsuario %></div>
+            <% } %>
 
             <div class="container-label">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
             </div>
+            <% if (error && error.email) { %>
+                <div class="error"><%= error.email %></div>
+            <% } %>
 
             <div class="container-label">
                 <label for="contraseña">Contraseña:</label>

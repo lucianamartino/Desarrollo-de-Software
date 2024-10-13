@@ -36,3 +36,13 @@ export const getOficio = async (req, res) => {
         res.status(500).json({ message: 'Error al obtener oficio' });
     }
 };
+
+export const getOficiosFiltro = async (req, res) => {
+    const oficios = await getOficios(req, res, true); // Obtener todos los oficios para el select
+    const nombreOficio = req.params.nombreOficio;
+
+    // Obtener el id del oficio que seleccionaste
+    const oficioSeleccionado = oficios.find(oficio => oficio.nombre === nombreOficio);
+
+    return { oficios, oficioSeleccionado };
+};

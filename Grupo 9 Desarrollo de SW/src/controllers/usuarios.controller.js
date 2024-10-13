@@ -1,5 +1,6 @@
 import {pool} from '../db.js'
 import bcrypt from 'bcrypt'
+import { getOficiosFiltro } from "../controllers/oficio.controller.js"
 
 // Devuelve todos los usuarios
 export const getUsuarios = async (req, res, asData = false) => {
@@ -14,27 +15,6 @@ export const getUsuarios = async (req, res, asData = false) => {
     // res.send(rows)
 }
 
-/** para q funcione api/usuarios */
-// // Devuelve todos los usuarios o los renderiza en caso de que se le indique
-// export const getUsuarios = async (req, res, jsonResponse = false) => {
-//     try {
-//         const [rows] = await pool.query('SELECT * FROM usuario');
-        
-//         // Si queremos una respuesta JSON
-//         if (jsonResponse) {
-//             return rows; // Devuelve la lista de usuarios
-//         }
-        
-//         // Renderiza la vista si jsonResponse es false
-//         res.render('index', { usuarios: rows });
-//     } catch (error) {
-//         console.error(error);
-//         return res.status(500).json({ message: 'Error al obtener usuarios' });
-//     }
-// };
-
-
-
 // Devuelve un usuario por ID
 export const getUsuario = async (req, res) => {
     const [rows] = await pool.query('SELECT * FROM usuario WHERE idUsuario = ?', [req.params.id])
@@ -46,15 +26,35 @@ export const getUsuario = async (req, res) => {
     res.json(rows[0])
 }
 
-// Crea un usuario
 export const createUsuario = async (req, res) => {
-    const{nombreUsuario, contraseña, email} = req.body
-    const contraseñaHash = await bcrypt.hash(contraseña, 8)
-    const [rows] = await pool.query('INSERT INTO usuario (nombreUsuario, contraseña, email) VALUES (?, ?, ?)', [nombreUsuario, contraseñaHash, email])
+    const { nombreUsuario, email, contraseña } = req.body;
+    const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
+    const error = {}
 
-    // Redirigir a la creación del perfil, pasando el ID del usuario creado
-    res.redirect(`/perfiles/create?usuarioId=${rows.insertId}`); // Usa el ID para el siguiente paso
-}
+    const [rows] = await pool.query('SELECT * FROM usuario WHERE email = ? OR nombreUsuario = ?', [email, nombreUsuario]);
+
+    if (rows.length > 0) {
+        if (rows[0].email === email) {
+            error.email = 'El email ya está en uso';
+        }
+        if (rows[0].nombreUsuario === nombreUsuario) {
+            error.nombreUsuario = 'El nombre de usuario ya está en uso';
+        }
+        // Redirigir de nuevo a la vista y pasar el error
+        return res.render('usuarios/createUsuario', { error, oficios, oficioSeleccionado });
+    }
+
+    const contraseñaHash = await bcrypt.hash(contraseña, 8);
+    // Guarda los datos del usuario en la sesión temporalmente
+    req.session.tempUsuario = {
+        nombreUsuario,
+        email,
+        contraseñaHash
+    };
+
+    res.redirect(`/perfiles/create`);
+};
+
 
 // Actualiza un usuario
 export const updateUsuario = async (req, res) => {

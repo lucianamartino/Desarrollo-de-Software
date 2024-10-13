@@ -1,14 +1,47 @@
 import {pool} from '../db.js'
 
-// Crea un nuevo perfil
 export const createPerfil = async (req, res) => {
-    const { descripcion, telefono, nombre, apellido, fechaNacimiento, usuarioId, localidadId } = req.body;
+    const { descripcion, telefono, nombre, apellido, fechaNacimiento, localidadId } = req.body;
     const valoracionPromedio = 5
-    const [rows] = await pool.query(
-        'INSERT INTO perfil (descripcion, valoracionPromedio, telefono, nombre, apellido, fechaNacimiento, Usuario_idUsuario, Localidad_idLocalidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', 
-        [descripcion, valoracionPromedio, telefono, nombre, apellido, fechaNacimiento, usuarioId, localidadId])
+
+    // Verificar si los datos temporales del usuario están
+    if (!req.session.tempUsuario) {
+        return res.redirect('/api/usuarios/create');
+    }
+
+    const { nombreUsuario, email, contraseñaHash } = req.session.tempUsuario;
+
+    const connection = await pool.getConnection();
+
+    try {
+        await connection.beginTransaction();  // Iniciar la transacción
+
+        // Insertar el usuario en la base de datos
+        const [rows] = await connection.query(
+            'INSERT INTO usuario (nombreUsuario, email, contraseña) VALUES (?, ?, ?)', 
+            [nombreUsuario, email, contraseñaHash]
+        );
+
+        const usuarioId = rows.insertId;
+
+        await connection.query(
+            'INSERT INTO perfil (descripcion, valoracionPromedio, telefono, nombre, apellido, fechaNacimiento, Usuario_idUsuario, Localidad_idLocalidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', 
+            [descripcion, valoracionPromedio, telefono, nombre, apellido, fechaNacimiento, usuarioId, localidadId]
+        );
+
+        await connection.commit();  // Confirmar la transacción
+
+        // Limpia los datos temporales del usuario
+        delete req.session.tempUsuario;
 
         res.redirect('/');
+    } catch (error) {
+        await connection.rollback();  // Deshace la transacción en caso de error
+        console.error('Error al crear usuario y perfil:', error);
+        res.render('createPerfil', { error: 'Hubo un problema al crear el perfil. Inténtalo de nuevo.' });
+    } finally {
+        connection.release();  // Liberar la conexión
+    }
 };
 
 // Devuelve todos los perfiles

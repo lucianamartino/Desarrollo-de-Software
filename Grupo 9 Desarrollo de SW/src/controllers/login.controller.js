@@ -1,12 +1,10 @@
 import {pool} from '../db.js'
 import bcrypt from 'bcrypt'
-import { getOficios } from "../controllers/oficio.controller.js"
+import { getOficiosFiltro } from "../controllers/oficio.controller.js"
 
 export const auth = async (req, res) => {
     // seccion oficios del header
-    const oficios = await getOficios(req, res, true); // Obtener todos los oficios para el select
-    const nombreOficio = req.params.nombreOficio;
-    const oficioSeleccionado = oficios.find(oficio => oficio.nombre === nombreOficio);
+    const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
 
     const { email, contraseña } = req.body;
 

@@ -108,3 +108,10 @@ button[type="submit"]:hover{
     color: rgb(111, 109, 103);
     border: 1px solid rgb(111, 109, 103);
 }
+
+.error {
+    text-align: center;
+    background-color: white;
+    padding: 1rem;
+    color: red;
+}

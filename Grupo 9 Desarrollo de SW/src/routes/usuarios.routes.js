@@ -1,35 +1,18 @@
 import { Router } from "express"
 import { getUsuarios, getUsuario, createUsuario, updateUsuario, deleteUsuario } from "../controllers/usuarios.controller.js"
-import { getOficios } from "../controllers/oficio.controller.js"
+import { getOficiosFiltro } from "../controllers/oficio.controller.js"
 
 const router = Router()
 
 // Ruta para mostrar el formulario de creación de usuario
 router.get('/usuarios/create', async (req, res) => {
-    const oficios = await getOficios(req, res, true); // Obtener todos los oficios para el select
-    const nombreOficio = req.params.nombreOficio;
+    const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
 
-    // Obtener el id del oficio que seleccionaste
-    const oficioSeleccionado = oficios.find(oficio => oficio.nombre === nombreOficio);
-
-    res.render('usuarios/createUsuario', {oficios, oficioSeleccionado}); 
+    res.render('usuarios/createUsuario', {oficios, oficioSeleccionado, error: res.locals.error}); 
 });
 
 // Ruta para manejar la creación de un nuevo usuario
-router.post('/usuarios/create', async (req, res) => {
-    await createUsuario(req, res);
-
-    // res.render('usuarios/createUsuario', {
-    //     alert: true,
-    //     alertTitle: "Registration",
-    //     alertMessage: "Successful Registration",
-    //     alertIcon: 'success',
-    //     showConfirmButton: false,
-    //     timer: 1500,
-    //     ruta: ''
-    // })
-});
-
+router.post('/usuarios/create', createUsuario);
 
 router.get('/usuarios', getUsuarios)
 router.get('/usuarios/:id', getUsuario)
