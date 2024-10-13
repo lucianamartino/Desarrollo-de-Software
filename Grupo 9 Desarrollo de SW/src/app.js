@@ -13,6 +13,9 @@ import rolRoutes from './routes/rol.routes.js'
 import ubicacionRoutes from './routes/ubicacion.routes.js'
 import usuariorolRoutes from './routes/usuariorol.routes.js'
 import usuariosRoutes from './routes/usuarios.routes.js'
+import loginRoutes from './routes/login.routes.js'
+
+import session from 'express-session'
 
 import { fileURLToPath } from 'url';
 
@@ -34,6 +37,28 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true })) // Para manejar datos de formularios
 
+// Session
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}))
+
+//logout
+app.get('/logout', (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/')
+    })
+})
+
+app.use((req, res, next) => {
+    res.locals.login = req.session.loggedin || false;  // Si está logueado, será true, de lo contrario false
+    res.locals.name = req.session.name || '';          // Para el nombre del usuario
+    res.locals.usuarioId = req.session.usuarioId || '';          // Para el id del usuario
+    next();
+});
+
+
 // llamada a las rutas
 app.use(indexRoutes)
 app.use('/localidades', localidadRoutes)
@@ -47,6 +72,7 @@ app.use('/roles', rolRoutes)
 app.use('/ubicaciones', ubicacionRoutes)
 app.use('/usuariorol', usuariorolRoutes)
 app.use('/api', usuariosRoutes)
+app.use('/', loginRoutes)
 
 
 export default app

@@ -10,14 +10,22 @@ const router = Router()
 router.get('/', async (req, res) => {
     const posts = await getPosts(req, res, true); // Pasar true para obtener los posts
     const usuarios = await getUsuarios(req, res, true); // Pasar true para obtener los usuarios
+
     const oficios = await getOficios(req, res, true); // Pasar true para obtener los oficios
-
     const nombreOficio = req.params.nombreOficio;
-
-    // Obtener el id del oficio que seleccionaste
     const oficioSeleccionado = oficios.find(oficio => oficio.nombre === nombreOficio);
 
-    res.render('index', { posts, usuarios, oficios, oficioSeleccionado }); // Asegúrate de pasar ambas variables
+    const login = req.session.loggedin;
+
+    res.render('index', {
+        posts,
+        usuarios,
+        oficios,
+        oficioSeleccionado,
+        login,
+        name: login ? req.session.name : 'Debe iniciar sesión', // Mensaje para mostrar el nombre o indicar que debe iniciar sesión
+        usuarioId: login ? req.session.usuarioId : 'Debe iniciar sesión' // Mensaje para mostrar el id o indicar que debe iniciar sesión
+    });
 });
 
 router.get('/ping', ping)

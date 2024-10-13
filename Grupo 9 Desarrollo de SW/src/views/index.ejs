@@ -1,5 +1,9 @@
 <%- include('partials/_header.ejs'); %>
 
+<% if(login) { %>
+    <h1>El usuario conectado es: <%= name %></h1>
+<% } %>
+
 <div class="slideshow-container">
 
     <div class="mySlides">

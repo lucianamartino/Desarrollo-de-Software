@@ -1,14 +1,9 @@
-<%- include('../partials/_header'); %>
+<%- include('partials/_header'); %>
 
-<h1 class="nombre-form">Crear Usuario</h1>
+<h1 class="nombre-form">Login</h1>
 <div class="container-form">
-    <form class="formulario" action="/api/usuarios/create" method="POST">
+    <form class="formulario" action="/auth" method="POST">
         <fieldset>
-            <div class="container-label">
-                <label for="nombreUsuario">Nombre Usuario:</label>
-                <input type="text" id="nombreUsuario" name="nombreUsuario" required>
-            </div>
-
             <div class="container-label">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
@@ -20,11 +15,13 @@
             </div>
 
         </fieldset>
-        <button type="submit">Crear Usuario</button>
+        <button type="submit">Iniciar sesion</button>
     </form>
 </div>
 
-<!-- <% if(typeof alert !== 'undefined') { %>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<% if(typeof alert !== 'undefined') { %>
     <script>
         Swal.fire({
             title: '<%= alertTitle %>',
@@ -33,9 +30,11 @@
             showConfirmButton: <%= showConfirmButton %>,
             timer: <%= timer %>
         }).then(()=> {
-            window.location='/<%=  %>'
+            window.location='/<%= ruta %>'
         })
     </script>
-<% } %> -->
+<% } %>
 
-<%- include('../partials/_footer'); %>
+
+
+<%- include('partials/_footer'); %>

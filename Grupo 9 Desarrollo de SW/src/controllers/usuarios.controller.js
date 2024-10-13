@@ -1,4 +1,5 @@
 import {pool} from '../db.js'
+import bcrypt from 'bcrypt'
 
 // Devuelve todos los usuarios
 export const getUsuarios = async (req, res, asData = false) => {
@@ -48,7 +49,8 @@ export const getUsuario = async (req, res) => {
 // Crea un usuario
 export const createUsuario = async (req, res) => {
     const{nombreUsuario, contraseña, email} = req.body
-    const [rows] = await pool.query('INSERT INTO usuario (nombreUsuario, contraseña, email) VALUES (?, ?, ?)', [nombreUsuario, contraseña, email])
+    const contraseñaHash = await bcrypt.hash(contraseña, 8)
+    const [rows] = await pool.query('INSERT INTO usuario (nombreUsuario, contraseña, email) VALUES (?, ?, ?)', [nombreUsuario, contraseñaHash, email])
 
     // Redirigir a la creación del perfil, pasando el ID del usuario creado
     res.redirect(`/perfiles/create?usuarioId=${rows.insertId}`); // Usa el ID para el siguiente paso

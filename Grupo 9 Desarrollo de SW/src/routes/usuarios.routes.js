@@ -16,7 +16,19 @@ router.get('/usuarios/create', async (req, res) => {
 });
 
 // Ruta para manejar la creación de un nuevo usuario
-router.post('/usuarios/create', createUsuario);
+router.post('/usuarios/create', async (req, res) => {
+    await createUsuario(req, res);
+
+    // res.render('usuarios/createUsuario', {
+    //     alert: true,
+    //     alertTitle: "Registration",
+    //     alertMessage: "Successful Registration",
+    //     alertIcon: 'success',
+    //     showConfirmButton: false,
+    //     timer: 1500,
+    //     ruta: ''
+    // })
+});
 
 
 router.get('/usuarios', getUsuarios)

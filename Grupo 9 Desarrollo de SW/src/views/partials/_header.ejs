@@ -28,16 +28,35 @@
                         <% }) %>
                     </select>
                 </li>
-                <li>
-                    <a href="/posts/create">
-                        <p>Crear post</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="/api/usuarios/create">
-                        <p>Registrarme</p>
-                    </a>
-                </li>
+
+                <% if(login) { %>
+                    <li>
+                        <a href="/perfiles/<%= usuarioId %>">
+                            <p>Ver mi perfil</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/posts/create">
+                            <p>Crear post</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/logout">
+                            <p>Cerrar sesion</p>
+                        </a>
+                    </li>
+                <% } else { %>
+                    <li>
+                        <a href="/api/usuarios/create">
+                            <p>Registrarme</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/login">
+                            <p>Login</p>
+                        </a>
+                    </li>
+                <% } %>
             </ul>
         </div>
     </header>
