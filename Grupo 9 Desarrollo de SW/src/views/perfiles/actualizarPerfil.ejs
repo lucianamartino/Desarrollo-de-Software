@@ -1,4 +1,7 @@
+<%- include('../partials/_header'); %>
+
 <h1 class="nombre-form">Actualizar Perfil</h1>
+
 <div class="container-form">
     <form class="formulario" action="/perfiles/update/<%= perfil.idPerfil %>?_method=PUT" method="POST">
         <fieldset>
@@ -17,3 +20,5 @@
             
     </form>
 </div>
+
+<%- include('../partials/_footer'); %>

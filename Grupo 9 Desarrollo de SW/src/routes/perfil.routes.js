@@ -46,7 +46,9 @@ router.get('/update/:id', async (req, res) => {
     const usuarioId = req.params.id;
     const perfil = await getPerfil(usuarioId, req, res)
 
-    res.render('perfiles/actualizarPerfil', { perfil })
+    const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
+
+    res.render('perfiles/actualizarPerfil', { perfil, oficios, oficioSeleccionado })
 })
 
 router.put('/update/:id', updatePerfil);
