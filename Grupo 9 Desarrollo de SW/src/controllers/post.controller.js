@@ -52,3 +52,13 @@ export const getPostsPorOficio = async (req, res) => {
 
     return rows; 
 };
+
+export const getPostPorPerfil = async (usuarioId, req, res) => {
+
+    const [rows] = await pool.query(
+        `SELECT p.*, o.nombre AS nombreOficio FROM post p JOIN oficio o ON p.Oficio_idOficio = o.idOficio WHERE p.Usuario_idUsuario = ?`, 
+        [usuarioId]
+    );
+
+    return rows;
+}

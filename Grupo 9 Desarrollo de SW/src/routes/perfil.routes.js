@@ -3,6 +3,7 @@ import { createPerfil, getPerfiles, getPerfil, getPerfilPorUsuarioId } from '../
 import { getLocalidades } from '../controllers/localidad.controller.js';
 import { getProvincias } from '../controllers/provincia.controller.js';
 import { getOficiosFiltro } from '../controllers/oficio.controller.js';
+import { getPostPorPerfil } from '../controllers/post.controller.js';
 
 const router = Router();
 
@@ -23,7 +24,6 @@ router.get('/', getPerfiles); // Obtener todos los perfiles
 
 router.get('/:id', async (req, res) => {
     const usuarioId = req.params.id; // Obtener el ID de usuario desde la URL
-    // const perfil = await getPerfil(req, res, true)
     const perfil = await getPerfilPorUsuarioId(usuarioId, req, res);
 
     if (!perfil) {
@@ -32,7 +32,10 @@ router.get('/:id', async (req, res) => {
 
     const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
 
-    res.render('perfiles/verPerfil', { perfil, oficios, oficioSeleccionado })
+    const postPerfil=  await getPostPorPerfil(usuarioId, req, res)
+    
+
+    res.render('perfiles/verPerfil', { perfil, oficios, oficioSeleccionado, postPerfil })
 })
 
 export default router;

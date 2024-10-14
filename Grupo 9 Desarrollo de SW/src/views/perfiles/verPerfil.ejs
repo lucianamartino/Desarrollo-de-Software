@@ -9,4 +9,21 @@
 </div>
 
 
+<div class="contenedor-posts">  
+    <% postPerfil.forEach(post => { %>
+    <div class="post">
+
+        <img src="/uploads/<%= post.foto %>" alt="Foto del post">
+
+        <div class="contenido-post">
+            <p>Oficio: <%= post.nombreOficio %></p>
+            <p>Descripcion: <%= post.despcripcion %></p>
+            <p>Valoracion: <%= post.valoracion %></p>
+            
+        </div><!--contenido-post-->
+    </div><!--post-->
+    <% }) %>
+</div><!--contenedor-post-->
+
+
 <%- include('../partials/_footer'); %>
