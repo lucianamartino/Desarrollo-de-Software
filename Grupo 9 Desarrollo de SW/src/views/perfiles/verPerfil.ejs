@@ -2,6 +2,11 @@
 
 <h1 class="nombre-form">Perfil de <%= perfil.nombre %> <%= perfil.apellido %></h1>
 
+
+<% if(login && (usuarioIdLog == usuarioId )) { %>
+    <a href="/perfiles/update/<%= usuarioIdLog %>" class="error">Actualizar perfil</a>
+<% } %>
+
 <div class="container-perfil">
     <p>Teléfono: <%= perfil.telefono %></p>
     <p>Descripción: <%= perfil.descripcion %></p>

@@ -56,25 +56,7 @@ export const getPerfiles = async (req, res) => {
 };
 
 // Devuelve un perfil por ID
-export const getPerfil = async (req, res, asData = false) => {
-    try {
-        const [rows] = await pool.query('SELECT nombre,apellido,descripcion,telefono,Localidad_idLocalidad,valoracionPromedio FROM perfil WHERE Usuario_idUsuario = ?', [req.params.id]);
-        
-        if (rows.length <= 0) {
-            return res.status(404).json({ message: 'Perfil no encontrado' });
-        }
-
-        if (asData) {
-            return rows[0];
-        }
-
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error al obtener el perfil' });
-    }
-};
-
-export const getPerfilPorUsuarioId = async (usuarioId, req, res) => {
+export const getPerfil = async (usuarioId, req, res) => {
     try {
         const [perfil] = await pool.query('SELECT * FROM perfil WHERE Usuario_idUsuario = ?', [usuarioId]);
 
@@ -90,3 +72,21 @@ export const getPerfilPorUsuarioId = async (usuarioId, req, res) => {
         return null; // Manejo de error, retornar null
     }
 };
+
+
+export const updatePerfil = async (req, res) => {
+    try {
+        const { id } = req.params
+        const { descripcion, telefono } = req.body;
+
+        await pool.query('UPDATE perfil SET descripcion = IFNULL(?, descripcion), telefono = IFNULL(?, telefono) WHERE idPerfil = ?', [descripcion, telefono, id])
+
+        const [rows] = await pool.query('SELECT Usuario_idUsuario FROM perfil WHERE idPerfil = ?', [id])
+
+        res.redirect(`/perfiles/${rows[0].Usuario_idUsuario}`);
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Error interno del servidor' });
+    }
+}

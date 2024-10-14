@@ -17,6 +17,8 @@ import loginRoutes from './routes/login.routes.js'
 
 import session from 'express-session'
 
+import methodOverride from 'method-override'
+
 import { fileURLToPath } from 'url';
 
 const app = express()
@@ -57,6 +59,10 @@ app.use((req, res, next) => {
     res.locals.usuarioId = req.session.usuarioId || '';          // Para el id del usuario
     next();
 });
+
+
+// Permite usar otros métodos HTTP en formularios
+app.use(methodOverride('_method'));
 
 
 // llamada a las rutas
