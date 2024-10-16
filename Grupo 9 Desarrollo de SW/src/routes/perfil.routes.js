@@ -15,6 +15,10 @@ router.get('/create', async (req, res) =>{
 
     const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
 
+    if (!req.session.tempUsuario) {
+        return res.redirect('/api/usuarios/create');
+    }
+    
     res.render('perfiles/createPerfil', { usuarioId, provincias, localidades, oficioSeleccionado, oficios }); // Pasar el ID del usuario a la vista
 })
 
@@ -48,7 +52,11 @@ router.get('/update/:id', async (req, res) => {
 
     const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
 
-    res.render('perfiles/actualizarPerfil', { perfil, oficios, oficioSeleccionado })
+    if(req.session.loggedin) {
+        res.render('perfiles/actualizarPerfil', { perfil, oficios, oficioSeleccionado })
+    } else {
+        res.redirect('/')
+    }
 })
 
 router.put('/update/:id', updatePerfil);

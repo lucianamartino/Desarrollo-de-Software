@@ -9,7 +9,11 @@ const router = Router();
 router.get('/create', async (req, res) => {
     const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
 
-    res.render('posts/createPost', { oficios, oficioSeleccionado }); 
+    if(req.session.loggedin) {
+        res.render('posts/createPost', { oficios, oficioSeleccionado }); 
+    } else {
+        res.redirect('/')
+    }
 });
 
 // Ruta para crear un post con la subida de imagen
