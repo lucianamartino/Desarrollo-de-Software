@@ -1,5 +1,6 @@
 <%- include('partials/_header.ejs'); %>
 
+
 <div class="slideshow-container">
 
     <div class="mySlides">
@@ -96,7 +97,8 @@
                 Ver Post
             </a> -->
             <a href="/perfiles/<%= post.Usuario_idUsuario %>" class="boton-amarillo-block">Ver Perfil</a>
-            
+            <a href="/posts/<%= post.idPost %>" class="boton-amarillo-block">Ver Detalle</a>
+
         </div><!--contenido-post-->
     </div><!--post-->
     <% }) %>

@@ -26,22 +26,22 @@ export const getPosts = async (req, res, asData = false) => {
     res.json(rows);
 };
 
-// Devuelve un perfil por ID
-export const getPost = async (req, res) => {
+// Devuelve un post por ID
+// Devuelve un post por ID
+export const getPost = async (postId) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM post WHERE idPost = ?', [req.params.id]);
+        const [rows] = await pool.query('SELECT * FROM post WHERE idPost = ?', [postId]);
         
         if (rows.length <= 0) {
-            return res.status(404).json({ message: 'Post no encontrado' });
+            return null; // No se encontró el post
         }
 
-        res.json(rows[0]);
+        return rows[0]; // Retorna el primer post encontrado
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error al obtener el post' });
+        console.error('Error al obtener el post:', error);
+        return null; // Manejo de error, retornar null
     }
 };
-
 // Devuelve todos los posts por oficio
 export const getPostsPorOficio = async (req, res) => {
     const { nombreOficio } = req.params; // Obtener el nombre del oficio desde la URL

@@ -29,7 +29,7 @@
                     </select>
                 </li>
 
-                <% if(login) { %>
+                <% if(login) { %>  
                     <li>
                         <a href="/perfiles/<%= usuarioId %>">
                             <p>Ver mi perfil</p>
@@ -45,7 +45,7 @@
                             <p>Cerrar sesion</p>
                         </a>
                     </li>
-                <% } else { %>
+               <% } else { %> 
                     <li>
                         <a href="/api/usuarios/create">
                             <p>Registrarme</p>
