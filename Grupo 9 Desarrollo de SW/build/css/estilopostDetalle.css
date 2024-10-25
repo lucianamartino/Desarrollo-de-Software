@@ -1,0 +1,78 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Estilo del contenedor principal */
+.container-post-detail {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Imagen del post */
+.container-post-detail img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 20px;
+    max-width: 300px; /* Tamaño reducido */
+    border-radius: 8px;
+}
+
+/* Estilo para la parte principal */
+.detalle-post {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.parte.principal, .parte.secundaria {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilo del título y párrafos */
+h1.nombre-form p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.detalle-post p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Estilo de los comentarios */
+h3 {
+    font-size: 1.4em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.boton-regresar {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.boton-regresar:hover {
+    background-color: #0056b3;
+}

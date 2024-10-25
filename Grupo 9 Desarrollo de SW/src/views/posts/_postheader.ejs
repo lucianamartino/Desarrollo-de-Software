@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>SKILL MARKET</title>
+</head>
+<body>
+    <header>
+        <div class="container-logo">
+            <a href="/" class="logo">
+                <p class="nombre">SKILL MARKET</p>
+                <p class="slogan">Oficios Conectados</p>
+            </a>
+        </div>
+
+
+            <% if(login) { %>  
+                <li>
+                    <a href="/perfiles/<%= usuarioId %>">
+                        <p>Ver mi perfil</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/posts/create">
+                        <p>Crear post</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/logout">
+                        <p>Cerrar sesion</p>
+                    </a>
+                </li>
+            <% } else { %> 
+                <li>
+                    <a href="/api/usuarios/create">
+                        <p>Registrarme</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/login">
+                        <p>Login</p>
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+</header>

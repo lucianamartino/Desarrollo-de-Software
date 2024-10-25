@@ -1,23 +1,25 @@
+<%- include('_postheader.ejs'); %>
+<link rel="stylesheet" href="/build/css/estilopostDetalle.css">
 
-
-<h1 class="nombre-form">Detalles del Post: <%= post.titulo %></h1>
+<h1 class="nombre-form"><p><strong>Descripcion:</strong> <%= post.despcripcion %></p></h1>
 
 <div class="container-post-detail">
-    <img src="/uploads/<%= post.imagen_url %>" alt="Imagen del post" class="imagen-post" />
+    <img src="/uploads/<%= post.foto %>" alt="Foto del post">
 
     <div class="detalle-post">
-        <p><strong>Descripción:</strong> <%= post.descripcion %></p>
-        <p><strong>Autor:</strong> <%= post.Usuario_idUsuario.nombreUsuario %></p>
-        <p><strong>Rubro:</strong> <%= post.Rubro %></p>
-        <p><strong>Fecha de publicación:</strong> <%= new Date(post.fecha).toLocaleDateString() %></p>
-        <p><strong>Valoración:</strong> <%= post.valoracion %></p>
+        <div class="parte principal">
+            <p><strong>Descripcion:</strong> <%= post.despcripcion %></p>
+            <p><strong>Autor:</strong> <%= post.Usuario_idUsuario.nombreUsuario %></p>
+            <p><strong>Rubro:</strong> <%= post.Rubro %></p>
+            <p><strong>Fecha de publicación:</strong> <%= new Date(post.fecha).toLocaleDateString() %></p>
+            <p><strong>Valoración:</strong> <%= post.valoracion %></p>
+        </div>
+        <div class="parte secundaria">
+            <h3>Comentarios</h3>
+        </div>
     </div><!-- detalle-post -->
 </div><!-- container-post-detail -->
 
-<div class="contenedor-comentarios">
-    <h2>Comentarios</h2>
-    <!-- Aquí podrías añadir una sección para comentarios si es necesario -->
-</div><!-- contenedor-comentarios -->
 
 <a href="/" class="boton-regresar">Volver a la lista de posts</a>
 
