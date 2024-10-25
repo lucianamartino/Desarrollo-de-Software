@@ -44,5 +44,5 @@ export const getOficiosFiltro = async (req, res) => {
     // Obtener el id del oficio que seleccionaste
     const oficioSeleccionado = oficios.find(oficio => oficio.nombre === nombreOficio);
 
-    return { oficios, oficioSeleccionado };
+    return { oficios, oficioSeleccionado, nombreOficio };
 };

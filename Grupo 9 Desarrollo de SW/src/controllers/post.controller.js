@@ -28,18 +28,18 @@ export const getPosts = async (req, res, asData = false) => {
 
 // Devuelve un post por ID
 // Devuelve un post por ID
-export const getPost = async (postId) => {
+export const getPost = async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM post WHERE idPost = ?', [postId]);
+        const [rows] = await pool.query('SELECT * FROM post WHERE idPost = ?', [req.params.id]);
         
         if (rows.length <= 0) {
-            return null; // No se encontró el post
+            return res.status(404).json({ message: 'Post no encontrado' }); // No se encontró el post
         }
 
         return rows[0]; // Retorna el primer post encontrado
     } catch (error) {
         console.error('Error al obtener el post:', error);
-        return null; // Manejo de error, retornar null
+        return res.status(500).json({ message: 'Error al obtener el post' });
     }
 };
 // Devuelve todos los posts por oficio

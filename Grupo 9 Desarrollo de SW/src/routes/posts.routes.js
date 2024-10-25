@@ -24,10 +24,8 @@ router.get('/', getPosts);
 
 // Ruta para ver el detalle de un post
 router.get('/:id', async (req, res) => {
-    const postId = parseInt(req.params.id); // Convertir a número entero
-
     // Obtener el post por ID utilizando la función corregida
-    const post = await getPost(postId); 
+    const post = await getPost(req, res); 
 
     if (!post) {
         return res.status(404).send('Post no encontrado');
@@ -36,5 +34,14 @@ router.get('/:id', async (req, res) => {
     // Renderizar la vista 'postDetail' con el post encontrado
     res.render('posts/postDetalle', { post }); 
 });
+
+// filtrar por posts
+router.get('/f/:nombreOficio', async (req, res) => {
+    const posts = await getPostsPorOficio(req, res); // Obtener posts filtrados por oficio
+    const { oficios, oficioSeleccionado, nombreOficio } = await getOficiosFiltro(req, res);
+
+    res.render('posts/filtrarPosts', { posts, oficios, nombreOficio, oficioSeleccionado }); // Renderizar la vista con los posts filtrados
+})
+
 
 export default router;
