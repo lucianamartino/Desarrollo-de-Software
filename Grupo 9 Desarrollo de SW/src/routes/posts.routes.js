@@ -26,13 +26,14 @@ router.get('/', getPosts);
 router.get('/:id', async (req, res) => {
     // Obtener el post por ID utilizando la función corregida
     const post = await getPost(req, res); 
+    const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
 
     if (!post) {
         return res.status(404).send('Post no encontrado');
     }
 
     // Renderizar la vista 'postDetail' con el post encontrado
-    res.render('posts/postDetalle', { post }); 
+    res.render('posts/postDetalle', { post, oficios, oficioSeleccionado }); 
 });
 
 // filtrar por posts
