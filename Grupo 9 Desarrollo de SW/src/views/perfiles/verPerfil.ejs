@@ -11,6 +11,11 @@
     <p>Teléfono: <%= perfil.telefono %></p>
     <p>Descripción: <%= perfil.descripcion %></p>
     <p>Valoración: <%= perfil.valoracionPromedio %></p>
+    <p class="ver-perfil">
+        <a href="/valoracion" class="boton-amarillo-block">
+        Hacer una reseña
+        </a>
+    </p>
 </div>
 
 
@@ -29,6 +34,7 @@
     </div><!--post-->
     <% }) %>
 </div><!--contenedor-post-->
+
 
 
 <%- include('../partials/_footer'); %>
