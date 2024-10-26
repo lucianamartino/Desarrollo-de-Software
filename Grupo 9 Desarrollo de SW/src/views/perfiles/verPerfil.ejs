@@ -13,7 +13,7 @@
         <p>Descripción: <%= perfil.descripcion %></p>
         <p>Valoración: <%= perfil.valoracionPromedio %></p>
         <p class="ver-perfil">
-            <a href="/valoracion" class="boton-amarillo-block">
+            <a href="/valoracion/<%= perfil.idPerfil %>" class="boton-amarillo-block">
             Hacer una reseña
             </a>
         </p>

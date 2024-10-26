@@ -2,10 +2,13 @@ import {pool} from '../db.js'
 
 // Crea un nueva reseña
 export const createReseña = async (req, res) => {
-    const { valoracion, descripcion, perfilId } = req.body;
+    const { valoracion, descripcion } = req.body;
+    const perfilId = req.session.usuarioId
+    const perfilDestinoId = req.params.id
+
     const [rows] = await pool.query(
-        'INSERT INTO reseña (valoracion, descripcion, Post_idPost) VALUES (?, ?, ?)', 
-        [valoracion, descripcion, perfilId])
+        'INSERT INTO reseña (valoracion, descripcion, Perfil_idPerfil, Perfil_destino_idPerfil) VALUES (?, ?, ?, ?)', 
+        [valoracion, descripcion, perfilId, perfilDestinoId])
 
         res.redirect('/');
 };

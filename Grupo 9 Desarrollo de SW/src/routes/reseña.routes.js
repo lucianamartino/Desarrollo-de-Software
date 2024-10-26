@@ -6,13 +6,13 @@ const router = Router();
 
 
 // Ruta para manejar la creación
-router.get('/valoracion', async (req, res) => {
+router.get('/valoracion/:id', async (req, res) => {
     const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
 
     res.render('reseñas/createReseña', {oficios, oficioSeleccionado})
 })
 
-router.post('/create', createReseña);
+router.post('/valoracion/:id', createReseña);
 
 router.get('/', getReseñas); // Obtener todos 
 // router.get('/:id', getReseña); // Obtener por ID
