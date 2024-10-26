@@ -22,11 +22,11 @@
     border-radius: 10px;
     background-color: rgba(245, 243, 239, 0.502);
     width: 70%;
-    height: 450px;
+    height: fit-content;
     padding: 10px;
 }
 .formulario fieldset{
-    height: 400px;
+    height: fit-content;
     width: 60%;
     display: flex;
     justify-content: space-between;

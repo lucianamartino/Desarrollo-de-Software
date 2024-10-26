@@ -1,27 +1,27 @@
 <%- include('../partials/_header'); %>
+<main>
+    <h1 class="nombre-form">Posts del oficio: <%= nombreOficio %></h1>
 
-<h1 class="nombre-form">Posts del oficio: <%= nombreOficio %></h1>
+    <div class="contenedor-posts">  
+        <% posts.forEach(post => { %>
+        <div class="post">
 
-<div class="contenedor-posts">  
-    <% posts.forEach(post => { %>
-    <div class="post">
-
-        <img src="/uploads/<%= post.foto %>" alt="Foto del post">
-        
-        <div class="contenido-post">
-            <!--<p>VER PERFIL <%= post.Usuario_idUsuario %></p>-->
-            <p>Descripcion: <%= post.despcripcion %></p>
-            <p>Valoracion: <%= post.valoracion %></p>
-
-            <p class="ver-perfil">
-                <a href="/perfiles/<%= post.Usuario_idUsuario %>" class="boton-amarillo-block">
-                Ver Perfil
-                </a>
-            </p>
+            <img src="/uploads/<%= post.foto %>" alt="Foto del post">
             
-        </div><!--contenido-anuncio-->
-    </div><!--anuncio-->
-    <% }) %>
-</div>
+            <div class="contenido-post">
+                <!--<p>VER PERFIL <%= post.Usuario_idUsuario %></p>-->
+                <p>Descripcion: <%= post.despcripcion %></p>
+                <p>Valoracion: <%= post.valoracion %></p>
 
+                <p class="ver-perfil">
+                    <a href="/perfiles/<%= post.Usuario_idUsuario %>" class="boton-amarillo-block">
+                    Ver Perfil
+                    </a>
+                </p>
+                
+            </div><!--contenido-anuncio-->
+        </div><!--anuncio-->
+        <% }) %>
+    </div>
+</main>
 <%- include('../partials/_footer'); %>

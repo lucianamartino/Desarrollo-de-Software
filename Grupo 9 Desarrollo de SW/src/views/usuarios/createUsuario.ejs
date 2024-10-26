@@ -1,47 +1,47 @@
 <%- include('../partials/_header'); %>
+<main>
+    <h1 class="nombre-form">Crear Usuario</h1>
+    <div class="container-form">
+        <form class="formulario" action="/api/usuarios/create" method="POST">
+            <fieldset>
+                <div class="container-label">
+                    <label for="nombreUsuario">Nombre Usuario:</label>
+                    <input type="text" id="nombreUsuario" name="nombreUsuario" required>
+                </div>
+                <% if (error && error.nombreUsuario) { %>
+                    <div class="error"><%= error.nombreUsuario %></div>
+                <% } %>
 
-<h1 class="nombre-form">Crear Usuario</h1>
-<div class="container-form">
-    <form class="formulario" action="/api/usuarios/create" method="POST">
-        <fieldset>
-            <div class="container-label">
-                <label for="nombreUsuario">Nombre Usuario:</label>
-                <input type="text" id="nombreUsuario" name="nombreUsuario" required>
-            </div>
-            <% if (error && error.nombreUsuario) { %>
-                <div class="error"><%= error.nombreUsuario %></div>
-            <% } %>
+                <div class="container-label">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <% if (error && error.email) { %>
+                    <div class="error"><%= error.email %></div>
+                <% } %>
 
-            <div class="container-label">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <% if (error && error.email) { %>
-                <div class="error"><%= error.email %></div>
-            <% } %>
+                <div class="container-label">
+                    <label for="contraseña">Contraseña:</label>
+                    <input type="password" id="contraseña" name="contraseña" required>
+                </div>
 
-            <div class="container-label">
-                <label for="contraseña">Contraseña:</label>
-                <input type="password" id="contraseña" name="contraseña" required>
-            </div>
+            </fieldset>
+            <button type="submit">Crear Usuario</button>
+        </form>
+    </div>
 
-        </fieldset>
-        <button type="submit">Crear Usuario</button>
-    </form>
-</div>
-
-<!-- <% if(typeof alert !== 'undefined') { %>
-    <script>
-        Swal.fire({
-            title: '<%= alertTitle %>',
-            text: '<%= alertMessage %>',
-            icon: '<%= alertIcon %>',
-            showConfirmButton: <%= showConfirmButton %>,
-            timer: <%= timer %>
-        }).then(()=> {
-            window.location='/<%=  %>'
-        })
-    </script>
-<% } %> -->
-
+    <!-- <% if(typeof alert !== 'undefined') { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer: <%= timer %>
+            }).then(()=> {
+                window.location='/<%=  %>'
+            })
+        </script>
+    <% } %> -->
+</main>
 <%- include('../partials/_footer'); %>

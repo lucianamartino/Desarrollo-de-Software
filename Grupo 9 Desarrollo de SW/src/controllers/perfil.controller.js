@@ -14,6 +14,9 @@ export const createPerfil = async (req, res) => {
     const connection = await pool.getConnection();
 
     try {
+
+        const [oficios] = await pool.query('SELECT * FROM oficio');
+
         await connection.beginTransaction();  // Iniciar la transacción
 
         // Insertar el usuario en la base de datos
@@ -38,7 +41,7 @@ export const createPerfil = async (req, res) => {
     } catch (error) {
         await connection.rollback();  // Deshace la transacción en caso de error
         console.error('Error al crear usuario y perfil:', error);
-        res.render('createPerfil', { error: 'Hubo un problema al crear el perfil. Inténtalo de nuevo.' });
+        res.render('createPerfil', { error: 'Hubo un problema al crear el perfil. Inténtalo de nuevo.', oficios });
     } finally {
         connection.release();  // Liberar la conexión
     }

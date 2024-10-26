@@ -1,40 +1,41 @@
 <%- include('../partials/_header'); %>
 
-<h1 class="nombre-form">Perfil de <%= perfil.nombre %> <%= perfil.apellido %></h1>
+<main>
+    <h1 class="nombre-form">Perfil de <%= perfil.nombre %> <%= perfil.apellido %></h1>
 
 
-<% if(login && (usuarioIdLog == usuarioId )) { %>
-    <a href="/perfiles/update/<%= usuarioIdLog %>" class="error">Actualizar perfil</a>
-<% } %>
+    <% if(login && (usuarioIdLog == usuarioId )) { %>
+        <a href="/perfiles/update/<%= usuarioIdLog %>" class="error">Actualizar perfil</a>
+    <% } %>
 
-<div class="container-perfil">
-    <p>Teléfono: <%= perfil.telefono %></p>
-    <p>Descripción: <%= perfil.descripcion %></p>
-    <p>Valoración: <%= perfil.valoracionPromedio %></p>
-    <p class="ver-perfil">
-        <a href="/valoracion" class="boton-amarillo-block">
-        Hacer una reseña
-        </a>
-    </p>
-</div>
-
-
-<div class="contenedor-posts">  
-    <% postPerfil.forEach(post => { %>
-    <div class="post">
-
-        <img src="/uploads/<%= post.foto %>" alt="Foto del post">
-
-        <div class="contenido-post">
-            <p>Oficio: <%= post.nombreOficio %></p>
-            <p>Descripcion: <%= post.despcripcion %></p>
-            <p>Valoracion: <%= post.valoracion %></p>
-            
-        </div><!--contenido-post-->
-    </div><!--post-->
-    <% }) %>
-</div><!--contenedor-post-->
+    <div class="container-perfil">
+        <p>Teléfono: <%= perfil.telefono %></p>
+        <p>Descripción: <%= perfil.descripcion %></p>
+        <p>Valoración: <%= perfil.valoracionPromedio %></p>
+        <p class="ver-perfil">
+            <a href="/valoracion" class="boton-amarillo-block">
+            Hacer una reseña
+            </a>
+        </p>
+    </div>
 
 
+    <div class="contenedor-posts">  
+        <% postPerfil.forEach(post => { %>
+        <div class="post">
+
+            <img src="/uploads/<%= post.foto %>" alt="Foto del post">
+
+            <div class="contenido-post">
+                <p>Oficio: <%= post.nombreOficio %></p>
+                <p>Descripcion: <%= post.despcripcion %></p>
+                <p>Valoracion: <%= post.valoracion %></p>
+                
+            </div><!--contenido-post-->
+        </div><!--post-->
+        <% }) %>
+    </div><!--contenedor-post-->
+
+</main>
 
 <%- include('../partials/_footer'); %>

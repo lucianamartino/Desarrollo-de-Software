@@ -1,24 +1,24 @@
 <%- include('../partials/_header'); %>
+<main>
+    <h1 class="nombre-form"><p><strong>Descripcion:</strong> <%= post.despcripcion %></p></h1>
 
-<h1 class="nombre-form"><p><strong>Descripcion:</strong> <%= post.despcripcion %></p></h1>
+    <div class="container-post-detail">
+        <img src="/uploads/<%= post.foto %>" alt="Foto del post">
 
-<div class="container-post-detail">
-    <img src="/uploads/<%= post.foto %>" alt="Foto del post">
+        <div class="detalle-post">
+            <div class="parte principal">
+                <p><strong>Descripcion:</strong> <%= post.despcripcion %></p>
+                <p><strong>Autor:</strong> <%= post.Usuario_idUsuario.nombreUsuario %></p>
+                <p><strong>Rubro:</strong> <%= post.Rubro %></p>
+                <p><strong>Fecha de publicación:</strong> <%= new Date(post.fecha).toLocaleDateString() %></p>
+                <p><strong>Valoración:</strong> <%= post.valoracion %></p>
+            </div>
+            <div class="parte secundaria">
+                <h3>Comentarios</h3>
+            </div>
+        </div><!-- detalle-post -->
+    </div><!-- container-post-detail -->
 
-    <div class="detalle-post">
-        <div class="parte principal">
-            <p><strong>Descripcion:</strong> <%= post.despcripcion %></p>
-            <p><strong>Autor:</strong> <%= post.Usuario_idUsuario.nombreUsuario %></p>
-            <p><strong>Rubro:</strong> <%= post.Rubro %></p>
-            <p><strong>Fecha de publicación:</strong> <%= new Date(post.fecha).toLocaleDateString() %></p>
-            <p><strong>Valoración:</strong> <%= post.valoracion %></p>
-        </div>
-        <div class="parte secundaria">
-            <h3>Comentarios</h3>
-        </div>
-    </div><!-- detalle-post -->
-</div><!-- container-post-detail -->
-
-<a href="/" class="boton-regresar">Volver a la lista de posts</a>
-
+    <a href="/" class="boton-regresar">Volver a la lista de posts</a>
+</main>
 <%- include('../partials/_footer'); %>
