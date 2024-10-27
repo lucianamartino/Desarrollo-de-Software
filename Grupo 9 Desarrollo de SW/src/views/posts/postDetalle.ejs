@@ -3,7 +3,9 @@
     <h1 class="nombre-form"><p><strong>Descripcion:</strong> <%= post.despcripcion %></p></h1>
 
     <div class="container-post-detail">
-        <img src="/uploads/<%= post.foto %>" alt="Foto del post">
+        <% post.foto.forEach(foto => { %>
+        <img src="/uploads/<%= foto %>" alt="Foto del post" />
+        <% }) %>
 
         <div class="detalle-post">
             <div class="parte principal">

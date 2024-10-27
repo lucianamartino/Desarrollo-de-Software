@@ -1,18 +1,36 @@
 import {pool} from '../db.js'
 
 // Crea un nuevo post
+// export const createPost = async (req, res) => {
+//     const { descripcion, oficioId } = req.body;
+//     const usuarioId = req.session.usuarioId
+//     const valoracion = 5
+//     const foto = req.file ? req.file.filename : null; // Obtén el nombre del archivo subido
+
+//     // Inserta los datos en la base de datos
+//     const [rows] = await pool.query(
+//         'INSERT INTO post (despcripcion, foto, Oficio_idOficio, Usuario_idUsuario, valoracion) VALUES (?, ?, ?, ?, ?)',
+//         [descripcion, foto, oficioId, usuarioId, valoracion])
+
+//     res.redirect('/');
+// };
+
 export const createPost = async (req, res) => {
     const { descripcion, oficioId } = req.body;
-    const usuarioId = req.session.usuarioId
-    const valoracion = 5
-    const foto = req.file ? req.file.filename : null; // Obtén el nombre del archivo subido
+    const usuarioId = req.session.usuarioId;
+    const valoracion = 5;
+
+    // Obtén los nombres de los archivos subidos
+    const fotos = req.files.map(file => file.filename); // Nombres de los archivos subidos
+    const fotosJSON = JSON.stringify(fotos); // Convierte el array a JSON
 
     // Inserta los datos en la base de datos
     const [rows] = await pool.query(
-        'INSERT INTO post (despcripcion, foto, Oficio_idOficio, Usuario_idUsuario, valoracion) VALUES (?, ?, ?, ?, ?)',
-        [descripcion, foto, oficioId, usuarioId, valoracion])
+        'INSERT INTO post (descripcion, foto, Oficio_idOficio, Usuario_idUsuario, valoracion) VALUES (?, ?, ?, ?, ?)',
+        [descripcion, fotosJSON, oficioId, usuarioId, valoracion] // Asegúrate de que se use la variable fotosJSON
+    );
 
-        res.redirect('/');
+    res.redirect('/');
 };
 
 export const getPosts = async (req, res, asData = false) => {
@@ -22,6 +40,20 @@ export const getPosts = async (req, res, asData = false) => {
         JOIN usuario ON post.Usuario_idUsuario = usuario.idUsuario
         JOIN perfil ON perfil.Usuario_idUsuario = usuario.idUsuario
     `);
+
+    // Verificar y deserializar
+    rows.forEach(row => {
+        if (row.foto) {
+            try {
+                row.foto = JSON.parse(row.foto); // Intenta convertir a array
+            } catch (error) {
+                console.error('Error al parsear foto:', error);
+                row.foto = []; // Asignar un array vacío si hay un error
+            }
+        } else {
+            row.foto = []; // Si no hay foto, asignar un array vacío
+        }
+    });
 
     if (asData) {
         return rows;
@@ -34,6 +66,20 @@ export const getPosts = async (req, res, asData = false) => {
 export const getPost = async (req, res) => {
     try {
         const [rows] = await pool.query('SELECT * FROM post WHERE idPost = ?', [req.params.id]);
+
+        // Verificar y deserializar
+        rows.forEach(row => {
+        if (row.foto) {
+            try {
+                row.foto = JSON.parse(row.foto); // Intenta convertir a array
+            } catch (error) {
+                console.error('Error al parsear foto:', error);
+                row.foto = []; // Asignar un array vacío si hay un error
+            }
+        } else {
+            row.foto = []; // Si no hay foto, asignar un array vacío
+        }
+    });
         
         if (rows.length <= 0) {
             return res.status(404).json({ message: 'Post no encontrado' }); // No se encontró el post
@@ -57,6 +103,20 @@ export const getPostsPorOficio = async (req, res) => {
         JOIN oficio ON post.Oficio_idOficio = oficio.idOficio
         WHERE oficio.nombre = ?
     `, [nombreOficio]);
+
+    // Verificar y deserializar
+    rows.forEach(row => {
+        if (row.foto) {
+            try {
+                row.foto = JSON.parse(row.foto); // Intenta convertir a array
+            } catch (error) {
+                console.error('Error al parsear foto:', error);
+                row.foto = []; // Asignar un array vacío si hay un error
+            }
+        } else {
+            row.foto = []; // Si no hay foto, asignar un array vacío
+        }
+    });
 
     return rows;
 };
