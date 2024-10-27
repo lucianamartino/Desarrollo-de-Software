@@ -1,0 +1,33 @@
+.container-filtro-posts{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: fit-content;
+    width: 90%;
+    background-color: #FFFF;
+    margin-top: 10px;
+    margin-left: 5%;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.container-filtro-posts .post{
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    height: fit-content;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.container-filtro-posts img{
+    width: 50%;
+    height: 250px;
+}
+
+.datos-post{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    margin-top: 10px;
+}
