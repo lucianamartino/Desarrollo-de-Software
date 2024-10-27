@@ -15,9 +15,13 @@ export const createPost = async (req, res) => {
         res.redirect('/');
 };
 
-// Devuelve todos los perfiles
 export const getPosts = async (req, res, asData = false) => {
-    const [rows] = await pool.query('SELECT * FROM post');
+    const [rows] = await pool.query(`
+        SELECT post.*, perfil.nombre AS nombrePerfil, perfil.apellido AS apellidoPerfil
+        FROM post
+        JOIN usuario ON post.Usuario_idUsuario = usuario.idUsuario
+        JOIN perfil ON perfil.Usuario_idUsuario = usuario.idUsuario
+    `);
 
     if (asData) {
         return rows;
@@ -26,7 +30,6 @@ export const getPosts = async (req, res, asData = false) => {
     res.json(rows);
 };
 
-// Devuelve un post por ID
 // Devuelve un post por ID
 export const getPost = async (req, res) => {
     try {
@@ -42,15 +45,20 @@ export const getPost = async (req, res) => {
         return res.status(500).json({ message: 'Error al obtener el post' });
     }
 };
-// Devuelve todos los posts por oficio
-export const getPostsPorOficio = async (req, res) => {
-    const { nombreOficio } = req.params; // Obtener el nombre del oficio desde la URL
-    const [rows] = await pool.query(
-        'SELECT * FROM post WHERE Oficio_idOficio = (SELECT idOficio FROM oficio WHERE nombre = ?)',
-        [nombreOficio] // Filtrar por nombre de oficio
-    );
 
-    return rows; 
+export const getPostsPorOficio = async (req, res) => {
+    const { nombreOficio } = req.params;
+
+    const [rows] = await pool.query(`
+        SELECT post.*, perfil.nombre AS nombrePerfil, perfil.apellido AS apellidoPerfil
+        FROM post
+        JOIN usuario ON post.Usuario_idUsuario = usuario.idUsuario
+        JOIN perfil ON perfil.Usuario_idUsuario = usuario.idUsuario
+        JOIN oficio ON post.Oficio_idOficio = oficio.idOficio
+        WHERE oficio.nombre = ?
+    `, [nombreOficio]);
+
+    return rows;
 };
 
 export const getPostPorPerfil = async (usuarioId, req, res) => {
