@@ -2,15 +2,19 @@
 <main>
     <h1 class="nombre-form">Posts del oficio: <%= nombreOficio %></h1>
 
-    <div class="contenedor-posts">  
+    <div class="container-filtro-posts">  
         <% posts.forEach(post => { %>
         <div class="post">
 
             <img src="/uploads/<%= post.foto %>" alt="Foto del post">
             
-            <div class="contenido-post">
+            <div class="datos-post"> 
+                <a href="/perfiles/<%= post.Usuario_idUsuario %>">
+                    <p><%= post.Usuario_idUsuario %></p>
+                </a>
+                
                 <!--<p>VER PERFIL <%= post.Usuario_idUsuario %></p>-->
-                <p>Descripcion: <%= post.despcripcion %></p>
+                <p><%= post.despcripcion %></p>
                 <p>Valoracion: <%= post.valoracion %></p>
 
                 <p class="ver-perfil">
