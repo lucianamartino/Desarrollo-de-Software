@@ -21,11 +21,13 @@ html, body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-image: url(../img/fondo2.webp);
+    background-color: #efeff4;
+    /*background-image: url(../img/fondo2.webp);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: local;
+    background-attachment: fixed;*/
 }
 main{
     flex: 1;

@@ -1,41 +1,53 @@
 <%- include('../partials/_header'); %>
 
 <main>
-    <h1 class="nombre-form">Perfil de <%= perfil.nombre %> <%= perfil.apellido %></h1>
-
-
-    <% if(login && (usuarioIdLog == usuarioId )) { %>
-        <a href="/perfiles/update/<%= usuarioIdLog %>" class="error">Actualizar perfil</a>
-    <% } %>
-
+    
     <div class="container-perfil">
-        <p>Teléfono: <%= perfil.telefono %></p>
-        <p>Descripción: <%= perfil.descripcion %></p>
+
+        <img src="/img/jardinero.avif">
+        <h1 class="nombre-perfil"><%= perfil.nombre %> <%= perfil.apellido %></h1>
+        <p>Oficio: <%= perfil.nombreOficio %></p>
         <p>Valoración: <%= perfil.valoracionPromedio %></p>
-        <p class="ver-perfil">
-            <a href="/valoracion/<%= perfil.idPerfil %>" class="boton-amarillo-block">
-            Hacer una reseña
-            </a>
-        </p>
+        <a href="#" class="boton-contactar">
+            Contactar
+        </a>
+       
     </div>
 
+    <% if(login && (usuarioIdLog == usuarioId )) { %>
+      <a href="/perfiles/update/<%= usuarioIdLog %>" class="update"> Actualizar perfil </a>
+    <% } %>
+    <div class="container-general">
+        <div class="container-rd">
+            <div class="container-datos">
+                <p>Teléfono: <%= perfil.telefono %></p>
+                <p class="desc">Descripción:</p>
+                <p class="descripcion"><%= perfil.descripcion %></p>
+            </div>
+            <div class="container-reseñas-perfil">
+               <!--<div>
+                    aca quiero agregar el forEach de cada reseña
+                </div>--> 
+                <p class="reseña-nombre">Reseñas de <%= perfil.nombre %> <%= perfil.apellido %></p>
+                <p class="reseñas"><%= perfil.nombre %> <%= perfil.apellido %></p>
 
-    <div class="contenedor-posts">  
-        <% postPerfil.forEach(post => { %>
-        <div class="post">
 
-            <img src="/uploads/<%= post.foto %>" alt="Foto del post">
-
+                <% if(login && (usuarioIdLog != usuarioId )) { %>
+                    <a href="/valoracion/<%= perfil.idPerfil %>" class="boton-reseña">
+                        Hacer una reseña
+                    </a>
+                <% } %>
+            </div>
+        </div>
+        <div class="container-post">  
+            <% postPerfil.forEach(post => { %>
             <div class="contenido-post">
-                <p>Oficio: <%= post.nombreOficio %></p>
-                <p>Descripcion: <%= post.despcripcion %></p>
-                <p>Valoracion: <%= post.valoracion %></p>
-                
-            </div><!--contenido-post-->
-        </div><!--post-->
-        <% }) %>
-    </div><!--contenedor-post-->
+                <img src="/uploads/<%= post.foto %>" alt="Foto del post">
+                <p>Descripción: <%= post.despcripcion %></p>
+            </div><!--post-->
+            <% }) %>
+        </div><!--contenedor-post-->
+    </div>
 
 </main>
 
-<%- include('../partials/_footer'); %>

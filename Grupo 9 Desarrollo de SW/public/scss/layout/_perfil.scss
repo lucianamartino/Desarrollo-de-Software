@@ -1,23 +1,196 @@
+.nombre-perfil{
+    font-family: "Montserrat", system-ui;
+    font-size: 25px;
+    font-weight: 600;
+    color: #000000;
+    text-align: left;
+    margin: 20px 10px 20px 10px;
+   
+}
 .container-perfil{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin: 20px;
-    border: none;
-    border-radius: 10px;
-    background-color: rgba(230, 227, 221, 0.623);
-    width: 60%;
-    height: 300px;
-    margin-left: 280px;
-    align-self: center;
-    justify-self: center;
+    background-color: #9c9c9c;
+    padding: 20px;
+    height: 45%;
 }
-.container-perfil p{
+.container-perfil img{
+    width: 150px;
+    height: 150px;
+    border: solid 3px white;
+    border-radius: 50%;
+}
+.boton-contactar{
+    margin-top: 20px;
+    text-decoration: none;
+    color: #000000;
     font-family: "Montserrat", system-ui;
-    font-size: 1rem;
-    font-style: thin;
-    color: rgb(111, 109, 103) ;
-    text-align: left;
-    padding-top: 30px;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    border: solid 1px #000000;
+}
+
+.boton-contactar:hover{
+    background-color: #000000;
+    color: #f4dbdb;
+    transition: 0.5s;
+}
+
+
+a.update{
+    text-decoration: none;
+    color: #f4dbdb;
+    font-family: "Montserrat", system-ui;
+    font-size: 20px;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    margin-top: 100px;
+    padding-top: 10px;
     padding-bottom: 10px;
+    
+    padding-left: 10px;
+   
+}
+
+a.update:hover{
+    color: #f4dbdb;
+    background-color: rgba(61, 54, 47, 0.82);
+    width: 110%;
+    transition: 0.5s;
+    padding-right: 50px;
+
+}
+
+
+
+a.boton-reseña{
+    text-decoration: none;
+    color: #f4dbdb;
+    font-family: "Montserrat", system-ui;
+    font-size: 15px;
+    font-weight: 600;
+   
+    text-align: center;
+    height: 50px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+a.boton-reseña:hover{
+    transition: 0.5s ease;
+    background-color: rgba(61, 54, 47, 0.82);
+    padding: 10px;
+}
+.container-general{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height:fit-content;
+    margin-top: 10px;
+    justify-content: space-around;
+
+}
+
+.container-rd{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: 10px;
+    
+   
+}
+.container-datos{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem;
+    border-radius: 10px;
+    background-color: #FFFF;
+   
+}
+.container-datos p{
+    font-family: "Montserrat", system-ui;
+    font-size: 15px;
+    color: #000000;
+    text-align: left;
+ 
+}
+.desc{
+    margin-top: 1rem;
+    border-top: 1px dashed #bebebe;
+    padding-top: 10px;
+}
+.descripcion{
+    font-family: "Montserrat", system-ui;
+    font-optical-sizing: auto;
+    font-size: 5px;
+    font-style: normal;
+    padding-top: 5px;
+    text-indent: 2%;
+}
+
+.container-reseñas-perfil{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 1rem 1rem;
+    border-radius: 10px;
+    background-color: #FFFF;;
+}
+
+.container-reseñas-perfil .reseña-nombre{
+    font-family: "Montserrat", system-ui;
+    font-size: 20px;
+    font-weight: 600;
+    color: #000000;
+    text-align: left;
+   
+}
+
+.container-reseñas-perfil .reseñas{
+    font-family: "Montserrat", system-ui;
+    font-size: 10px;
+    color: #000000;
+    text-align: left;
+    margin-left: 10px;
+}
+.container-post{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 60%;
+    height: fit-content;
+    margin-left: 20px;
+    padding: 1rem 1rem;
+    border-radius: 10px;
+    background-color: #FFFF;
+}
+.contenido-post{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4dbdb;
+    border-radius: 10px;
+    
+}
+
+.contenido-post img{
+    width: 200px;
+    height: 250px;
+    border-radius: 10px;
+    padding: 5px;
+}
+.contenido-post p{
+    font-family: "Montserrat", system-ui;
+    font-size: 15px;
+
+    color: #000000;
+    text-align: left;
+    margin: 20px 10px 20px 10px;
 }
