@@ -14,9 +14,14 @@
                 </div>
             
                 <div class="container-label">
-                    <label for="foto">Foto:</label>
-                    <input type="file" name="foto" id="foto" multiple>
+                    <section id="multi-selector-uniq">
+                        <input id="foto" type="file" name="foto" accept=".jpg, .jpeg, .png, webp" multiple>
+                        <ul id="preview"></ul>
+                    </section>
                 </div>
+                <!-- Script para mostrar los archivos q vamos -->
+                <script src="/js/fileUploader.js"></script>
+
 
                 <div class="container-label">
                 <label for="oficioId">Oficio:</label>

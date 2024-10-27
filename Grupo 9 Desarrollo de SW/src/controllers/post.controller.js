@@ -26,7 +26,7 @@ export const createPost = async (req, res) => {
 
     // Inserta los datos en la base de datos
     const [rows] = await pool.query(
-        'INSERT INTO post (descripcion, foto, Oficio_idOficio, Usuario_idUsuario, valoracion) VALUES (?, ?, ?, ?, ?)',
+        'INSERT INTO post (despcripcion, foto, Oficio_idOficio, Usuario_idUsuario, valoracion) VALUES (?, ?, ?, ?, ?)',
         [descripcion, fotosJSON, oficioId, usuarioId, valoracion] // Asegúrate de que se use la variable fotosJSON
     );
 
