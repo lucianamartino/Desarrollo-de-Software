@@ -5,6 +5,7 @@ import { getProvincias } from '../controllers/provincia.controller.js';
 import { getOficiosFiltro } from '../controllers/oficio.controller.js';
 import { getPostPorPerfil } from '../controllers/post.controller.js';
 import { getReseñaConPerfil } from '../controllers/reseña.controller.js';
+import upload from '../middlewares/multer.js';
 
 const router = Router();
 
@@ -24,7 +25,7 @@ router.get('/create', async (req, res) =>{
 })
 
 // Ruta para manejar la creación de perfil (POST)
-router.post('/create', createPerfil);
+router.post('/create', upload.single('foto'), createPerfil);
 
 // perfil por id
 router.get('/:id', async (req, res) => {
@@ -63,6 +64,6 @@ router.get('/update/:id', async (req, res) => {
     }
 })
 
-router.put('/update/:id', updatePerfil);
+router.put('/update/:id', upload.single('foto'), updatePerfil);
 
 export default router;

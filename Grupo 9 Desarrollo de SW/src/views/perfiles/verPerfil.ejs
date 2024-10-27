@@ -4,7 +4,7 @@
     
     <div class="container-perfil">
 
-        <img src="/img/jardinero.avif">
+        <img src="<%= perfil.foto.startsWith('foto') ? '/uploads/' + perfil.foto : '/' + perfil.foto %>" alt="Foto de perfil">
         <h1 class="nombre-perfil"><%= perfil.nombre %> <%= perfil.apellido %></h1>
         <p>Oficio: <%= perfil.nombreOficio %></p>
         <p>Valoración: <%= perfil.valoracionPromedio %></p>

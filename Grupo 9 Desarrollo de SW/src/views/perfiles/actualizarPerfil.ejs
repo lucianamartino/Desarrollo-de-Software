@@ -4,8 +4,14 @@
     <h1 class="nombre-form">Actualizar Perfil</h1>
 
     <div class="container-form">
-        <form class="formulario" action="/perfiles/update/<%= perfil.idPerfil %>?_method=PUT" method="POST">
+        <form class="formulario" action="/perfiles/update/<%= perfil.idPerfil %>?_method=PUT" method="POST" enctype="multipart/form-data">
             <fieldset>
+
+                <div class="container-label">
+                    <label for="foto">Foto:</label>
+                    <input type="file" name="foto" id="foto">
+                </div>
+
                 <div class="container-label">
                     <label for="descripcion">Descripción:</label>
                     <input type="text" id="descripcion" name="descripcion" value="<%= perfil.descripcion %>" required>

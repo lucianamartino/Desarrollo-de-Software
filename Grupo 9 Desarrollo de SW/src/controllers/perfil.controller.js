@@ -3,6 +3,8 @@ import {pool} from '../db.js'
 export const createPerfil = async (req, res) => {
     const { descripcion, telefono, nombre, apellido, fechaNacimiento, localidadId } = req.body;
     const valoracionPromedio = 5
+    const fotoGenerica = 'img/fotoPerfil.webp'
+    const foto = req.file ? req.file.filename : fotoGenerica;
 
     // Verificar si los datos temporales del usuario están
     if (!req.session.tempUsuario) {
@@ -15,8 +17,6 @@ export const createPerfil = async (req, res) => {
 
     try {
 
-        const [oficios] = await pool.query('SELECT * FROM oficio');
-
         await connection.beginTransaction();  // Iniciar la transacción
 
         // Insertar el usuario en la base de datos
@@ -28,8 +28,8 @@ export const createPerfil = async (req, res) => {
         const usuarioId = rows.insertId;
 
         await connection.query(
-            'INSERT INTO perfil (descripcion, valoracionPromedio, telefono, nombre, apellido, fechaNacimiento, Usuario_idUsuario, Localidad_idLocalidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', 
-            [descripcion, valoracionPromedio, telefono, nombre, apellido, fechaNacimiento, usuarioId, localidadId]
+            'INSERT INTO perfil (descripcion, valoracionPromedio, telefono, nombre, apellido, fechaNacimiento, Usuario_idUsuario, Localidad_idLocalidad, foto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
+            [descripcion, valoracionPromedio, telefono, nombre, apellido, fechaNacimiento, usuarioId, localidadId, foto]
         );
 
         await connection.commit();  // Confirmar la transacción
@@ -77,17 +77,51 @@ export const getPerfil = async (usuarioId, req, res) => {
 };
 
 
+// export const updatePerfil = async (req, res) => {
+//     try {
+//         const { id } = req.params
+//         const { descripcion, telefono } = req.body;
+//         const fotoGenerica = 'img/fotoPerfil.webp'
+//         const foto = req.file ? req.file.filename : fotoGenerica;
+
+//         await pool.query('UPDATE perfil SET descripcion = IFNULL(?, descripcion), telefono = IFNULL(?, telefono), foto = IFNULL(?, foto) WHERE idPerfil = ?', [descripcion, telefono, foto, id])
+
+//         const [rows] = await pool.query('SELECT Usuario_idUsuario FROM perfil WHERE idPerfil = ?', [id])
+
+//         res.redirect(`/perfiles/${rows[0].Usuario_idUsuario}`);
+
+//     } catch (error) {
+//         console.error(error);
+//         return res.status(500).json({ message: 'Error interno del servidor' });
+//     }
+// }
+
 export const updatePerfil = async (req, res) => {
     try {
-        const { id } = req.params
+        const { id } = req.params;
         const { descripcion, telefono } = req.body;
+        const fotoGenerica = 'img/fotoPerfil.webp';
+        const foto = req.file ? req.file.filename : null; // Cambiar a null si no se sube archivo
 
-        await pool.query('UPDATE perfil SET descripcion = IFNULL(?, descripcion), telefono = IFNULL(?, telefono) WHERE idPerfil = ?', [descripcion, telefono, id])
+        // Comienza construyendo la consulta
+        let query = 'UPDATE perfil SET descripcion = IFNULL(?, descripcion), telefono = IFNULL(?, telefono)';
+        const values = [descripcion, telefono];
 
-        const [rows] = await pool.query('SELECT Usuario_idUsuario FROM perfil WHERE idPerfil = ?', [id])
+        // Solo actualiza la foto si se sube una nueva imagen
+        if (foto) {
+            query += ', foto = ?';
+            values.push(foto);
+        }
+
+        query += ' WHERE idPerfil = ?';
+        values.push(id);
+
+        // Ejecuta la consulta
+        await pool.query(query, values);
+
+        const [rows] = await pool.query('SELECT Usuario_idUsuario FROM perfil WHERE idPerfil = ?', [id]);
 
         res.redirect(`/perfiles/${rows[0].Usuario_idUsuario}`);
-
     } catch (error) {
         console.error(error);
         return res.status(500).json({ message: 'Error interno del servidor' });
