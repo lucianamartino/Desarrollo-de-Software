@@ -35,10 +35,12 @@ export const createPost = async (req, res) => {
 
 export const getPosts = async (req, res, asData = false) => {
     const [rows] = await pool.query(`
-        SELECT post.*, perfil.nombre AS nombrePerfil, perfil.apellido AS apellidoPerfil
+        SELECT post.*, perfil.nombre AS nombrePerfil, perfil.apellido AS apellidoPerfil, provincia.nombre AS nombreProvincia, localidad.nombre AS nombreLocalidad
         FROM post
         JOIN usuario ON post.Usuario_idUsuario = usuario.idUsuario
         JOIN perfil ON perfil.Usuario_idUsuario = usuario.idUsuario
+        JOIN localidad ON perfil.Localidad_idLocalidad = idLocalidad
+        JOIN provincia ON localidad.Provincia_idProvincia = idProvincia
     `);
 
     // Verificar y deserializar
@@ -96,10 +98,12 @@ export const getPostsPorOficio = async (req, res) => {
     const { nombreOficio } = req.params;
 
     const [rows] = await pool.query(`
-        SELECT post.*, perfil.nombre AS nombrePerfil, perfil.apellido AS apellidoPerfil
+        SELECT post.*, perfil.nombre AS nombrePerfil, perfil.apellido AS apellidoPerfil, provincia.nombre AS nombreProvincia, localidad.nombre AS nombreLocalidad
         FROM post
         JOIN usuario ON post.Usuario_idUsuario = usuario.idUsuario
         JOIN perfil ON perfil.Usuario_idUsuario = usuario.idUsuario
+        JOIN localidad ON perfil.Localidad_idLocalidad = idLocalidad
+        JOIN provincia ON localidad.Provincia_idProvincia = idProvincia
         JOIN oficio ON post.Oficio_idOficio = oficio.idOficio
         WHERE oficio.nombre = ?
     `, [nombreOficio]);
