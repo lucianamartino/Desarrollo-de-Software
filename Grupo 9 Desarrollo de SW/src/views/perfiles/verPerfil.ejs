@@ -17,6 +17,7 @@
     <% if(login && (usuarioIdLog == usuarioId )) { %>
       <a href="/perfiles/update/<%= usuarioIdLog %>" class="update"> Actualizar perfil </a>
     <% } %>
+
     <div class="container-general">
         <div class="container-rd">
             <div class="container-datos">
@@ -25,11 +26,22 @@
                 <p class="descripcion"><%= perfil.descripcion %></p>
             </div>
             <div class="container-reseñas-perfil">
-               <!--<div>
-                    aca quiero agregar el forEach de cada reseña
-                </div>--> 
-                <p class="reseña-nombre">Reseñas de <%= perfil.nombre %> <%= perfil.apellido %></p>
-                <p class="reseñas"><%= perfil.nombre %> <%= perfil.apellido %></p>
+
+                <% perfilReseña.forEach(perfil => { %>
+                    <div class="contenido-reseña">
+                        <p><%= perfil.nombre %></p>
+                    </div>
+                <% }) %>
+                <% reseñas.forEach(reseña => { %>
+                    <div class="contenido-reseña">
+                        <p>
+                            <% const fechaFormateada = new Date(reseña.fecha).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }); %>
+                            <%= fechaFormateada %>
+                        </p>
+                        <p><%= reseña.valoracion %></p>
+                        <p><%= reseña.descripcion %></p>
+                    </div>
+                <% }) %>
 
 
                 <% if(login && (usuarioIdLog != usuarioId )) { %>
@@ -39,6 +51,7 @@
                 <% } %>
             </div>
         </div>
+
         <div class="container-post">  
             <% postPerfil.forEach(post => { %>
             <div class="contenido-post">

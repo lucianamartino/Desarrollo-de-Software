@@ -4,6 +4,7 @@ import { getLocalidades } from '../controllers/localidad.controller.js';
 import { getProvincias } from '../controllers/provincia.controller.js';
 import { getOficiosFiltro } from '../controllers/oficio.controller.js';
 import { getPostPorPerfil } from '../controllers/post.controller.js';
+import { getReseñaConPerfil } from '../controllers/reseña.controller.js';
 
 const router = Router();
 
@@ -38,10 +39,13 @@ router.get('/:id', async (req, res) => {
 
     const postPerfil=  await getPostPorPerfil(usuarioId, req, res)
 
+    // const reseñas = await getReseña(req, res)
+    const {reseñas, perfilReseña} = await getReseñaConPerfil(req, res)
+
     const login = req.session.loggedin;
     const usuarioIdLog = req.session.usuarioId
 
-    res.render('perfiles/verPerfil', { usuarioId, perfil, oficios, oficioSeleccionado, postPerfil, login, usuarioIdLog })
+    res.render('perfiles/verPerfil', { usuarioId, perfil, oficios, oficioSeleccionado, postPerfil, login, usuarioIdLog, reseñas, perfilReseña })
 })
 
 

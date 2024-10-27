@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createReseña, getReseñas, getReseña } from '../controllers/reseña.controller.js';
+import { createReseña, getReseñas } from '../controllers/reseña.controller.js';
 import { getOficiosFiltro } from "../controllers/oficio.controller.js"
 
 const router = Router();
@@ -9,7 +9,7 @@ const router = Router();
 router.get('/valoracion/:id', async (req, res) => {
     const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
 
-    res.render('reseñas/createReseña', {oficios, oficioSeleccionado})
+    res.render('reseñas/createReseña', {oficios, oficioSeleccionado, reseña})
 })
 
 router.post('/valoracion/:id', createReseña);

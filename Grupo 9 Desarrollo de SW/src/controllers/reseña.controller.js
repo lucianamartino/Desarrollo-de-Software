@@ -33,9 +33,28 @@ export const getReseña = async (req, res) => {
             return res.status(404).json({ message: 'reseña no encontrado' });
         }
 
-        res.json(rows[0]);
+        return rows
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error al obtener reseña' });
     }
 };
+
+// Trae las reseñas de un perfil y el perfil que la realizo
+export const getReseñaConPerfil = async (req, res) => {
+    try {
+        const usuarioId = req.params.id; // O la forma correcta de obtener el ID
+        
+        // Realiza la consulta necesaria para obtener reseñas y perfiles
+        const [reseñas] = await pool.query('SELECT * FROM reseña WHERE Perfil_destino_idPerfil = ?', [usuarioId]);
+        const [perfilReseña] = await pool.query('SELECT * FROM perfil WHERE idPerfil IN (SELECT Perfil_idPerfil FROM reseña WHERE Perfil_destino_idPerfil = ?)', [usuarioId]);
+
+        return { reseñas, perfilReseña }; // Asegúrate de que esto retorne un objeto
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error al obtener reseñas y perfiles' });
+        return undefined; // Esto puede ser necesario si hay un error
+    }
+};
+
+
