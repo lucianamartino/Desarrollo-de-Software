@@ -1,32 +1,36 @@
 <%- include('../partials/_header'); %>
 <main>
-    <h1 class="nombre-form">Posts del oficio: <%= nombreOficio %></h1>
+    <h1 class="nombre-filtro">Posts del oficio: <%= nombreOficio %></h1>
 
     <div class="container-filtro-posts">  
         <% posts.forEach(post => { %>
-        <div class="post">
-
-            <img src="/uploads/<%= post.foto %>" alt="Foto del post">
+        <div class="post-filtro">
             
-            <div class="datos-post"> 
-                <a href="/perfiles/<%= post.Usuario_idUsuario %>">
-                    <p><%= post.Usuario_idUsuario %></p>
+            <div class="nombre-perfil-post">
+                <a href="/perfiles/<%= post.Usuario_idUsuario %>" class="nombre-post">
+                    <%= post.nombrePerfil %> <%= post.apellidoPerfil %>
                 </a>
-                
-                <!--<p>VER PERFIL <%= post.Usuario_idUsuario %></p>-->
-                <p><%= post.despcripcion %></p>
-                <p>Valoracion: <%= post.valoracion %></p>
-                <p><%= post.nombrePerfil %> <%= post.apellidoPerfil %></p>
-
-                <p class="ver-perfil">
-                    <a href="/perfiles/<%= post.Usuario_idUsuario %>" class="boton-amarillo-block">
-                    Ver Perfil
-                    </a>
+                <p class="localidad-post">
+                    <%= post.nombreProvincia %> <%= post.nombreLocalidad %>
                 </p>
-                
-            </div><!--contenido-anuncio-->
+            </div>    
+            <a href="/posts/<%= post.idPost%>" class="link-post">        
+                <div class="datos-post"> 
+                    <div class="container-foto-post">
+                        <img src="/uploads/<%= post.foto %>" alt="Foto del post">
+                    </div>
+                        <!--<p>VER PERFIL <%= post.Usuario_idUsuario %></p>-->
+                    <div class="container-datos-post">
+                        <p><%= post.despcripcion %></p>
+                        <p>Valoración: <%= post.valoracion %></p>
+                    </div>
+                        
+                </div><!--contenido-anuncio-->
+            </a>
+            
         </div><!--anuncio-->
         <% }) %>
     </div>
+   
 </main>
 <%- include('../partials/_footer'); %>
