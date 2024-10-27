@@ -41,12 +41,12 @@ router.get('/:id', async (req, res) => {
     const postPerfil=  await getPostPorPerfil(usuarioId, req, res)
 
     // const reseñas = await getReseña(req, res)
-    const {reseñas, perfilReseña} = await getReseñaConPerfil(req, res)
+    const { reseñas, perfilReseña, promedio } = await getReseñaConPerfil(req, res)
 
     const login = req.session.loggedin;
     const usuarioIdLog = req.session.usuarioId
 
-    res.render('perfiles/verPerfil', { usuarioId, perfil, oficios, oficioSeleccionado, postPerfil, login, usuarioIdLog, reseñas, perfilReseña })
+    res.render('perfiles/verPerfil', { usuarioId, perfil, oficios, oficioSeleccionado, postPerfil, login, usuarioIdLog, reseñas, perfilReseña, promedio })
 })
 
 

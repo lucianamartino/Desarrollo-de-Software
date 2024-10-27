@@ -48,8 +48,11 @@ export const getReseñaConPerfil = async (req, res) => {
         // Realiza la consulta necesaria para obtener reseñas y perfiles
         const [reseñas] = await pool.query('SELECT * FROM reseña WHERE Perfil_destino_idPerfil = ?', [usuarioId]);
         const [perfilReseña] = await pool.query('SELECT * FROM perfil WHERE idPerfil IN (SELECT Perfil_idPerfil FROM reseña WHERE Perfil_destino_idPerfil = ?)', [usuarioId]);
+        const [[promedioResena]] = await pool.query('SELECT AVG(valoracion) AS promedio FROM reseña WHERE Perfil_destino_idPerfil = ?', [usuarioId]);
 
-        return { reseñas, perfilReseña }; // Asegúrate de que esto retorne un objeto
+        const promedio = parseFloat(promedioResena.promedio) || 0; // Convierte a número y usa 0 si es NaN
+
+        return { reseñas, perfilReseña, promedio}; // Asegúrate de que esto retorne un objeto
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error al obtener reseñas y perfiles' });

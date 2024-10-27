@@ -82,8 +82,9 @@
 
     </script>
 
+    <% posts.forEach(post => { %>
+    <a href="/posts/<%= post.idPost %>">
     <div class="contenedor-posts">  
-        <% posts.forEach(post => { %>
         <div class="post">
 
             <img src="/uploads/<%= post.foto %>" alt="Foto del post">
@@ -91,17 +92,11 @@
             <div class="contenido-post">
                 <p>Descripcion: <%= post.despcripcion %></p>
                 <p>Valoracion: <%= post.valoracion %></p>
-
-
-                <!-- <a href="" class="boton-amarillo-block">
-                    Ver Post
-                </a> -->
-                <a href="/perfiles/<%= post.Usuario_idUsuario %>" class="boton-amarillo-block">Ver Perfil</a>
-                <a href="/posts/<%= post.idPost %>" class="boton-amarillo-block">Ver Detalle</a>
-
             </div><!--contenido-post-->
         </div><!--post-->
-        <% }) %>
     </div><!--contenedor-post-->
+    <% }) %>
+    </a>
+    
 </main>
 <%- include('partials/_footer'); %>
