@@ -1,70 +1,62 @@
-// Contenedor principal que incluye todos los detalles del post
-.container-post-detail {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; // Espacio entre la imagen y los detalles del post
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    max-width: 1200px;
-    margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  // Estilo para la imagen del post
-  .container-post-detail img {
-    max-width: 300px; // Tamaño más pequeño de la imagen
-    height: auto;
-    border-radius: 8px;
-    align-self: center; // Centra la imagen si es una columna
-    margin-bottom: 20px;
-  }
-  
-  // Contenedor para los detalles del post
-  .detalle-post {
-    display: flex;
-    justify-content: space-between; // Separa los contenedores principal y secundario
-    gap: 40px; // Espacio entre las dos partes
-  }
-  
-  // Parte principal con los datos importantes del post
-  .parte.principal {
-    flex: 2; // Ocupa más espacio
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  // Parte secundaria para los comentarios
-  .parte.secundaria {
-    flex: 1; // Ocupa menos espacio
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  // Estilo para los títulos y párrafos dentro de los detalles del post
-  .detalle-post p, .detalle-post h3 {
-    margin-bottom: 10px;
-    line-height: 1.5;
-    color: #333;
-  }
-  
-  // Botón de regresar a la lista de posts
-  .boton-regresar {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .boton-regresar:hover {
-    background-color: #0056b3;
-  }
-  
+.container-post-detalle{
+  background-color: white;
+  width: 90%;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+
+}
+
+.container-post-detalle img{
+  width: 70%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.gallery {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-image {
+  max-width: 100%;
+  display: none;
+}
+
+.gallery-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.gallery-button.prev {
+  left: 80px;
+}
+
+.gallery-button.next {
+  right: 80px;
+}
+
+.detalle-post{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+}
+

@@ -5,7 +5,7 @@
     color: #000000;
     text-align: left;
     margin: 20px 10px 20px 10px;
-   
+    text-transform: capitalize;
 }
 .container-perfil{
     display: flex;
@@ -27,6 +27,7 @@
     font-size: 15px;
     color: #000000;
     margin-top: 5px;
+    text-transform: capitalize;
 }
 .boton-contactar{
     margin-top: 20px;
@@ -124,7 +125,7 @@ a.boton-reseña:hover{
     font-size: 15px;
     color: #000000;
     text-align: left;
- 
+    
 }
 .borde{
     margin: 1rem 0;
@@ -140,7 +141,17 @@ a.boton-reseña:hover{
     padding-top: 5px;
     text-indent: 2%;
 }
-
+.container-post{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: fit-content;
+    background-color: #FFFF;
+    border-radius: 10px;
+    box-shadow: #0000007b;
+    padding: 10px;
+    
+}
 .contenido-post img{
     width: 100px;
     height: 100px;
