@@ -59,7 +59,8 @@ export const getPerfiles = async (req, res) => {
 };
 
 // Devuelve un perfil por ID
-export const getPerfil = async (usuarioId, req, res) => {
+export const getPerfil = async (req, res) => {
+    const usuarioId = req.params.id
     try {
         const [perfil] = await pool.query(`
             SELECT 
@@ -68,10 +69,10 @@ export const getPerfil = async (usuarioId, req, res) => {
                 localidad.nombre AS nombreLocalidad, 
                 GROUP_CONCAT(oficio.nombre) AS nombreOficios
             FROM perfil
-            JOIN localidad ON perfil.Localidad_idLocalidad = idLocalidad
-            JOIN provincia ON localidad.Provincia_idProvincia = idProvincia
-            JOIN post ON post.Usuario_idUsuario = perfil.Usuario_idUsuario
-            JOIN oficio ON oficio.idOficio = post.Oficio_idOficio
+            LEFT JOIN localidad ON perfil.Localidad_idLocalidad = idLocalidad
+            LEFT JOIN provincia ON localidad.Provincia_idProvincia = idProvincia
+            LEFT JOIN post ON post.Usuario_idUsuario = perfil.Usuario_idUsuario
+            LEFT JOIN oficio ON oficio.idOficio = post.Oficio_idOficio
             WHERE idPerfil = ?
             GROUP BY perfil.idPerfil
         `, [usuarioId]);
@@ -82,7 +83,7 @@ export const getPerfil = async (usuarioId, req, res) => {
         }
 
         // Divide el string en un array de nombres de oficios
-        perfil[0].nombreOficios = perfil[0].nombreOficios.split(',');
+        perfil[0].nombreOficios = perfil[0].nombreOficios ? perfil[0].nombreOficios.split(',') : [];
 
         return perfil[0]; // Retorna el primer perfil encontrado
     } catch (error) {

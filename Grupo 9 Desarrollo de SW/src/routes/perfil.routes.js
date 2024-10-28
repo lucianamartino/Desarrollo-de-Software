@@ -30,7 +30,7 @@ router.post('/create', upload.single('foto'), createPerfil);
 // perfil por id
 router.get('/:id', async (req, res) => {
     const usuarioId = req.params.id; // Obtener el ID de usuario desde la URL
-    const perfil = await getPerfil(usuarioId, req, res);
+    const perfil = await getPerfil(req, res);
 
     if (!perfil) {
         return res.status(404).send('Perfil no encontrado');
