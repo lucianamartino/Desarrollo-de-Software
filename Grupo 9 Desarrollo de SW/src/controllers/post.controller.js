@@ -126,11 +126,35 @@ export const getPostsPorOficio = async (req, res) => {
 };
 
 export const getPostPorPerfil = async (usuarioId, req, res) => {
-
-    const [rows] = await pool.query(
-        `SELECT p.*, o.nombre AS nombreOficio FROM post p JOIN oficio o ON p.Oficio_idOficio = o.idOficio WHERE p.Usuario_idUsuario = ?`, 
+    const [rows] = await pool.query(`
+        SELECT post.*, perfil.nombre AS nombrePerfil, perfil.apellido AS apellidoPerfil, provincia.nombre AS nombreProvincia, localidad.nombre AS nombreLocalidad
+        FROM post
+        JOIN usuario ON post.Usuario_idUsuario = usuario.idUsuario
+        JOIN perfil ON perfil.Usuario_idUsuario = usuario.idUsuario
+        JOIN localidad ON perfil.Localidad_idLocalidad = idLocalidad
+        JOIN provincia ON localidad.Provincia_idProvincia = idProvincia
+        WHERE post.Usuario_idUsuario = ?`,
         [usuarioId]
     );
+
+    // Verificar y deserializar
+    rows.forEach(row => {
+        if (row.foto) {
+            try {
+                row.foto = JSON.parse(row.foto); // Intenta convertir a array
+            } catch (error) {
+                console.error('Error al parsear foto:', error);
+                row.foto = []; // Asignar un array vacío si hay un error
+            }
+        } else {
+            row.foto = []; // Si no hay foto, asignar un array vacío
+        }
+    });
+
+    // const [rows] = await pool.query(
+    //     `SELECT p.*, o.nombre AS nombreOficio FROM post p JOIN oficio o ON p.Oficio_idOficio = o.idOficio WHERE p.Usuario_idUsuario = ?`, 
+    //     [usuarioId]
+    // );
 
     return rows;
 }
