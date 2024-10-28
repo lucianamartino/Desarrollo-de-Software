@@ -61,7 +61,12 @@ export const getPerfiles = async (req, res) => {
 // Devuelve un perfil por ID
 export const getPerfil = async (usuarioId, req, res) => {
     try {
-        const [perfil] = await pool.query('SELECT * FROM perfil WHERE Usuario_idUsuario = ?', [usuarioId]);
+        const [perfil] = await pool.query(`
+            SELECT perfil.*,  provincia.nombre AS nombreProvincia, localidad.nombre AS nombreLocalidad
+            FROM perfil
+            JOIN localidad ON perfil.Localidad_idLocalidad = idLocalidad
+            JOIN provincia ON localidad.Provincia_idProvincia = idProvincia
+            WHERE Usuario_idUsuario = ?`, [usuarioId]);
 
         // Verifica que el perfil fue encontrado
         if (perfil.length === 0) {
