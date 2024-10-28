@@ -77,7 +77,7 @@ a.update:hover{
 
 a.boton-reseña{
     text-decoration: none;
-    color: #f4dbdb;
+    color: #000000;
     font-family: "Montserrat", system-ui;
     font-size: 15px;
     font-weight: 600;
@@ -97,20 +97,19 @@ a.boton-reseña:hover{
     display: flex;
     flex-direction: row;
     width: 100%;
+    margin-top: 10px;
+    padding: 10px;
     height:fit-content;
-    margin: 10px;
     justify-content: space-around;
-    background-color: red;
+    
 }
 
 .container-rd{
     display: flex;
     flex-direction: column;
-    width: 40%;
-    
-    
-   
+    width: 40%;   
 }
+
 .container-datos{
     display: flex;
     flex-direction: column;
@@ -141,16 +140,36 @@ a.boton-reseña:hover{
     padding-top: 5px;
     text-indent: 2%;
 }
-.container-post{
+.container-post-perfil{
     display: flex;
     flex-direction: column;
     width: 50%;
-    height: fit-content;
+    height: max-contentç;
     background-color: #FFFF;
     border-radius: 10px;
     box-shadow: #0000007b;
     padding: 10px;
     
+}
+.contenido-reseña{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    background-color: #FFFF;
+    border-radius: 10px;
+    box-shadow: #0000007b;
+    padding: 10px;
+    margin-top: 10px;
+}
+.contenido-post{
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .contenido-post img{
     width: 100px;
