@@ -1,20 +1,5 @@
 import {pool} from '../db.js'
 
-// Crea un nuevo post
-// export const createPost = async (req, res) => {
-//     const { descripcion, oficioId } = req.body;
-//     const usuarioId = req.session.usuarioId
-//     const valoracion = 5
-//     const foto = req.file ? req.file.filename : null; // Obtén el nombre del archivo subido
-
-//     // Inserta los datos en la base de datos
-//     const [rows] = await pool.query(
-//         'INSERT INTO post (despcripcion, foto, Oficio_idOficio, Usuario_idUsuario, valoracion) VALUES (?, ?, ?, ?, ?)',
-//         [descripcion, foto, oficioId, usuarioId, valoracion])
-
-//     res.redirect('/');
-// };
-
 export const createPost = async (req, res) => {
     const { descripcion, oficioId } = req.body;
     const usuarioId = req.session.usuarioId;
@@ -151,10 +136,17 @@ export const getPostPorPerfil = async (usuarioId, req, res) => {
         }
     });
 
-    // const [rows] = await pool.query(
-    //     `SELECT p.*, o.nombre AS nombreOficio FROM post p JOIN oficio o ON p.Oficio_idOficio = o.idOficio WHERE p.Usuario_idUsuario = ?`, 
-    //     [usuarioId]
-    // );
-
     return rows;
+}
+
+export const deletePost = async (req, res) => {
+    const postId = req.params.id
+
+    try {
+        await pool.query('DELETE FROM post WHERE idPost = ?', [postId]);
+        res.redirect('/perfiles/1'); // Redirige a la lista de posts después de eliminar
+    } catch (error) {
+        console.error('Error al eliminar el post:', error);
+        res.status(500).send('Error del servidor');
+    }
 }

@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { createReseña, getReseñas } from '../controllers/reseña.controller.js';
 import { getOficiosFiltro } from "../controllers/oficio.controller.js"
+import { getPerfil } from "../controllers/perfil.controller.js";
 
 const router = Router();
 
@@ -8,8 +9,9 @@ const router = Router();
 // Ruta para manejar la creación
 router.get('/valoracion/:id', async (req, res) => {
     const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
+    const perfilId = req.params.id
 
-    res.render('reseñas/createReseña', {oficios, oficioSeleccionado})
+    res.render('reseñas/createReseña', {oficios, oficioSeleccionado, perfilId})
 })
 
 router.post('/valoracion/:id', createReseña);

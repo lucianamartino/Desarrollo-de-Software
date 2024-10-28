@@ -6,8 +6,25 @@
         <img src="<%= perfil.foto && perfil.foto.startsWith('foto') ? '/uploads/' + perfil.foto : perfil.foto ? '/' + perfil.foto : '/img/default-profile.png' %>" alt="Foto de perfil">
 
         <h1 class="nombre-perfil"><%= perfil.nombre %> <%= perfil.apellido %></h1>
-        <p>Oficio: <%= perfil.nombreOficio %></p>
-        <p>Valoración: <%= promedio.toFixed(2) %></p>
+        
+        <% perfil.nombreOficios.forEach(nombreOficio => { %>
+            <p><%= nombreOficio %></p>
+        <% }) %>
+        
+        <% if (promedio > 0) { %>
+            <div class="star-rating">
+                <% for (let i = 0; i < 5; i++) { %>
+                    <% if (i < Math.floor(promedio)) { %>
+                        <span class="fa fa-star checked"></span>
+                    <% } else if (i < promedio) { %>
+                        <span class="fa fa-star-half-o checked"></span>
+                    <% } else { %>
+                        <span class="fa fa-star"></span>
+                    <% } %>
+                <% } %>
+            </div>
+        <% } %>
+
         <a href="#" class="boton-contactar">
             Contactar
         </a>
@@ -37,6 +54,19 @@
                             <%= fechaFormateada %>
                         </p>
                         <p><%= reseña.valoracion %></p>
+
+                        <% if (reseña.valoracion > 0) { %>
+                            <div class="star-rating">
+                                <% for (let i = 0; i < 5; i++) { %>
+                                    <% if (i < reseña.valoracion) { %>
+                                        <span class="fa fa-star checked"></span> <!-- Estrella llena -->
+                                    <% } else { %>
+                                        <span class="fa fa-star"></span> <!-- Estrella vacía -->
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        <% } %>
+
                         <p><%= reseña.descripcion %></p>
                     </div>
                 <% }) %>
@@ -56,6 +86,17 @@
                 <!-- <img src="/uploads/<%= post.foto %>" alt="Foto del post"> -->
                 <img src="/uploads/<%= post.foto[0] %>" alt="Foto del post" />
                 <p>Descripción: <%= post.despcripcion %></p>
+
+                <% if (login && (usuarioIdLog == usuarioId)) { %>
+                    <form action="/posts/delete/<%= post.idPost %>?_method=DELETE" method="POST">
+                        <!-- OPCION PARA Q SEA BUTTON -->
+                        <!-- <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este post?');">Eliminar Post</button> -->
+
+                        <!-- OPCION PARA Q SEA UNA IMAGEN (puse una foto cualquiera, cambiala si hace falta) -->
+                        <img class="botonDelete" src="/img/botonDelete.png" alt="Eliminar Post" style="cursor: pointer;" onclick="return confirm('¿Estás seguro de que deseas eliminar este post?');">
+                    </form>
+                <% } %>
+
             </div><!--post-->
             <% }) %>
         </div><!--contenedor-post-->
