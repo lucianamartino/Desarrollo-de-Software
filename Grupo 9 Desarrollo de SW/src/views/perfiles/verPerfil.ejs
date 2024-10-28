@@ -53,6 +53,19 @@
                             <%= fechaFormateada %>
                         </p>
                         <p><%= reseña.valoracion %></p>
+
+                        <% if (reseña.valoracion > 0) { %>
+                            <div class="star-rating">
+                                <% for (let i = 0; i < 5; i++) { %>
+                                    <% if (i < reseña.valoracion) { %>
+                                        <span class="fa fa-star checked"></span> <!-- Estrella llena -->
+                                    <% } else { %>
+                                        <span class="fa fa-star"></span> <!-- Estrella vacía -->
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        <% } %>
+
                         <p><%= reseña.descripcion %></p>
                     </div>
                 <% }) %>

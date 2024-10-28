@@ -70,6 +70,10 @@
     color: #FFD700; /* Color dorado para las estrellas */
 }
 
+.star-rating .fa-star {
+    color: #ccc; /* Color gris o cualquier otro color para las estrellas vacías */
+}
+
 .star-rating .fa-star.checked {
     color: #FFD700; /* Color dorado para las estrellas llenas */
 }

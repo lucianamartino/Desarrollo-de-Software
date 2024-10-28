@@ -52,8 +52,8 @@ router.get('/:id', async (req, res) => {
 
 // actualizar perfil
 router.get('/update/:id', async (req, res) => {
-    const usuarioId = req.params.id;
-    const perfil = await getPerfil(usuarioId, req, res)
+    // const usuarioId = req.params.id;
+    const perfil = await getPerfil(req, res)
 
     const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
 

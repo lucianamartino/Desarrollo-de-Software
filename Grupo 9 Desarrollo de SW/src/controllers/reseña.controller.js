@@ -10,7 +10,7 @@ export const createReseña = async (req, res) => {
         'INSERT INTO reseña (valoracion, descripcion, Perfil_idPerfil, Perfil_destino_idPerfil) VALUES (?, ?, ?, ?)', 
         [valoracion, descripcion, perfilId, perfilDestinoId])
 
-        res.redirect('/');
+        res.redirect(`/perfiles/${perfilDestinoId}`);
 };
 
 // Devuelve todas las reseña
