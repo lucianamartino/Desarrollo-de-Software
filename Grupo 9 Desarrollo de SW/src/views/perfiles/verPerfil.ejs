@@ -62,7 +62,11 @@
 
                 <% if (login && (usuarioIdLog == usuarioId)) { %>
                     <form action="/posts/delete/<%= post.idPost %>?_method=DELETE" method="POST">
-                        <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este post?');">Eliminar Post</button>
+                        <!-- OPCION PARA Q SEA BUTTON -->
+                        <!-- <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este post?');">Eliminar Post</button> -->
+
+                        <!-- OPCION PARA Q SEA UNA IMAGEN (puse una foto cualquiera, cambiala si hace falta) -->
+                        <img class="botonDelete" src="/img/botonDelete.png" alt="Eliminar Post" style="cursor: pointer;" onclick="return confirm('¿Estás seguro de que deseas eliminar este post?');">
                     </form>
                 <% } %>
 
