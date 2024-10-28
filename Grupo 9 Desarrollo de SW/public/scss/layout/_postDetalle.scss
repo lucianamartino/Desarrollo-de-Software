@@ -9,7 +9,7 @@
   margin-top: 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-
+  margin-bottom: 10px;
 }
 .info-perfil{
   display: flex;
@@ -22,13 +22,13 @@
   margin-bottom: 10px;
 }
 .info-perfil img{
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 .info-perfil a h1{
   font-family: "Montserrat", system-ui;
-  font-size: 20px;
+  font-size: 18px;
   color: #000000;
   text-transform: capitalize;
   padding-left: 5px;
@@ -39,7 +39,7 @@
 }
 
 .info-perfil a h1:hover{
-  color: #f4dbdb;
+  color: #635b5b;
   transition: 0.3s;
 }
 .gallery {
@@ -89,7 +89,7 @@
   padding: 10px;
 }
 .parte-principal{
-  background-color: #f4dbdb;
+  background-color: #f4a87f8a;
   width: 80%;
   padding: 10px;
   border-radius: 10px;

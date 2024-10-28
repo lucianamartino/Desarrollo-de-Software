@@ -18,8 +18,10 @@
     background-color: #FFFF;
     border-radius: 10px;
     padding: 25px 10px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.498);
+ 
 }
+
+
 .post-filtro{
     display: flex;
     flex-direction: column;
@@ -31,13 +33,15 @@
     
 }
 
-
+.post-filtro:hover{
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.798);
+}
 .nombre-perfil-post{
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     flex-direction: column;
 }
 
@@ -46,10 +50,10 @@
     font-optical-sizing: auto;
     font-size: 1.2rem;
     font-style: normal;
-    text-align: center;
+    text-align: left;
     font-weight: 600;
     text-transform: capitalize;
-    padding: 10px;
+   
     text-decoration: none;
     color: black;
 }
@@ -67,13 +71,14 @@
     text-align: center;
     text-transform: capitalize;
     color: rgb(91, 91, 91);
-    margin-top: 5px;
 }
 .link-post{
     text-decoration: none;
     width: 100%;
     height: 100%;
 }
+
+
 .datos-post{
     display: flex;
     flex-direction: row;
