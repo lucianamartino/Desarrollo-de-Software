@@ -44,11 +44,16 @@
                 <p class="descripcion"><%= perfil.descripcion %></p>
             </div>
             <div class="container-reseñas-perfil">
-
+                <% if(login && (usuarioIdLog != usuarioId )) { %>
+                    <a href="/valoracion/<%= perfil.idPerfil %>" class="boton-reseña">
+                        Hacer una reseña
+                    </a>
+                <% } %>
                 <% reseñas.forEach(reseña => { %>
                     <div class="contenido-reseña">
                         <% const perfil = perfilReseña.find(p => p.idPerfil === reseña.Perfil_idPerfil); %>
-                        <p><%= perfil ? perfil.nombre : 'Nombre no disponible' %></p>
+                        <p><%= perfil ? perfil.nombre : 'Nombre no disponible' %> <%= perfil ? perfil.apellido : 'Nombre no disponible' %></p>
+                        
                         <p>
                             <% const fechaFormateada = new Date(reseña.fecha).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }); %>
                             <%= fechaFormateada %>
@@ -71,11 +76,7 @@
                 <% }) %>
 
 
-                <% if(login && (usuarioIdLog != usuarioId )) { %>
-                    <a href="/valoracion/<%= perfil.idPerfil %>" class="boton-reseña">
-                        Hacer una reseña
-                    </a>
-                <% } %>
+                
             </div>
         </div>
 
@@ -84,7 +85,7 @@
             <div class="contenido-post">
                 <!-- <img src="/uploads/<%= post.foto %>" alt="Foto del post"> -->
                 <img src="/uploads/<%= post.foto[0] %>" alt="Foto del post" />
-                <p>Descripción: <%= post.despcripcion %></p>
+                <p><%= post.despcripcion %></p>
 
                 <% if (login && (usuarioIdLog == usuarioId)) { %>
                     <form action="/posts/delete/<%= post.idPost %>?_method=DELETE" method="POST">

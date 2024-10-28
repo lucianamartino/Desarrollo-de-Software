@@ -83,10 +83,12 @@ a.boton-reseña{
     font-weight: 600;
     text-align: center;
     height: 50px;
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white;
+    border-radius: 10px;
 }
 a.boton-reseña:hover{
     transition: 0.5s ease;
@@ -140,17 +142,7 @@ a.boton-reseña:hover{
     padding-top: 5px;
     text-indent: 2%;
 }
-.container-post-perfil{
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    height: max-contentç;
-    background-color: #FFFF;
-    border-radius: 10px;
-    box-shadow: #0000007b;
-    padding: 10px;
-    
-}
+
 .contenido-reseña{
     display: flex;
     flex-direction: column;
@@ -170,15 +162,28 @@ a.boton-reseña:hover{
     margin-top: 5px;
     text-transform: capitalize;
 }
+.container-post-perfil{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: max-contentç;
+    background-color: #FFFF;
+    border-radius: 10px;
+    box-shadow: #0000007b;
+    padding: 10px;
+    
+}
 .contenido-post{
     height: 100%;
     width: 100%;
     padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    border: 1px solid #000000;
+    border: 1px solid #0000004e;
+    margin-bottom: 10px;
+    border-radius: 10px;
 }
 .contenido-post img{
     width: 400px;
