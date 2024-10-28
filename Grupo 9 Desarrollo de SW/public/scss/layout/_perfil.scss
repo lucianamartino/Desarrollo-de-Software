@@ -13,7 +13,7 @@
     justify-content: center;
     align-items: center;
     background-color: #9c9c9c;
-    padding: 20px;
+    padding: 10px;
     height: fit-content;
 }
 .container-perfil img{
@@ -49,18 +49,16 @@
 
 a.update{
     text-decoration: none;
-    color: #f4dbdb;
+    color: #000000;
     font-family: "Montserrat", system-ui;
-    font-size: 20px;
+    font-size: 10px;
     font-weight: 600;
     width: 100%;
-    text-align: center;
+    text-align: right;
     height: 50px;
-    margin-top: 100px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    
-    padding-left: 10px;
+  
+    float: right;
+  
    
 }
 

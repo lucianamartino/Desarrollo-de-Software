@@ -3,6 +3,10 @@
     
     <div class="container-perfil">
 
+        <% if(login && (usuarioIdLog == usuarioId )) { %>
+            <a href="/perfiles/update/<%= usuarioIdLog %>" class="update"> Editar perfil </a>
+        <% } %>
+
         <img src="<%= perfil.foto && perfil.foto.startsWith('foto') ? '/uploads/' + perfil.foto : perfil.foto ? '/' + perfil.foto : '/img/default-profile.png' %>" alt="Foto de perfil">
 
         <h1 class="nombre-perfil"><%= perfil.nombre %> <%= perfil.apellido %></h1>
@@ -31,9 +35,7 @@
        
     </div>
 
-    <% if(login && (usuarioIdLog == usuarioId )) { %>
-      <a href="/perfiles/update/<%= usuarioIdLog %>" class="update"> Actualizar perfil </a>
-    <% } %>
+   
 
     <div class="container-general">
         <div class="container-rd">

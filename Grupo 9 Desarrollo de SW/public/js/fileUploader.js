@@ -1,207 +1,30 @@
-/*
-                        * Variables
-                        */
-                        
-let filesList = [];
-const classDragOver = "drag-over";
-const fileInputMulti = document.querySelector("#multi-selector-uniq #foto");
-// DEMO Preview
-const multiSelectorUniqPreview = document.querySelector("#multi-selector-uniq #preview");
+document.getElementById('foto').addEventListener('change', function(event) {
+    const preview = document.getElementById('preview');
+    preview.innerHTML = ''; // Limpiar la vista previa anterior
+    const files = event.target.files;
 
-/*
-* Functions
-*/
+    Array.from(files).forEach(file => {
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const listItem = document.createElement('li');
+                listItem.style.listStyle = 'none';
+                listItem.style.display = 'inline-block';
+                listItem.style.marginRight = '10px';
 
-/**
- * Returns the index of an Array of Files from its name. If there are multiple files with the same name, the last one will be returned.
- * @param {string} name - Name file.
- * @param {Array<File>} list - List of files.
- * @return number
- */
-function getIndexOfFileList(name, list) {
-    return list.reduce(
-        (position, file, index) => (file.name === name ? index : position),
-        -1
-    );
-}
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.alt = file.name;
+                img.style.width = '70px'; // Ajusta el tamaño de la vista previa según prefieras
+                img.style.height = '70px';
+                img.style.objectFit = 'cover';
+                img.style.borderRadius = '5px';
+                img.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.3)';
 
-/**
- * Returns a File in text.
- * @param {File} file
- * @return {Promise<string>}
- */
-async function encodeFileToText(file) {
-    return file.text().then((text) => {
-        return text;
+                listItem.appendChild(img);
+                preview.appendChild(listItem);
+            };
+            reader.readAsDataURL(file);
+        }
     });
-}
-
-/**
- * Returns an Array from the union of 2 Arrays of Files avoiding repetitions.
- * @param {Array<File>} newFiles
- * @param {Array<File>} currentListFiles
- * @return Promise<File[]>
- */
-async function getUniqFiles(newFiles, currentListFiles) {
-    return new Promise((resolve) => {
-        Promise.all(newFiles.map((inputFile) => encodeFileToText(inputFile))).then(
-            (inputFilesText) => {
-                // Check all the files to save
-                Promise.all(
-                    currentListFiles.map((savedFile) => encodeFileToText(savedFile))
-                ).then((savedFilesText) => {
-                    let newFileList = currentListFiles;
-                    inputFilesText.forEach((inputFileText, index) => {
-                        if (!savedFilesText.includes(inputFileText)) {
-                            newFileList = newFileList.concat(newFiles[index]);
-                        }
-                    });
-                    resolve(newFileList);
-                });
-            }
-        );
-    });
-}
-
-/**
- * Only DEMO. Render preview.
- * @param currentFileList
- * @Only .EMO> param target.
- * @
- */
-function renderPreviews(currentFileList, target, inputFile) {
-    //
-    target.textContent = "";
-    currentFileList.forEach((file, index) => {
-        const myLi = document.createElement("li");
-        myLi.textContent = file.name;
-        myLi.setAttribute("draggable", 'true');
-        myLi.dataset.key = file.name;
-        myLi.addEventListener("drop", eventDrop);
-        myLi.addEventListener("dragover", eventDragOver);
-        const myButtonRemove = document.createElement("button");
-        myButtonRemove.textContent = "X";
-        myButtonRemove.addEventListener("click", () => {
-            filesList = deleteArrayElementByIndex(currentFileList, index);
-            inputFile.files = arrayFilesToFileList(filesList);
-            return renderPreviews(filesList, multiSelectorUniqPreview, inputFile);
-        });
-        myLi.appendChild(myButtonRemove);
-        target.appendChild(myLi);
-    });
-}
-
-/**
- * Returns a copy of the array by removing one position by index.
- * @param {Array<any>} list
- * @param {number} index
- * @return {Array<any>} list
- */
-function deleteArrayElementByIndex(list, index) {
-    return list.filter((item, itemIndex) => itemIndex !== index);
-}
-
-/**
- * Returns a FileLists from an array containing Files.
- * @param {Array<File>} filesList
- * @return {FileList}
- */
-function arrayFilesToFileList(filesList) {
-    return filesList.reduce(function (dataTransfer, file) {
-        dataTransfer.items.add(file);
-        return dataTransfer;
-    }, new DataTransfer()).files;
-}
-
-
-/**
- * Returns a copy of the Array by swapping 2 indices.
- * @param {number} firstIndex
- * @param {number} secondIndex
- * @param {Array<any>} list
- */
-function arraySwapIndex(firstIndex, secondIndex, list) {
-    const tempList = list.slice();
-    const tmpFirstPos = tempList[firstIndex];
-    tempList[firstIndex] = tempList[secondIndex];
-    tempList[secondIndex] = tmpFirstPos;
-    return tempList;
-}
-
-/*
-* Events
-*/
-
-// Input file
-fileInputMulti.addEventListener("input", async () => {
-    // Get files list from <input>
-    const newFilesList = Array.from(fileInputMulti.files);
-    // Update list files
-    filesList = await getUniqFiles(newFilesList, filesList);
-    // Only DEMO. Redraw
-    renderPreviews(filesList, multiSelectorUniqPreview, fileInputMulti);
-    // Set data to input
-    fileInputMulti.files = arrayFilesToFileList(filesList);
 });
-
-// Drag and drop
-
-// Drag Start - Moving element.
-let myDragElement = undefined;
-document.addEventListener("dragstart", (event) => {
-    // Saves which element is moving.
-    myDragElement = event.target;
-});
-
-// Drag over - Element that is below the element that is moving.
-function eventDragOver(event) {
-    // Remove from all elements the class that will show that it is a drop zone.
-    event.preventDefault();
-    multiSelectorUniqPreview
-        .querySelectorAll("li")
-        .forEach((item) => item.classList.remove(classDragOver));
-
-    // On the element above it, the class is added to show that it is a drop zone.
-    event.target.classList.add(classDragOver);
-}
-
-// Drop - Element on which it is dropped.
-function eventDrop(event) {
-    // The element that is underneath the element that is moving when it is released is captured.
-    const myDropElement = event.target;
-    // The positions of the elements in the array are swapped. The dataset key is used as an index.
-    filesList = arraySwapIndex(
-        getIndexOfFileList(myDragElement.dataset.key, filesList),
-        getIndexOfFileList(myDropElement.dataset.key, filesList),
-        filesList
-    );
-    // The content of the input file is updated.
-    fileInputMulti.files = arrayFilesToFileList(filesList);
-    // Only DEMO. Changes are redrawn.
-    renderPreviews(filesList, multiSelectorUniqPreview, fileInputMulti);
-}
-
-fileInputMulti.addEventListener("input", async () => {
-    const newFilesList = Array.from(fileInputMulti.files);
-    const allowedTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/webp'];
-
-    // Filtra archivos no válidos
-    const validFiles = newFilesList.filter(file => allowedTypes.includes(file.type));
-    const invalidFiles = newFilesList.filter(file => !allowedTypes.includes(file.type));
-
-    if (invalidFiles.length > 0) {
-        alert('Por favor, selecciona solo archivos de imagen (JPG, JPEG, PNG, WEBP).');
-    }
-
-    // Solo actualiza la lista de archivos si hay archivos válidos
-    if (validFiles.length > 0) {
-        // Actualiza la lista de archivos válidos
-        filesList = await getUniqFiles(validFiles, filesList);
-        renderPreviews(filesList, multiSelectorUniqPreview, fileInputMulti);
-        fileInputMulti.files = arrayFilesToFileList(filesList); // Actualiza el input con archivos válidos
-    } else {
-        // Si no hay archivos válidos, limpia el input
-        fileInputMulti.value = ''; // Limpia el input
-    }
-});
-
