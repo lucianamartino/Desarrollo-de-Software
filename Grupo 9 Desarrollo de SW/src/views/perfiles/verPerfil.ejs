@@ -86,7 +86,9 @@
             <% postPerfil.forEach(post => { %>
             <div class="contenido-post">
                 <!-- <img src="/uploads/<%= post.foto %>" alt="Foto del post"> -->
-                <img src="/uploads/<%= post.foto[0] %>" alt="Foto del post" />
+                <a href="/posts/<%= post.idPost%>">
+                    <img src="/uploads/<%= post.foto[0] %>" alt="Foto del post" />
+                </a>
                 <p><%= post.despcripcion %></p>
 
                 <% if (login && (usuarioIdLog == usuarioId)) { %>
