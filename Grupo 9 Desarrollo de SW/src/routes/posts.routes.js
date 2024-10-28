@@ -22,6 +22,16 @@ router.post('/create', upload.array('foto', 10), createPost);
 // Obtener todos los perfiles
 router.get('/', getPosts);
 
+// filtrar por posts
+router.get('/f/:nombreOficio', async (req, res) => {
+    const posts = await getPostsPorOficio(req, res); // Obtener posts filtrados por oficio
+    const { oficios, oficioSeleccionado, nombreOficio } = await getOficiosFiltro(req, res);
+    
+    res.render('posts/filtrarPosts', { posts, oficios, nombreOficio, oficioSeleccionado }); // Renderizar la vista con los posts filtrados
+})
+
+router.delete('/delete/:id', deletePost);
+
 // Ruta para ver el detalle de un post
 router.get('/:id', async (req, res) => {
     // Obtener el post por ID utilizando la función corregida
@@ -35,15 +45,5 @@ router.get('/:id', async (req, res) => {
     // Renderizar la vista 'postDetail' con el post encontrado
     res.render('posts/postDetalle', { post, oficios, oficioSeleccionado }); 
 });
-
-// filtrar por posts
-router.get('/f/:nombreOficio', async (req, res) => {
-    const posts = await getPostsPorOficio(req, res); // Obtener posts filtrados por oficio
-    const { oficios, oficioSeleccionado, nombreOficio } = await getOficiosFiltro(req, res);
-
-    res.render('posts/filtrarPosts', { posts, oficios, nombreOficio, oficioSeleccionado }); // Renderizar la vista con los posts filtrados
-})
-
-router.delete('/delete/:id', deletePost);
 
 export default router;

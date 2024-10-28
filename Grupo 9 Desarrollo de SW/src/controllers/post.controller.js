@@ -52,7 +52,18 @@ export const getPosts = async (req, res, asData = false) => {
 // Devuelve un post por ID
 export const getPost = async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM post WHERE idPost = ?', [req.params.id]);
+        const [rows] = await pool.query(`
+            SELECT 
+                post.*,
+                perfil.nombre AS nombrePerfil,
+                perfil.apellido AS apellidoPerfil,
+                perfil.foto AS fotoPerfil,
+                oficio.nombre AS nombreOficio
+            FROM post
+            JOIN usuario ON usuario.idUsuario = post.Usuario_idUsuario
+            JOIN perfil ON perfil.Usuario_idUsuario = usuario.idUsuario
+            JOIN oficio ON oficio.idOficio = post.Oficio_idOficio
+            WHERE idPost = ?`, [req.params.id]);
 
         // Verificar y deserializar
         rows.forEach(row => {

@@ -1,6 +1,7 @@
 <%- include('../partials/_header'); %>
 <main>
-    <h1 class="nombre-form"><p><strong>Descripcion:</strong> <%= post.despcripcion %></p></h1>
+    <img src="<%= post.fotoPerfil && post.fotoPerfil.startsWith('foto') ? '/uploads/' + post.fotoPerfil : post.fotoPerfil ? '/' + post.fotoPerfil : '/img/default-profile.png' %>" alt="Foto de perfil">
+    <h1><%= post.nombrePerfil %><%= post.apellidoPerfil %></h1>
 
     <div class="container-post-detalle">
         <% if (post.foto.length > 1) { %>
@@ -23,10 +24,8 @@
         <div class="detalle-post">
             <div class="parte principal">
                 <p>Descripcion: <%= post.despcripcion %></p>
-                <p>Autor:<%= post.nombreUsuario %></p>
-                <p>Rubro:<%= post.nombreOficio %></p>
+                <p>Rubro: <%= post.nombreOficio %></p>
                 <p>Fecha de publicación: <%= new Date(post.fecha).toLocaleDateString() %></p>
-                <p>Valoración: <%= post.valoracion %></p>
             </div>
             <div class="parte secundaria">
                 <h3>Comentarios</h3>
