@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createPost, getPosts, getPost, getPostsPorOficio} from '../controllers/post.controller.js';
+import { createPost, getPosts, getPost, getPostsPorOficio, deletePost} from '../controllers/post.controller.js';
 import { getOficiosFiltro } from '../controllers/oficio.controller.js';
 import upload from '../middlewares/multer.js';
 
@@ -44,5 +44,6 @@ router.get('/f/:nombreOficio', async (req, res) => {
     res.render('posts/filtrarPosts', { posts, oficios, nombreOficio, oficioSeleccionado }); // Renderizar la vista con los posts filtrados
 })
 
+router.delete('/delete/:id', deletePost);
 
 export default router;

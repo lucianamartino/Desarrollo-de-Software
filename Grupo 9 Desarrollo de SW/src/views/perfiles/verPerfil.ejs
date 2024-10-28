@@ -60,9 +60,12 @@
                 <img src="/uploads/<%= post.foto[0] %>" alt="Foto del post" />
                 <p>Descripción: <%= post.despcripcion %></p>
 
-                <% if(login && (usuarioIdLog == usuarioId )) { %>
-                    <a href=""> Eliminar </a>
+                <% if (login && (usuarioIdLog == usuarioId)) { %>
+                    <form action="/posts/delete/<%= post.idPost %>?_method=DELETE" method="POST">
+                        <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este post?');">Eliminar Post</button>
+                    </form>
                 <% } %>
+
             </div><!--post-->
             <% }) %>
         </div><!--contenedor-post-->
