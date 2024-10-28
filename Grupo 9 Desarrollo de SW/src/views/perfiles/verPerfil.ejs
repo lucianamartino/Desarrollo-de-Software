@@ -1,10 +1,10 @@
 <%- include('../partials/_header'); %>
-
 <main>
     
     <div class="container-perfil">
 
-        <img src="<%= perfil.foto.startsWith('foto') ? '/uploads/' + perfil.foto : '/' + perfil.foto %>" alt="Foto de perfil">
+        <img src="<%= perfil.foto && perfil.foto.startsWith('foto') ? '/uploads/' + perfil.foto : perfil.foto ? '/' + perfil.foto : '/img/default-profile.png' %>" alt="Foto de perfil">
+
         <h1 class="nombre-perfil"><%= perfil.nombre %> <%= perfil.apellido %></h1>
         <p>Oficio: <%= perfil.nombreOficio %></p>
         <p>Valoración: <%= promedio.toFixed(2) %></p>
@@ -21,8 +21,9 @@
     <div class="container-general">
         <div class="container-rd">
             <div class="container-datos">
-                <p>Teléfono: <%= perfil.telefono %></p>
-                <p class="desc">Descripción:</p>
+                <p><%= perfil.nombreProvincia %>, <%= perfil.nombreLocalidad %></p>
+                <p class="borde">Teléfono: <%= perfil.telefono %></p>
+                <p>Descripción:</p>
                 <p class="descripcion"><%= perfil.descripcion %></p>
             </div>
             <div class="container-reseñas-perfil">

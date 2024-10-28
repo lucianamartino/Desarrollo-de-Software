@@ -14,13 +14,19 @@
     align-items: center;
     background-color: #9c9c9c;
     padding: 20px;
-    height: 45%;
+    height: fit-content;
 }
 .container-perfil img{
     width: 150px;
     height: 150px;
     border: solid 3px white;
     border-radius: 50%;
+}
+.container-perfil p{
+    font-family: "Montserrat", system-ui;
+    font-size: 15px;
+    color: #000000;
+    margin-top: 5px;
 }
 .boton-contactar{
     margin-top: 20px;
@@ -74,7 +80,6 @@ a.boton-reseña{
     font-family: "Montserrat", system-ui;
     font-size: 15px;
     font-weight: 600;
-   
     text-align: center;
     height: 50px;
     margin-top: 20px;
@@ -92,26 +97,27 @@ a.boton-reseña:hover{
     flex-direction: row;
     width: 100%;
     height:fit-content;
-    margin-top: 10px;
+    margin: 10px;
     justify-content: space-around;
-
+    background-color: red;
 }
 
 .container-rd{
     display: flex;
     flex-direction: column;
     width: 40%;
-    margin-left: 10px;
+    
     
    
 }
 .container-datos{
     display: flex;
     flex-direction: column;
-    padding: 1rem 1rem;
     border-radius: 10px;
     background-color: #FFFF;
-   
+    box-shadow: #0000007b;
+    padding: 10px;
+    height: fit-content;
 }
 .container-datos p{
     font-family: "Montserrat", system-ui;
@@ -120,10 +126,11 @@ a.boton-reseña:hover{
     text-align: left;
  
 }
-.desc{
-    margin-top: 1rem;
+.borde{
+    margin: 1rem 0;
     border-top: 1px dashed #bebebe;
-    padding-top: 10px;
+    border-bottom: 1px dashed #bebebe;
+    padding: 10px 0;
 }
 .descripcion{
     font-family: "Montserrat", system-ui;
@@ -134,63 +141,7 @@ a.boton-reseña:hover{
     text-indent: 2%;
 }
 
-.container-reseñas-perfil{
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    padding: 1rem 1rem;
-    border-radius: 10px;
-    background-color: #FFFF;;
-}
-
-.container-reseñas-perfil .reseña-nombre{
-    font-family: "Montserrat", system-ui;
-    font-size: 20px;
-    font-weight: 600;
-    color: #000000;
-    text-align: left;
-   
-}
-
-.container-reseñas-perfil .reseñas{
-    font-family: "Montserrat", system-ui;
-    font-size: 10px;
-    color: #000000;
-    text-align: left;
-    margin-left: 10px;
-}
-.container-post{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 60%;
-    height: fit-content;
-    margin-left: 20px;
-    padding: 1rem 1rem;
-    border-radius: 10px;
-    background-color: #FFFF;
-}
-.contenido-post{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #f4dbdb;
-    border-radius: 10px;
-    
-}
-
 .contenido-post img{
-    width: 200px;
-    height: 250px;
-    border-radius: 10px;
-    padding: 5px;
-}
-.contenido-post p{
-    font-family: "Montserrat", system-ui;
-    font-size: 15px;
-
-    color: #000000;
-    text-align: left;
-    margin: 20px 10px 20px 10px;
+    width: 100px;
+    height: 100px;
 }
