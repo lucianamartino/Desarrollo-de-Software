@@ -6,7 +6,11 @@
 
         <img src="<%= perfil.foto.startsWith('foto') ? '/uploads/' + perfil.foto : '/' + perfil.foto %>" alt="Foto de perfil">
         <h1 class="nombre-perfil"><%= perfil.nombre %> <%= perfil.apellido %></h1>
-        <p>Oficio: <%= perfil.nombreOficio %></p>
+        
+        <% perfil.nombreOficios.forEach(nombreOficio => { %>
+            <p><%= nombreOficio %></p>
+        <% }) %>
+        
         <p>Valoración: <%= promedio.toFixed(2) %></p>
         <a href="#" class="boton-contactar">
             Contactar
@@ -55,6 +59,10 @@
                 <!-- <img src="/uploads/<%= post.foto %>" alt="Foto del post"> -->
                 <img src="/uploads/<%= post.foto[0] %>" alt="Foto del post" />
                 <p>Descripción: <%= post.despcripcion %></p>
+
+                <% if(login && (usuarioIdLog == usuarioId )) { %>
+                    <a href=""> Eliminar </a>
+                <% } %>
             </div><!--post-->
             <% }) %>
         </div><!--contenedor-post-->
