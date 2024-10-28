@@ -59,3 +59,17 @@
     color: #2ddc76;
 }
 
+.star-rating {
+    direction: row-reverse;
+    display: inline-block;
+    font-size: 1.5rem; /* Ajusta el tamaño según sea necesario */
+}
+
+.star-rating .fa-star,
+.star-rating .fa-star-half-o {
+    color: #FFD700; /* Color dorado para las estrellas */
+}
+
+.star-rating .fa-star.checked {
+    color: #FFD700; /* Color dorado para las estrellas llenas */
+}
