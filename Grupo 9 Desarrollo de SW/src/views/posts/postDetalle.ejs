@@ -1,12 +1,10 @@
 <%- include('../partials/_header'); %>
 <main>
-    <img src="<%= post.fotoPerfil && post.fotoPerfil.startsWith('foto') ? '/uploads/' + post.fotoPerfil : post.fotoPerfil ? '/' + post.fotoPerfil : '/img/default-profile.png' %>" alt="Foto de perfil">
-    <h1><%= post.nombrePerfil %><%= post.apellidoPerfil %></h1>
-
+   
     <div class="container-post-detalle">
         <div class="info-perfil">
-            <img src="/img/default-profile.png">
-            <p>nombre perfil</p>
+            <img src="<%= post.fotoPerfil && post.fotoPerfil.startsWith('foto') ? '/uploads/' + post.fotoPerfil : post.fotoPerfil ? '/' + post.fotoPerfil : '/img/default-profile.png' %>" alt="Foto de perfil">
+            <a href="/perfil/<%= post.idPerfil %>"><h1><%= post.nombrePerfil %> <%= post.apellidoPerfil %></h1></a>
 
         </div>
         <% if (post.foto.length > 1) { %>
@@ -27,12 +25,12 @@
 
 
         <div class="detalle-post">
-            <div class="parte principal">
-                <p>Descripcion: <%= post.despcripcion %></p>
+            <div class="parte-principal">
+                <p><%= post.despcripcion %></p>
                 <p>Rubro: <%= post.nombreOficio %></p>
-                <p>Fecha de publicación: <%= new Date(post.fecha).toLocaleDateString() %></p>
+                <p>Publicado el <%= new Date(post.fecha).toLocaleDateString() %></p>
             </div>
-            <div class="parte secundaria">
+            <div class="parte-secundaria">
                 <h3>Comentarios</h3>
             </div>
         </div><!-- detalle-post -->
