@@ -90,13 +90,17 @@
                 <p><%= post.despcripcion %></p>
 
                 <% if (login && (usuarioIdLog == usuarioId)) { %>
-                    <form action="/posts/delete/<%= post.idPost %>?_method=DELETE" method="POST">
-                        <!-- OPCION PARA Q SEA BUTTON -->
-                        <!-- <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este post?');">Eliminar Post</button> -->
-
-                        <!-- OPCION PARA Q SEA UNA IMAGEN (puse una foto cualquiera, cambiala si hace falta) -->
-                        <img class="botonDelete" src="/img/eliminar.png" alt="Eliminar Post" style="cursor: pointer;" onclick="return confirm('¿Estás seguro de que deseas eliminar este post?');">
+                    <form id="deleteForm-<%= post.idPost %>" action="/posts/delete/<%= post.idPost %>?_method=DELETE" method="POST">
+                        <img class="botonDelete" src="/img/eliminar.png" alt="Eliminar Post" style="cursor: pointer;" onclick="confirmDelete('<%= post.idPost %>')">
                     </form>
+                    
+                    <script>
+                        function confirmDelete(postId) {
+                            if (confirm('¿Estás seguro de que deseas eliminar este post?')) {
+                                document.getElementById(`deleteForm-${postId}`).submit();
+                            }
+                        }
+                    </script>
                 <% } %>
 
             </div><!--post-->
