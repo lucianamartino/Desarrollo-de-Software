@@ -53,8 +53,7 @@
                             <% const fechaFormateada = new Date(reseña.fecha).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }); %>
                             <%= fechaFormateada %>
                         </p>
-                        <p><%= reseña.valoracion %></p>
-
+                      
                         <% if (reseña.valoracion > 0) { %>
                             <div class="star-rating">
                                 <% for (let i = 0; i < 5; i++) { %>
