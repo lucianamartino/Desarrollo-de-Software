@@ -162,6 +162,14 @@ a.boton-reseña:hover{
     padding: 10px;
     margin-top: 10px;
 }
+.contenido-reseña p{
+    font-family: "Montserrat", system-ui;
+    font-size: 15px;
+    color: #000000;
+    text-align: left;
+    margin-top: 5px;
+    text-transform: capitalize;
+}
 .contenido-post{
     height: 100%;
     width: 100%;
@@ -174,4 +182,16 @@ a.boton-reseña:hover{
 .contenido-post img{
     width: 100px;
     height: 100px;
+}
+.contenido-post p{
+    font-family: "Montserrat", system-ui;
+    font-size: 15px;
+    color: #000000;
+    text-align: left;
+    margin-top: 5px;
+    text-transform: capitalize;
+}
+.boton-delete{
+    width: 40px;
+    height: 40px;
 }
