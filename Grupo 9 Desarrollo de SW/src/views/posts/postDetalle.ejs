@@ -1,13 +1,17 @@
 <%- include('../partials/_header'); %>
 <main>
-    <h1 class="nombre-form"><p><strong>Descripcion:</strong> <%= post.despcripcion %></p></h1>
 
     <div class="container-post-detalle">
+        <div class="info-perfil">
+            <img src="/img/default-profile.png">
+            <p>nombre perfil</p>
+
+        </div>
         <% if (post.foto.length > 1) { %>
             <!-- Contenedor de galería con flechas de navegación -->
             <div class="gallery">
                 <button class="gallery-button prev" onclick="changeImage(-1)">&#10094;</button>
-                
+
                 <% post.foto.forEach((foto, index) => { %>
                     <img src="/uploads/<%= foto %>" alt="Foto del post" class="gallery-image"  style="display: <%= index === 0 ? 'block' : 'none' %>" data-index="<%= index %>">
                 <% }) %>
@@ -33,8 +37,7 @@
             </div>
         </div><!-- detalle-post -->
     </div><!-- container-post-detail -->
-
-    <a href="/perfiles/<%= post.Usuario_idUsuario %>" class="boton-amarillo-block">Ver Perfil</a> 
+ 
 </main>
 <script>
     let currentIndex = 0;
