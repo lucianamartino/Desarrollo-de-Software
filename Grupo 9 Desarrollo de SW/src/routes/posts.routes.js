@@ -19,6 +19,8 @@ router.get('/create', async (req, res) => {
 // Ruta para crear un post con la subida de imagen
 router.post('/create', upload.array('foto', 10), createPost);
 
+
+
 // Obtener todos los perfiles
 router.get('/', getPosts);
 

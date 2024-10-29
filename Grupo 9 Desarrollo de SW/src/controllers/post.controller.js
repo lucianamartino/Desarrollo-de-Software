@@ -152,11 +152,12 @@ export const getPostPorPerfil = async (usuarioId, req, res) => {
 
 export const deletePost = async (req, res) => {
     const postId = req.params.id;
+    const idPerfil = req.session.usuarioId;
     console.log('Eliminando post con id:', postId); // Verifica el id del post en la consola
 
     try {
         await pool.query('DELETE FROM post WHERE idPost = ?', [postId]);
-        res.redirect('/perfiles/1');
+        res.redirect(`/perfiles/${idPerfil}`);
     } catch (error) {
         console.error('Error al eliminar el post:', error);
         res.status(500).send('Error del servidor');

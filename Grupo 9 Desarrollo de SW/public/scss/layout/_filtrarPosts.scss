@@ -36,6 +36,7 @@
 
 .post-filtro:hover{
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.798);
+    background-color: #FFC107;
 }
 .nombre-perfil-post{
     width: 100%;
@@ -82,7 +83,9 @@
 
 .datos-post{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 100%;
 }
 .container-foto-post{
@@ -97,6 +100,8 @@
     width: 50%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     margin-left: 10px;
     height: 100%;
@@ -115,4 +120,5 @@
     text-decoration: none;
     color: black;
     text-transform: capitalize;
+    padding-top: 10px;
 }
