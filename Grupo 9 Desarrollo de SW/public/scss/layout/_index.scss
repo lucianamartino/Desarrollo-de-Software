@@ -158,11 +158,12 @@
 
 .container-ccv{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    width: 90%;
-    margin-left: 5%;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-top: 10px;
 }
 
 .container-ccv div{
