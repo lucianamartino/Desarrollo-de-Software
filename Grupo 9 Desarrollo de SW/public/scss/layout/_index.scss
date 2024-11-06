@@ -1,157 +1,22 @@
-/* Slideshow container */
-.slideshow-container {
-    will-change: transform; /* Optimización para el navegador */
-    position: relative;
-    display: flex;
-    justify-content: center;
-    left: 20%;
-    right: 20%;
-    width: 60%; /* Ancho del slideshow */
-    height: 75vh; /* Altura del slideshow */
-    margin-top: 10px; /* Espaciado desde arriba */
-    background-color: rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-}
-
-/* Ajustar las imágenes dentro del slideshow */
-.mySlides {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    top: 0;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-/* Ajuste de las imágenes */
-.mySlides img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover; /* Asegura que la imagen se ajuste sin deformarse */
-    margin: 0 auto;
-}
-
-.container-destacado {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 10px 0;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    text-align: center;
-    background-color: #050505a0;
-    max-height: 30%;
-}
-
-/* Texto dentro del slide */
-.text {
-    font-family: "Montserrat", system-ui;
-    font-size: 20px;
-    font-weight: 400;
-}
-
-.text2 {
-    font-family: "Montserrat", system-ui;
-    font-size: 16px;
-    margin-top: 5px;
-    font-weight: lighter;
-}
-
-/* Puntos de navegación */
-.puntos {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-}
-
-.dot {
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
-
-.active {
-    background-color: #413f3f;
-}
-
-/* Botones de navegación */
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 40%;
-    padding: 16px;
-    color: white;
-    font-size: 40px;
-    transition: background-color 0.3s ease;
-    user-select: none;
-    font-family: "Montserrat", system-ui;
-}
-
-.prev {
-    left: 0%;
-    border-radius: 3px 0 0 3px;
-}
-
-.next {
-    right: 0%;
-    border-radius: 0 3px 3px 0;
-}
-
-/* Hover effects on navigation buttons */
-.prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Animaciones para el deslizamiento */
-@keyframes slideIn {
-    from {
-        transform: translateX(100%); /* Entra desde la derecha */
-        opacity: 0; /* Comienza oculta */
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1; /* Termina visible */
-    }
-}
-
-@keyframes slideOut {
-    from {
-        transform: translateX(0);
-        opacity: 1; /* Comienza visible */
-    }
-    to {
-        transform: translateX(-100%); /* Sale hacia la izquierda */
-        opacity: 0; /* Termina oculta */
-    }
-}
-/* Estilos responsivos para pantallas pequeñas */
-@media only screen and (max-width: 300px) {
-    .text {
-        font-size: 11px;
-    }
-}
-
 
 .inicio{
+    margin-top: 80px;
     width: 100%;
     height: 45vh;
-    background-color: white;
+
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    z-index: 1000;
+    position: sticky;
 }
 
 .inicio h1{
-    color:#FFC107;
+    color: #ff6d1f;
     font-size: 30px;
-    font-family: "Montserrat", system-ui;
+    /*font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;*/
+    font-family: "Quicksand", sans-serif;
+    font-weight: 400;
     text-align: center;
     padding-top: 120px;
 }
@@ -164,6 +29,7 @@
     width: 95%;
     margin-left: 2.5%;
     margin-top: 10px;
+    
 }
 
 .container-ccv div{
@@ -176,11 +42,13 @@
     margin: 10px;
     background-color: white;
     border-radius: 10px;
-    box-shadow: #FFC107;
-    box-shadow: 0px 0px 5px 0px #FFC107;
+
     padding: 10px;
     text-align: center;
-    
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    z-index: 1000;
+    position: sticky;
 }
 
 .container-ccv div img{

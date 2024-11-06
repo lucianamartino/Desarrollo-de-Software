@@ -1,130 +1,112 @@
-.nombre-form{
-    font-family: "Montserrat", system-ui;
-    font-size: 1.6rem;
-    font-style: thin;
-    color: #455A64 ;
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 10px;
-}
-.container-form{
-    width: 100%;
+.container-principal{
     display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+ 
+    align-items: center;
     justify-content: center;
+}
 
+.container-nombre-form{
+    width: 50%;
+    padding-left: 40px;
+    position: relative;
+    display: inline-block;
+    background-color: #d9d9d9;
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.container-form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    height: 100%;
+}
+
+.nombre-form {
+    font-size: 4.5em; /* Tamaño del texto */
+    font-family: "Montserrat", system-ui;
+    font-weight: 300; /* Grosor del texto */
+    color: $naranja;
+
+    /*color: transparent; /* Para ocultar el color del texto base */
+    /*background: linear-gradient(190deg, white 50%, $naranja 50%); /* Gradiente diagonal */
+    background-clip: text;
+    -webkit-background-clip: text; /* Compatibilidad con navegadores WebKit */
+    text-transform: uppercase;
+  
+    padding-top: 10px;
+    letter-spacing: 5px;
+   
+}
+
+.abajo{
+    margin-left: 150px;
+    margin-top: 20px;
 }
 .formulario{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px;
-    border: none;
-    border-radius: 10px;
-    background-color: rgba(245, 243, 239, 0.502);
-    width: 70%;
-    height: fit-content;
+    justify-content: space-around;
     padding: 10px;
-}
-.formulario fieldset{
-    height: fit-content;
-    width: 60%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-left: 20px;
-    flex-direction: column;
-    margin-top: 20px;
-    padding: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
+    height: 100%;
     
 }
-.formulario legend{
-    font-family: "Montserrat", system-ui;
-    font-size: 1.6rem;
-    font-style: thin;
-    color: rgb(27, 27, 26) ;
-    text-align: left;
-    padding-top: 5px;
-    padding-bottom: 5px;
-  
-}
-.formulario fieldset{
-    display: flex;
-    flex-direction: column;
-}
+
 .container-label{
     display: flex;
-    flex-direction: row;
-    width: 100%;
+    flex-direction: column;
     justify-content: space-between;
-}
+    width: 80%;
+    margin-bottom: 10px;
 
+}
 .container-label label{
-    font-family: "Montserrat", system-ui;
-    font-size: 1rem;
-    font-style: thin;
-    color: rgb(27, 27, 26) ;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-right: 20px;
-   
+    font-size: 1em;
+    font-family: "Raleway", sans-serif;
+    text-transform: capitalize;
+    font-stretch: expanded;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: white;
+    letter-spacing: 1px;
 }
-
-.container-label input, select, textarea{
-    font-family: "Montserrat", system-ui;
-    font-size: 0.7rem;
-    font-style: thin;
-    color: rgb(27, 27, 26) ;
-    text-align: left;
-    padding-top: 5px;
-    padding-bottom: 5px;
+.container-label input{
+    width: 100%;
+    height: 40px;
+    font-size: 1em;
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+    padding-left: 10px;
     border: none;
-    border-radius: 10px;
-    width: 50%;
-    height: 25px;
-    display: flex;
-    float: left;
+    border-radius: 5px;
+    color: $naranja;
 }
 .container-label input:focus{
     outline: none;
-    border: 1px solid rgb(111, 109, 103);
+    border: 1px solid $naranja;
 }
-
-button[type="submit"]{
-    background-color: rgb(111, 109, 103);
-    color: white;
-    font-size: 1.2rem;
-    font-style: thin;
+.formulario button{
+    width: 80%;
+    height: 40px;
+    font-size: 1em;
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+    background-color: #f9f9f9;
     border: none;
-    border-radius: 10px;
-    width: 30%;
-    height: 30px;
-    margin: 20px;
-}
-
-button[type="submit"]:hover{
-    background-color: rgb(230, 227, 221);
-    color: rgb(111, 109, 103);
-    border: 1px solid rgb(111, 109, 103);
-}
-
-.error {
-    text-align: center;
-    background-color: white;
-    padding: 1rem;
-    color: red;
-}
-
-#preview {
-    display: flex;
-    gap: 10px;
-    list-style: none;
-    padding: 0;
-}
-
-#preview img {
     border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    margin-top: 10px;
+}
+.formulario button:hover{
+    background-color: #f0f0f0;
 }
 

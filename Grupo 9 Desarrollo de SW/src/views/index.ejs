@@ -21,37 +21,17 @@
             <p>Comparte tu experiencia y ayuda a otros usuarios a encontrar los mejores profesionales.</p>
         </div>
     </div>
-    <div class="container-filtro-posts">  
-        <% posts.forEach(post => { %>
-        <div class="post-filtro">
-            
-            <div class="nombre-perfil-post">
-                <a href="/perfiles/<%= post.Usuario_idUsuario %>" class="nombre-post">
-                    <%= post.nombrePerfil %> <%= post.apellidoPerfil %>
-                </a>
-                <p class="localidad-post">
-                    <%= post.nombreProvincia %>, <%= post.nombreLocalidad %>
-                </p>
-            </div>    
-            <a href="/posts/<%= post.idPost%>" class="link-post">        
-                <div class="datos-post"> 
-                    <div class="container-foto-post">
-                        <img src="/uploads/<%= post.foto[0] %>" alt="Foto del post" />
-                    </div>
-                        <!--<p>VER PERFIL <%= post.Usuario_idUsuario %></p>-->
-                        
-                    <div class="container-datos-post">
-                        <p><%= post.despcripcion %></p>
+    
 
-                   
-                    </div>
-                        
-                </div>
-            </a>
-            
-        </div>
-        <% }) %>
-    </div>
-   
 </main>
+<script>// script.js
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const inicio = document.querySelector('.inicio');
+      
+      // Reduce la opacidad de .inicio al hacer scroll
+      const opacityValue = Math.max(1 - scrollY / 200, 0); // Ajusta el divisor para controlar la velocidad de desvanecimiento
+      inicio.style.opacity = opacityValue;
+    });
+</script>
 <%- include('partials/_footer'); %>

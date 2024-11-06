@@ -1,0 +1,167 @@
+  
+  EN EL INDEX  
+  
+    <div class="container-filtro-posts">  
+        <% posts.forEach(post => { %>
+        <div class="post-filtro">
+            
+            <div class="nombre-perfil-post">
+                <a href="/perfiles/<%= post.Usuario_idUsuario %>" class="nombre-post">
+                    <%= post.nombrePerfil %> <%= post.apellidoPerfil %>
+                </a>
+                <p class="localidad-post">
+                    <%= post.nombreProvincia %>, <%= post.nombreLocalidad %>
+                </p>
+            </div>    
+            <a href="/posts/<%= post.idPost%>" class="link-post">        
+                <div class="datos-post"> 
+                    <div class="container-foto-post">
+                        <img src="/uploads/<%= post.foto[0] %>" alt="Foto del post" />
+                    </div>
+                        <!--<p>VER PERFIL <%= post.Usuario_idUsuario %></p>-->
+                        
+                    <div class="container-datos-post">
+                        <p><%= post.despcripcion %></p>
+
+                   
+                    </div>
+                        
+                </div>
+            </a>
+            
+        </div>
+        <% }) %>
+    </div>
+   
+
+CSS FORMULARIOS
+.nombre-form{
+    font-family: "Montserrat", system-ui;
+    font-size: 1.6rem;
+    font-style: thin;
+    color: #455A64 ;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.container-form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(245, 243, 239, 0.502);
+    width: 70%;
+    height: fit-content;
+    padding: 10px;
+}
+.formulario fieldset{
+    height: fit-content;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-left: 20px;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    
+}
+.formulario legend{
+    font-family: "Montserrat", system-ui;
+    font-size: 1.6rem;
+    font-style: thin;
+    color: rgb(27, 27, 26) ;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  
+}
+.formulario fieldset{
+    display: flex;
+    flex-direction: column;
+}
+.container-label{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.container-label label{
+    font-family: "Montserrat", system-ui;
+    font-size: 1rem;
+    font-style: thin;
+    color: rgb(27, 27, 26) ;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 20px;
+   
+}
+
+.container-label input, select, textarea{
+    font-family: "Montserrat", system-ui;
+    font-size: 0.7rem;
+    font-style: thin;
+    color: rgb(27, 27, 26) ;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+    border-radius: 10px;
+    width: 50%;
+    height: 25px;
+    display: flex;
+    float: left;
+}
+.container-label input:focus{
+    outline: none;
+    border: 1px solid rgb(111, 109, 103);
+}
+
+button[type="submit"]{
+    background-color: rgb(111, 109, 103);
+    color: white;
+    font-size: 1.2rem;
+    font-style: thin;
+    border: none;
+    border-radius: 10px;
+    width: 30%;
+    height: 30px;
+    margin: 20px;
+}
+
+button[type="submit"]:hover{
+    background-color: rgb(230, 227, 221);
+    color: rgb(111, 109, 103);
+    border: 1px solid rgb(111, 109, 103);
+}
+
+.error {
+    text-align: center;
+    background-color: white;
+    padding: 1rem;
+    color: red;
+}
+
+#preview {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+#preview img {
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
