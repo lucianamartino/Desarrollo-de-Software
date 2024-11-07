@@ -2,10 +2,16 @@
 <main>
     
     <div class="container-perfil">
-
+        
         <% if(login && (usuarioIdLog == usuarioId )) { %>
-            <a href="/perfiles/update/<%= usuarioIdLog %>" class="update"> Editar perfil </a>
+            <div class="container-editar">
+                <a href="/perfiles/update/<%= usuarioIdLog %>" class="update"> 
+                    <img src="/img/editar.png" class="img-editar">
+                    Editar perfil 
+                </a>
+            </div>
         <% } %>
+        
 
         <img src="<%= perfil.foto && perfil.foto.startsWith('foto') ? '/uploads/' + perfil.foto : perfil.foto ? '/' + perfil.foto : '/img/default-profile.png' %>" alt="Foto de perfil">
 
@@ -82,32 +88,50 @@
             </div>
         </div>
 
-        <div class="container-post-perfil">  
-            <% postPerfil.forEach(post => { %>
-            <div class="contenido-post">
-                <!-- <img src="/uploads/<%= post.foto %>" alt="Foto del post"> -->
-                <a href="/posts/<%= post.idPost%>">
-                    <img src="/uploads/<%= post.foto[0] %>" alt="Foto del post" />
-                </a>
-                <p><%= post.despcripcion %></p>
+        <!--aca queria poner que si hay post se muestre esto y si no hay se muestre:
+        <div class="container-nuevo-post">
+            <a>
+                <img src="/img/crear">
+                <p>Nuevo Post</p>
+            </a>
+        </div>
+        
+        
+        
+        -->
+            <div class="container-post-perfil"> 
+                <div class="container-nuevo-post">
+                    <a href="/createPost.ejs">   <!--HACER RUTA-->
+                        <img src="/img/crear.png">
+                        <p>Nuevo Post</p>
+                    </a>
+                </div> 
+                <% postPerfil.forEach(post => { %>
+                <div class="contenido-post">
+                    <!-- <img src="/uploads/<%= post.foto %>" alt="Foto del post"> -->
+                    <a href="/posts/<%= post.idPost%>">
+                        <img src="/uploads/<%= post.foto[0] %>" alt="Foto del post" />
+                    </a>
+                    <p><%= post.despcripcion %></p>
 
-                <% if (login && (usuarioIdLog == usuarioId)) { %>
-                    <form id="deleteForm-<%= post.idPost %>" action="/posts/delete/<%= post.idPost %>?_method=DELETE" method="POST">
-                        <img class="botonDelete" src="/img/eliminar.png" alt="Eliminar Post" style="cursor: pointer;" onclick="confirmDelete('<%= post.idPost %>')">
-                    </form>
-                    
-                    <script>
-                        function confirmDelete(postId) {
-                            if (confirm('¿Estás seguro de que deseas eliminar este post?')) {
-                                document.getElementById(`deleteForm-${postId}`).submit();
+                    <% if (login && (usuarioIdLog == usuarioId)) { %>
+                        <form id="deleteForm-<%= post.idPost %>" action="/posts/delete/<%= post.idPost %>?_method=DELETE" method="POST">
+                            <img class="botonDelete" src="/img/eliminar.png" alt="Eliminar Post" style="cursor: pointer;" onclick="confirmDelete('<%= post.idPost %>')">
+                        </form>
+                        
+                        <script>
+                            function confirmDelete(postId) {
+                                if (confirm('¿Estás seguro de que deseas eliminar este post?')) {
+                                    document.getElementById(`deleteForm-${postId}`).submit();
+                                }
                             }
-                        }
-                    </script>
-                <% } %>
+                        </script>
+                    <% } %>
 
-            </div><!--post-->
-            <% }) %>
-        </div><!--contenedor-post-->
+                </div><!--post-->
+                <% }) %>
+            </div><!--contenedor-post-->
+         %>
     </div>
 
 </main>

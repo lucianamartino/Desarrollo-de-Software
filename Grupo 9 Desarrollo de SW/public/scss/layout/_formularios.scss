@@ -123,14 +123,16 @@ input#foto{
     height: 40px;
     font-size: 1em;
     font-family: "Raleway", sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     background-color: #f9f9f9;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
+    letter-spacing: 1px;
 }
 .formulario button:hover{
     background-color: #f0f0f0;
+    
 }
 

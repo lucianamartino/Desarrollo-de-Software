@@ -20,7 +20,7 @@
 
         <div class="container-menu">
             <ul> 
-                <li>
+                <li class="oficio">
                     <select id="oficioId" name="oficioId" onchange="location = '/posts/f/' + this.options[this.selectedIndex].text;">
                         <option disabled selected>Selecciona un oficio</option>
                         <% oficios.forEach(oficio => { %>
@@ -37,12 +37,12 @@
                     </li>
                     <li>
                         <a href="/posts/create">
-                            <p>Crear post</p>
+                            <p>Nuevo post</p>
                         </a>
                     </li>
                     <li>
                         <a href="/logout">
-                            <p>Cerrar sesion</p>
+                            <p>Cerrar sesión</p>
                         </a>
                     </li>
                <% } else { %> 

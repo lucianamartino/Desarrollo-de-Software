@@ -2,7 +2,7 @@
     font-family: "Montserrat", system-ui;
     font-size: 25px;
     font-weight: 600;
-    color: #000000;
+    color: white;
     text-align: left;
     margin: 20px 10px;
     text-transform: capitalize;
@@ -12,7 +12,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #b5b5b5;
+    background-color: $naranja;
     padding: 10px;
     height: fit-content;
 }
@@ -43,35 +43,44 @@
 }
 
 .boton-contactar:hover{
-    background-color: #FFC107;
+    background-color: $naranja;
     color: white;
     transition: 0.5s;
     border: none;
 }
 
+.container-editar{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  
+}
+.container-editar a.update .img-editar{
+    width: 20px;
+    height: 20px;
+    color: $naranja;
+    border: none;
+    margin-right: 5px;
+}
 
 a.update{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
     text-decoration: none;
-    color: #FFC107;
+    color: $naranja;
     font-family: "Montserrat", system-ui;
     font-size: 15px;
     font-weight: 600;
     width: 100%;
-    text-align: right;
-    height: 50px;
     
-    float: right;
-  
-   
 }
 
 a.update:hover{
-    color: #f4dbdb;
-    background-color:#FFC107;
-    color:rgba(61, 54, 47, 0.911) ;
     width: 100%;
     transition: 0.5s;
-    padding-right: 50px;
+    font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -169,14 +178,53 @@ a.boton-reseña:hover{
 .container-post-perfil{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    max-width: 50%;
     height: max-contentç;
-    background-color: #FFC107;
+    background-color: $naranja;
     border-radius: 10px;
     box-shadow: #0000007b;
     padding: 10px;
     align-items: center;
     justify-content: center;
+    height: fit-content;
+}
+
+.container-nuevo-post{
+    width: 100%;
+}
+
+.container-nuevo-post a{
+    text-decoration: none;
+    color: white;
+    font-family: "Montserrat", system-ui;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+.container-nuevo-post a img{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+.container-nuevo-post a:hover{
+    background-color: $naranja;
+    font-weight: bolder;
+    font-size: 16px;
+    border-radius: 10px;
+}
+.container-nuevo-post a:hover p{
+    color: white;
+  
+
+}
+
+.container-nuevo-post a p{
+    color: white;
+    font-family: "Montserrat", system-ui;
 }
 .contenido-post{
     height: 80%;
