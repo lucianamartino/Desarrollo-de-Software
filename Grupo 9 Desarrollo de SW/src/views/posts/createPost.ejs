@@ -1,42 +1,47 @@
 <%- include('../partials/_header'); %>
 <main>
-    <h1 class="nombre-form">Crear Post</h1>
-    <div class="container-form">
+    <div class="container-principal">
+        <div class="container-nombre-form">
+            <h1 class="nombre-form">
+                <span class="arriba">Nuevo</span>
+                <span class="abajo">Post</span>
+            </h1>
+        </div>
+        <div class="container-form">
 
-        <form class="formulario" action="/posts/create" method="POST" enctype="multipart/form-data">
-            <fieldset>
+            <form class="formulario" action="/posts/create" method="POST" enctype="multipart/form-data">
 
-                <legend>Informacion General</legend>
-
-                <div class="container-label">
-                    <label for="descripcion">Descripción:</label>
-                    <textarea name="descripcion" id="descripcion"></textarea>
-                </div>
-            
-                <div class="container-label">
-                    <section id="multi-selector-uniq">
-                        <input id="foto" type="file" name="foto" accept=".jpg, .jpeg, .png, webp" multiple>
-                        <ul id="preview"></ul>
-                    </section>
-                </div>
-                <!-- Script para mostrar los archivos q vamos -->
-                <script src="/js/fileUploader.js"></script>
+                    <div class="container-label">
+                        <label for="descripcion">Descripción:</label>
+                        <textarea name="descripcion" id="descripcion"></textarea>
+                    </div>
+                
+                    <div class="container-label">
+                        <section id="multi-selector-uniq">
+                            <label for="foto">Adjuntar Imagen</label>
+                            <input id="foto" type="file" name="foto" accept=".jpg, .jpeg, .png, webp" multiple>
+                            <ul id="preview"></ul>
+                        </section>
+                    </div>
+                    <!-- Script para mostrar los archivos q vamos -->
+                    <script src="/js/fileUploader.js"></script>
 
 
-                <div class="container-label">
-                <label for="oficioId">Oficio:</label>
-                    <select id="oficioId" name="oficioId">
-                        <option selected disabled>-- Elige un oficio --</option>
-                        <% oficios.forEach(oficio => { %>
-                            <option value="<%= oficio.idOficio %>"><%= oficio.nombre %></option>
-                        <% }) %>
-                    </select> 
-                </div>
-            </fieldset>
+                    <div class="container-label">
+                        <label for="oficioId">Oficio:</label>
+                        <select id="oficioId" name="oficioId">
+                            <option selected disabled>Seleccioná un oficio</option>
+                            <% oficios.forEach(oficio => { %>
+                                <option value="<%= oficio.idOficio %>"><%= oficio.nombre %></option>
+                            <% }) %>
+                        </select> 
+                    </div>
+               
 
-            <button type="submit">Crear Post</button>
-        </form>
+                <button type="submit">Publicar Post</button>
+            </form>
 
+        </div>
     </div>
 </main>
 <%- include('../partials/_footer'); %>

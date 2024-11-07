@@ -1,31 +1,36 @@
 <%- include('../partials/_header'); %>
 
 <main>
-    <h1 class="nombre-form">Actualizar Perfil</h1>
+    <div class="container-principal">
+        <div class="container-nombre-form">
+            <h1 class="nombre-form">
+                <span class="arriba">Editar</span>
+                <span class="abajo">Perfil</span>
+            </h1>
+        </div>
 
-    <div class="container-form">
-        <form class="formulario" action="/perfiles/update/<%= perfil.idPerfil %>?_method=PUT" method="POST" enctype="multipart/form-data">
-            <fieldset>
+        <div class="container-form">
+            <form class="formulario" action="/perfiles/update/<%= perfil.idPerfil %>?_method=PUT" method="POST" enctype="multipart/form-data">
+            
+                    <div class="container-label">
+                        <label for="foto">Foto:</label>
+                        <input type="file" name="foto" id="foto">
+                    </div>
 
-                <div class="container-label">
-                    <label for="foto">Foto:</label>
-                    <input type="file" name="foto" id="foto">
-                </div>
+                    <div class="container-label">
+                        <label for="descripcion">Descripción:</label>
+                        <input type="text" id="descripcion" name="descripcion" value="<%= perfil.descripcion %>" required>
+                    </div>
 
-                <div class="container-label">
-                    <label for="descripcion">Descripción:</label>
-                    <input type="text" id="descripcion" name="descripcion" value="<%= perfil.descripcion %>" required>
-                </div>
+                    <div class="container-label">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono" value="<%= perfil.telefono %>" required>
+                    </div>
 
-                <div class="container-label">
-                    <label for="telefono">Teléfono:</label>
-                    <input type="tel" id="telefono" name="telefono" value="<%= perfil.telefono %>" required>
-                </div>
-            </fieldset>
-
-            <button type="submit">Actualizar Perfil</button>
-                
-        </form>
+                <button type="submit">Actualizar Perfil</button>
+                    
+            </form>
+        </div>
     </div>
 </main>
 <%- include('../partials/_footer'); %>

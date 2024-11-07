@@ -1,40 +1,43 @@
 <%- include('partials/_header'); %>
 <main>
-    <h1 class="nombre-form">Login</h1>
-    <div class="container-form">
-        <form class="formulario" action="/auth" method="POST">
-            <fieldset>
-                <div class="container-label">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
+    <div class="container-principal">
+        <div class="container-nombre-form">
+            <h1 class="nombre-form">
+                <span class="arriba">Iniciar</span>
+                <span class="abajo">Sesión</span>
+            </h1>
+        </div>
+        <div class="container-form">
+            <form class="formulario" action="/auth" method="POST">
+                    <div class="container-label">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
 
-                <div class="container-label">
-                    <label for="contraseña">Contraseña:</label>
-                    <input type="password" id="contraseña" name="contraseña" required>
-                </div>
+                    <div class="container-label">
+                        <label for="contraseña">Contraseña:</label>
+                        <input type="password" id="contraseña" name="contraseña" required>
+                    </div>
+                <button type="submit">Iniciar sesion</button>
+            </form>
+        </div>
 
-            </fieldset>
-            <button type="submit">Iniciar sesion</button>
-        </form>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <% if(typeof alert !== 'undefined') { %>
+            <script>
+                Swal.fire({
+                    title: '<%= alertTitle %>',
+                    text: '<%= alertMessage %>',
+                    icon: '<%= alertIcon %>',
+                    showConfirmButton: <%= showConfirmButton %>,
+                    timer: <%= timer %>
+                }).then(()=> {
+                    window.location='/<%= ruta %>'
+                })
+            </script>
+        <% } %>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <% if(typeof alert !== 'undefined') { %>
-        <script>
-            Swal.fire({
-                title: '<%= alertTitle %>',
-                text: '<%= alertMessage %>',
-                icon: '<%= alertIcon %>',
-                showConfirmButton: <%= showConfirmButton %>,
-                timer: <%= timer %>
-            }).then(()=> {
-                window.location='/<%= ruta %>'
-            })
-        </script>
-    <% } %>
-
 </main>
 
 <%- include('partials/_footer'); %>
