@@ -12,38 +12,54 @@
             <div class="gallery">
                 <button class="gallery-button prev" onclick="changeImage(-1)">&#10094;</button>
                 <% post.foto.forEach((foto, index) => { %>
-                    <img src="/uploads/<%= foto %>" alt="Foto del post" class="gallery-image"  style="display: <%= index === 0 ? 'block' : 'none' %>" data-index="<%= index %>">
+                    <img src="/uploads/<%= foto %>"
+                    alt="Foto del post"
+                    class="gallery-image <% if (index === 0) { %>active<% } %>"
+                    data-index="<%= index %>">
                 <% }) %>
 
                 <button class="gallery-button next" onclick="changeImage(1)">&#10095;</button>
             </div>
         <% } else { %>
             <!-- Muestra una sola imagen si no hay más de una -->
-            <img src="/uploads/<%= post.foto[0] %>" alt="Foto del post" />
+            <img src="/uploads/<%= post.foto[0] %>" alt="Foto del post" class="gallery-image2" />
         <% } %>
 
 
         <div class="detalle-post">
             <div class="parte-principal">
+                <!--ACA ME GUSTARIA PONER LA UBICACION-->
+                <p class="localidad"><%= post.nombreProvincia %>, <%= post.nombreLocalidad %></p>
                 <p><%= post.despcripcion %></p>
-                <p>Oficio: <%= post.nombreOficio %></p>
-                <p>Publicado el <%= new Date(post.fecha).toLocaleDateString() %></p>
+                <p><%= post.nombreOficio %></p>
+                <p class="fechaP">Publicado el <%= new Date(post.fecha).toLocaleDateString() %></p>
             </div>
-            <div class="parte-secundaria">
-
-            </div>
+            
         </div><!-- detalle-post -->
     </div><!-- container-post-detail -->
  
 </main>
 <script>
-    let currentIndex = 0;
-    const images = document.querySelectorAll('.gallery-image');
+let currentIndex = 0;
+const images = document.querySelectorAll('.gallery img');
 
-    function changeImage(direction) {
-        images[currentIndex].style.display = 'none';
-        currentIndex = (currentIndex + direction + images.length) % images.length;
-        images[currentIndex].style.display = 'block';
-    }
+// Mostrar la imagen inicial
+if (images.length > 0) {
+  images[currentIndex].classList.add('active');
+}
+
+// Función para cambiar la imagen
+function changeImage(direction) {
+  // Elimina la clase 'active' de la imagen actual
+  images[currentIndex].classList.remove('active');
+
+  // Calcula el nuevo índice
+  currentIndex = (currentIndex + direction + images.length) % images.length;
+
+  // Añade la clase 'active' a la nueva imagen
+  images[currentIndex].classList.add('active');
+}
+
+
 </script>
 <%- include('../partials/_footer'); %>

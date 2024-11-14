@@ -1,23 +1,23 @@
-img,
-picture {
-    width: 100%;
-    display: block;
+*{
+    margin: 0;
 }
-
-
-
 html, body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    /*
     background-color: #d9d9d9;
-    scroll-behavior: smooth;
-    /*background-image: url(../img/fondo2.webp);
+    
+    /*background-image: url(../img/fondo2.webp);*/
+}
+
+body{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-attachment: local;
-    background-attachment: fixed;*/
+    scroll-behavior: smooth;
+    background-attachment: fixed;
+    background-image: url(../img/fondo1.webp);
 }
 main{
     flex: 1;

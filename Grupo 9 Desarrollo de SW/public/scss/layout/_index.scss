@@ -1,22 +1,32 @@
-
-.inicio{
+.container-inicio{
     width: 100%;
+    height: 80vh;
+    
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+}
+.inicio{
+    width: 50%;
     height: 45vh;
     opacity: 1;
     transition: opacity 0.5s ease;
-    z-index: 1000;
     position: sticky;
+   
 }
 
 .inicio h1{
-    color: #ff6d1f;
-    font-size: 30px;
-    /*font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;*/
-    font-family: "Quicksand", sans-serif;
+    color: white;
+    font-size: 45px;
+    font-family: "Bebas Neue", sans-serif;
+    /*font-weight: 400;*/
+    /*font-family: "Quicksand", sans-serif;*/
+    padding-top: 5%;
     font-weight: 400;
     text-align: center;
-    padding-top: 120px;
+    letter-spacing: 1px;
 }
 
 .container-ccv{
@@ -26,7 +36,7 @@
     flex-direction: row;
     width: 95%;
     margin-left: 2.5%;
-    margin-top: 10px;
+    
     
 }
 
@@ -38,15 +48,18 @@
     align-items: center;
     flex-direction: column;
     margin: 10px;
-    background-color: white;
     border-radius: 10px;
-
+    background-color: rgba(0, 0, 0, 0.402);
     padding: 10px;
     text-align: center;
     opacity: 1;
     transition: opacity 0.5s ease;
     z-index: 1000;
     position: sticky;
+}
+.container-ccv div:hover{
+    background-color: rgba(0, 0, 0, 0.402);
+    transition: opacity 0.3s ease;
 }
 
 .container-ccv div img{
@@ -61,6 +74,8 @@
     font-weight: 400;
     padding-bottom: 10px;
     padding-top: 10px;
+    color: white;
+    text-shadow: black 0px 0px 5px;
 }
 
 .container-ccv div p{
@@ -68,4 +83,6 @@
     font-size: 14px;
     font-weight: light;
     margin-top: 5px;
+    color: white;
+    text-shadow: black 0px 0px 5px;
 }

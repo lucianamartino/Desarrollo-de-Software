@@ -1,7 +1,7 @@
 .container-post-detalle{
-  background-color: white;
-  width: 70%;
-  margin-left: 15%;
+  backdrop-filter: contrast(0.5);
+  width: 60%;
+  margin-left: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,6 +12,8 @@
   margin-bottom: 10px;
   align-self: center;
   float: center;
+  padding: 20px;
+  border: 2px solid white;
 }
 .info-perfil{
   display: flex;
@@ -19,8 +21,8 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  padding: 10px;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
   margin-bottom: 10px;
 }
 .info-perfil img{
@@ -31,7 +33,7 @@
 .info-perfil a h1{
   font-family: "Montserrat", system-ui;
   font-size: 18px;
-  color: #000000;
+  color: white;
   text-transform: capitalize;
   padding-left: 5px;
   text-decoration: none;
@@ -41,7 +43,7 @@
 }
 
 .info-perfil a h1:hover{
-  color: #635b5b;
+  color: $naranja;
   transition: 0.3s;
 }
 .gallery {
@@ -52,34 +54,57 @@
   width: 500px;
   height: 300px;
   padding-top: 10px;
+  border-radius: 5px;
+  overflow: hidden;
 }
-
+.gallery img {
+  position: absolute; /* Coloca todas las imágenes una sobre otra */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Las imágenes están invisibles por defecto */
+  transition: opacity 0.5s ease-in-out; /* Suaviza la transición */
+  z-index: 0;
+}
+  .gallery img.active {
+    opacity: 1; /* Imagen visible */
+    z-index: 1; /* Trae la imagen al frente */
+  }
 .gallery-image {
   width: 100%;
   height: 100%;
-  display: none;
-  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.gallery-image2 {
+  width: 600px;
+  height: 400px;
+  margin-bottom: 10px;
   border-radius: 5px;
 }
-
 .gallery-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: black;
   border: none;
   padding: 10px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
+  z-index: 2;
+  border-radius: 5px;
 }
-
+.gallery-button:hover{
+  background-color: rgba(255, 255, 255, 0.799);
+}
 .gallery-button.prev {
-  left: 10px;
+  left: 2px;
 }
 
 .gallery-button.next {
-  right: 10px;
+  right: 2px;
 }
 
 .detalle-post{
@@ -88,10 +113,10 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  
+  border-radius: 10px;
 }
 .parte-principal{
-  background-color:#FFC107;
+
   width: 100%;
   padding: 12px;
 }
@@ -99,16 +124,24 @@
 .parte-principal p{
   font-family: "Montserrat", system-ui;
   font-size: 15px;
-  color: #000000;
+  color: white;
+  text-shadow: 0px 0px 5px black;
   text-align: justify;
   margin-top: 5px;
 }
 
-.parte-secundaria h3{
+.parte-principal p.fechaP{
   font-family: "Montserrat", system-ui;
-  font-size: 20px;
-  color: #000000;
-  text-align: left;
-  margin: 20px 10px 20px 10px;
-  text-transform: capitalize;
+  font-size: 10px;
+  color: white;
+  text-shadow: 0px 0px 5px black;
+  text-align: right;
+  margin-top: 5px;
+}
+.localidad{
+  font-family: "Montserrat", system-ui;
+  font-size: 10px;
+  color: white;
+  text-shadow: 0px 0px 5px black;
+  margin-top: 5px;
 }

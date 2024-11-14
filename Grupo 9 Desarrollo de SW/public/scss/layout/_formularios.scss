@@ -3,7 +3,6 @@
     flex-direction: row;
     height: 100%;
     width: 100%;
- 
     align-items: center;
     justify-content: center;
 }
@@ -13,13 +12,11 @@
     padding-left: 40px;
     position: relative;
     display: inline-block;
-    background-color: #d9d9d9;
- 
-
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+
     
 }
 
@@ -27,30 +24,25 @@
     width: 50%;
     display: flex;
     flex-direction: column;
-    padding-top: 20px;
+    padding-top: 10px;
     height: 100%;
-    background-color: $naranja;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .nombre-form {
     font-size: 4.5em; /* Tamaño del texto */
     font-family: "Montserrat", system-ui;
-    font-weight: 300; /* Grosor del texto */
-    color: $naranja;
-
-    /*color: transparent; /* Para ocultar el color del texto base */
-    /*background: linear-gradient(190deg, white 50%, $naranja 50%); /* Gradiente diagonal */
-    background-clip: text;
-    -webkit-background-clip: text; /* Compatibilidad con navegadores WebKit */
+    font-weight: 400; /* Grosor del texto */
+    color: white;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.676);
     text-transform: uppercase;
-  
-    padding-top: 10px;
     letter-spacing: 5px;
+
    
 }
 
 .abajo{
-    margin-left: 150px;
+    margin-left: 170px;
     margin-top: 20px;
 }
 .formulario{
@@ -95,9 +87,9 @@ input#foto{
 .container-label label, input#foto, select{
     font-size: 1em;
     font-family: "Raleway", sans-serif;
-    text-transform: capitalize;
+    text-transform: uppercase;
     font-stretch: expanded;
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 5px;
     color: white;
     letter-spacing: 1px;
@@ -108,31 +100,32 @@ input#foto{
     height: 40px;
     font-size: 1em;
     font-family: "Raleway", sans-serif;
-    font-weight: 300;
-  
+    font-weight: 400;
     border: none;
     border-radius: 5px;
-    color: $naranja;
+    color: black;
+    
 }
 .container-label input:focus{
     outline: none;
-    border: 1px solid $naranja;
 }
 .formulario button{
     width: 80%;
     height: 40px;
     font-size: 1em;
     font-family: "Raleway", sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     background-color: #f9f9f9;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
     letter-spacing: 1px;
+    text-transform: uppercase;
 }
 .formulario button:hover{
-    background-color: #f0f0f0;
-    
+    background-color: #ff6d1f8e;
+    color: white;
+    font-weight: 500;
 }
 
