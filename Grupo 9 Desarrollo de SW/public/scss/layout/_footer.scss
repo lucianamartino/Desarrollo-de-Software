@@ -9,6 +9,7 @@ footer{
     flex-direction: row;
     justify-content: space-around;
     height: 80px;
+    text-align: center;
 }
 footer div{
     display: flex;
@@ -17,6 +18,7 @@ footer div{
     height: 70px;
     margin: 0 10px;
     align-items: center;
+    text-align: center;
 }
 footer div.cp{
     display: flex;
@@ -47,6 +49,7 @@ footer div a{
     justify-content: center;
     padding: 5px;
     text-shadow: black 0px 0px 1px;
+    text-align: center;
 }
 
 footer .redes{

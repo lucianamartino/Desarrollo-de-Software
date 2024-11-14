@@ -12,7 +12,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: $naranja;
+    background-color: #0000007f;
     padding: 10px;
     height: fit-content;
 }
@@ -26,7 +26,7 @@
 .container-perfil p{
     font-family: "Montserrat", system-ui;
     font-size: 15px;
-    color: #000000;
+    color: white;
     margin-top: 5px;
     text-transform: capitalize;
 }
@@ -179,7 +179,7 @@ a.boton-reseña:hover{
     display: flex;
     flex-direction: column;
     max-width: 50%;
-    height: max-contentç;
+    height: max-content;
     background-color: $naranja;
     border-radius: 10px;
     box-shadow: #0000007b;
@@ -188,6 +188,7 @@ a.boton-reseña:hover{
     justify-content: center;
     height: fit-content;
 }
+
 
 .container-nuevo-post{
     width: 100%;
@@ -205,11 +206,7 @@ a.boton-reseña:hover{
     justify-content: flex-end;
     align-items: center;
 }
-.container-nuevo-post a img{
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-}
+
 .container-nuevo-post a:hover{
     background-color: $naranja;
     font-weight: bolder;
@@ -218,8 +215,12 @@ a.boton-reseña:hover{
 }
 .container-nuevo-post a:hover p{
     color: white;
-  
+}
 
+.container-nuevo-post a img{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;  
 }
 
 .container-nuevo-post a p{
@@ -239,8 +240,8 @@ a.boton-reseña:hover{
     background-color: white;
 }
 .contenido-post a img{
-    width: 400px;
-    height: 300px;
+    width: 100%;
+    height: 90%;
     padding: 10px;
     border-radius: 10px;
 }
