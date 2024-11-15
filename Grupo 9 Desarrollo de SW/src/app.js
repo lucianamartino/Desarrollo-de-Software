@@ -1,6 +1,9 @@
 import express from 'express'
 import path from 'path'
 
+import { Server } from 'socket.io'
+import {createServer} from 'node:http'
+
 import indexRoutes from './routes/index.routes.js'
 import localidadRoutes from './routes/localidad.routes.js'
 import oficioRoutes from './routes/oficio.routes.js'
@@ -14,6 +17,7 @@ import ubicacionRoutes from './routes/ubicacion.routes.js'
 import usuariorolRoutes from './routes/usuariorol.routes.js'
 import usuariosRoutes from './routes/usuarios.routes.js'
 import loginRoutes from './routes/login.routes.js'
+import chatRoutes from './routes/chat.routes.js'
 
 import session from 'express-session'
 
@@ -22,6 +26,25 @@ import methodOverride from 'method-override'
 import { fileURLToPath } from 'url';
 
 const app = express()
+export const server = createServer(app)
+const io = new Server(server, {
+    connectionStateRecovery: {}
+})
+
+// Conexion con socket.io
+io.on('connection', (socket) => {
+    console.log('Usuario conectado')
+
+    socket.on('disconnect', () => {
+        console.log('Usuario desconectado')
+    })
+
+    socket.on('chat message', (msg) => {
+        io.emit('chat message', msg)
+    })
+})
+
+
 
 // Usar fileURLToPath para obtener el directorio actual
 const __filename = fileURLToPath(import.meta.url);
@@ -79,6 +102,7 @@ app.use('/ubicaciones', ubicacionRoutes)
 app.use('/usuariorol', usuariorolRoutes)
 app.use('/api', usuariosRoutes)
 app.use('/', loginRoutes)
+app.use('/', chatRoutes)
 
 
 export default app
