@@ -58,11 +58,15 @@ export const getPost = async (req, res) => {
                 perfil.nombre AS nombrePerfil,
                 perfil.apellido AS apellidoPerfil,
                 perfil.foto AS fotoPerfil,
-                oficio.nombre AS nombreOficio
+                oficio.nombre AS nombreOficio,
+                provincia.nombre AS nombreProvincia, 
+                localidad.nombre AS nombreLocalidad
             FROM post
             JOIN usuario ON usuario.idUsuario = post.Usuario_idUsuario
             JOIN perfil ON perfil.Usuario_idUsuario = usuario.idUsuario
             JOIN oficio ON oficio.idOficio = post.Oficio_idOficio
+            JOIN localidad ON perfil.Localidad_idLocalidad = idLocalidad
+            JOIN provincia ON localidad.Provincia_idProvincia = idProvincia
             WHERE idPost = ?`, [req.params.id]);
 
         // Verificar y deserializar

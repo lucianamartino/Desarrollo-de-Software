@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
         oficioSeleccionado,
         login,
         name: login ? req.session.name : 'Debe iniciar sesión', // Mensaje para mostrar el nombre o indicar que debe iniciar sesión
-        usuarioId: login ? req.session.usuarioId : 'Debe iniciar sesión' // Mensaje para mostrar el id o indicar que debe iniciar sesión
+        usuarioIdLog: login ? req.session.usuarioId : 'Debe iniciar sesión' // Mensaje para mostrar el id o indicar que debe iniciar sesión
     });
 });
 
