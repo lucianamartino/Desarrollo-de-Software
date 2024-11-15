@@ -1,7 +1,6 @@
 {
   "name": "proyect-ejs",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -16,11 +15,12 @@
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
-    "express": "^4.21.0",
+    "express": "^4.21.1",
     "express-session": "^1.18.1",
     "method-override": "^3.0.0",
     "multer": "^1.4.5-lts.1",
-    "mysql2": "^3.11.3"
+    "mysql2": "^3.11.3",
+    "socket.io": "^4.8.1"
   },
   "devDependencies": {
     "cssnano": "^5.1.0",
@@ -41,5 +41,6 @@
     "nodemon": "^3.1.7",
     "sass": "^1.79.4",
     "terser": "^4.8.0"
-  }
+  },
+  "description": ""
 }
