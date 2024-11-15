@@ -5,6 +5,7 @@ export class ChatController {
     static async renderChat(req, res) {
         try {
             const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
+            const login = req.session.loggedin;
 
             if (!req.session.loggedin) {
                 return res.redirect('/login');
@@ -33,7 +34,8 @@ export class ChatController {
                 name: req.session.name,
                 usuarioId: req.session.usuarioId,
                 oficios,
-                oficioSeleccionado
+                oficioSeleccionado,
+                usuarioIdLog: login ? req.session.usuarioId : 'Debe iniciar sesión'
             });
         } catch (error) {
             console.error('Error al renderizar chat:', error);
@@ -106,6 +108,7 @@ export class ChatController {
     static async renderChatWithUser(req, res) {
         try {
             const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
+            const login = req.session.loggedin;
 
             if (!req.session.loggedin) {
                 return res.redirect('/login');
@@ -143,7 +146,8 @@ export class ChatController {
                     name: req.session.name
                 },
                 oficios,
-                oficioSeleccionado
+                oficioSeleccionado,
+                usuarioIdLog: login ? req.session.usuarioId : 'Debe iniciar sesión'  
             });
         } catch (error) {
             console.error('Error al renderizar chat:', error);

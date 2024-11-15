@@ -57,8 +57,11 @@ router.get('/update/:id', async (req, res) => {
 
     const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
 
+    const login = req.session.loggedin;
+    const usuarioIdLog = req.session.usuarioId
+
     if(req.session.loggedin) {
-        res.render('perfiles/actualizarPerfil', { perfil, oficios, oficioSeleccionado })
+        res.render('perfiles/actualizarPerfil', { perfil, oficios, oficioSeleccionado, usuarioIdLog })
     } else {
         res.redirect('/')
     }

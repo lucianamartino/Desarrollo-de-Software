@@ -10,8 +10,9 @@ const router = Router();
 router.get('/valoracion/:id', async (req, res) => {
     const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
     const perfilId = req.params.id
+    const usuarioIdLog = req.session.usuarioId
 
-    res.render('reseñas/createReseña', {oficios, oficioSeleccionado, perfilId})
+    res.render('reseñas/createReseña', {oficios, oficioSeleccionado, perfilId, usuarioIdLog})
 })
 
 router.post('/valoracion/:id', createReseña);
