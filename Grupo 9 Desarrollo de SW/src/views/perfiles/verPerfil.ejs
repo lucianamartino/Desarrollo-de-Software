@@ -35,9 +35,11 @@
             </div>
         <% } %>
 
-        <a href="/chat/<%= perfil.idPerfil %>" class="boton-contactar">
-            Contactar
-        </a>
+        <% if(login && (usuarioIdLog != usuarioId )) { %>
+            <a href="/chat/<%= perfil.idPerfil %>" class="boton-contactar">
+                Contactar
+            </a>
+        <% } %>
         <!-- <form action="/chat/<%= perfil.idPerfil %>" method="GET">
             <input type="hidden" name="receptorId" value="<%= perfil.idPerfil %>">
             <button type="submit">Ir al Chat</button>

@@ -23,7 +23,7 @@ export class ChatController {
             );
     
             res.render('chat', {
-                receptor: { idUsuario: null, nombreUsuario: 'Selecciona un chat' },
+                receptor: { idUsuario: null, nombreUsuario: null },
                 chats,
                 currentUser: {
                     id: req.session.usuarioId,
