@@ -94,19 +94,18 @@ ul li a p{
 
     font-size: 1rem;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     text-shadow: black 0px 0px 5px;
     text-transform: uppercase;
 }
 ul li.oficio select{
     font-family: "Montserrat", system-ui;
-   
     font-size: 1rem;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     color: white;
-    background-color: transparent;
-    
+    background-color: rgba(0, 0, 0, 0.5);
+   
     border: none;
     border-radius: 5px;
     width: 100%;

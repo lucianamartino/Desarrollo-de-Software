@@ -5,7 +5,13 @@
     border-top: 0.5px solid rgb(27, 27, 26);
     padding: 5px;
     margin-top: 5px;
-    width: 100%;
+    width: 80%;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .rating{
 	border: none;
@@ -20,6 +26,8 @@
     padding-top: 5px;
     padding-bottom: 5px;
     padding-right: 20px;
+    text-align: center;
+    text-transform: uppercase;
 }
 .rating > input{
 	display: none;
@@ -53,10 +61,10 @@
 
 .rating label:hover,
 .rating label:hover ~ label {
-    color: #2ddc76;
+    color: yellow;
 }
 .rating input:checked ~ label {
-    color: #2ddc76;
+    color: yellow;
 }
 
 .star-rating {

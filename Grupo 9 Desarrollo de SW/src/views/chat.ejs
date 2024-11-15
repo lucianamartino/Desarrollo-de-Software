@@ -7,11 +7,15 @@
         </div>
         <ul id="chat-list">
             <% chats.forEach(chat => { %>
-                <li class="chat-user">
+                <div class="container-usuarios">
                     <a href="/chat/<%= chat.idUsuario %>">
-                        <%= chat.nombreUsuario %>
+                        <li class="chat-user">
+                            
+                                <%= chat.nombreUsuario %>
+                        
+                        </li> 
                     </a>
-                </li>
+                </div>
             <% }) %>
 
         </ul>

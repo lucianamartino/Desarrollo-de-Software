@@ -65,7 +65,7 @@
                 <% reseñas.forEach(reseña => { %>
                     <div class="contenido-reseña">
                         <% const perfil = perfilReseña.find(p => p.idPerfil === reseña.Perfil_idPerfil); %>
-                        <p><%= perfil ? perfil.nombre : 'Nombre no disponible' %> <%= perfil ? perfil.apellido : 'Nombre no disponible' %></p>
+                        <p class="nombre-reseña"><%= perfil ? perfil.nombre : 'Nombre no disponible' %> <%= perfil ? perfil.apellido : 'Nombre no disponible' %></p>
                         
                        <!-- <p>
                             <% const fechaFormateada = new Date(reseña.fecha).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }); %>
