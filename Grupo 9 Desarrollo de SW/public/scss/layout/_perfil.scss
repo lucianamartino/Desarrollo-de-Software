@@ -180,7 +180,7 @@ a.boton-reseña:hover{
     flex-direction: column;
     max-width: 50%;
     height: max-content;
-    background-color: $naranja;
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     box-shadow: #0000007b;
     padding: 10px;
@@ -189,44 +189,6 @@ a.boton-reseña:hover{
     height: fit-content;
 }
 
-
-.container-nuevo-post{
-    width: 100%;
-}
-
-.container-nuevo-post a{
-    text-decoration: none;
-    color: white;
-    font-family: "Montserrat", system-ui;
-    font-size: 15px;
-    font-weight: 600;
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.container-nuevo-post a:hover{
-    background-color: $naranja;
-    font-weight: bolder;
-    font-size: 16px;
-    border-radius: 10px;
-}
-.container-nuevo-post a:hover p{
-    color: white;
-}
-
-.container-nuevo-post a img{
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;  
-}
-
-.container-nuevo-post a p{
-    color: white;
-    font-family: "Montserrat", system-ui;
-}
 .contenido-post{
     height: 80%;
     width: 80%;
@@ -237,7 +199,7 @@ a.boton-reseña:hover{
     align-items: center;
     margin-bottom: 10px;
     border-radius: 10px;
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.553);
 }
 .contenido-post a img{
     width: 100%;

@@ -2,7 +2,9 @@
 
 <div class="chat-container">
     <div class="chat-sidebar">
-        <h2>Mensajes</h2>
+        <div>
+            <h2>Mensajes</h2>
+        </div>
         <ul id="chat-list">
             <% chats.forEach(chat => { %>
                 <li class="chat-user">
@@ -11,6 +13,7 @@
                     </a>
                 </li>
             <% }) %>
+
         </ul>
     </div>
     <%if( receptor.nombreUsuario ) { %>
@@ -27,7 +30,11 @@
                 <button id="send-button">Enviar</button>
             </div>
         </div>
-    <% } %>
+    <% }
+    else{
+        %> 
+        <h3 class="sin-mensajes">Aún no hay mensajes para mostrar</h3>
+        <%}  %>
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
