@@ -32,10 +32,9 @@ export class ChatController {
                 },
                 login: req.session.loggedin,
                 name: req.session.name,
-                usuarioId: req.session.usuarioId,
+                usuarioIdLog: req.session.usuarioId,
                 oficios,
-                oficioSeleccionado,
-                usuarioIdLog: login ? req.session.usuarioId : 'Debe iniciar sesión'
+                oficioSeleccionado
             });
         } catch (error) {
             console.error('Error al renderizar chat:', error);
@@ -147,7 +146,8 @@ export class ChatController {
                 },
                 oficios,
                 oficioSeleccionado,
-                usuarioIdLog: login ? req.session.usuarioId : 'Debe iniciar sesión'  
+                usuarioIdLog: login ? req.session.usuarioId : 'Debe iniciar sesión'
+  
             });
         } catch (error) {
             console.error('Error al renderizar chat:', error);
