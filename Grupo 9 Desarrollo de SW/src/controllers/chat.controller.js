@@ -1,21 +1,24 @@
 import {pool} from '../db.js'
+import { getOficiosFiltro } from "../controllers/oficio.controller.js"
 
 export class ChatController {
     static async renderChat(req, res) {
         try {
+            const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
+            
             if (!req.session.loggedin) {
                 return res.redirect('/login')
             }
 
             // Obtener lista de usuarios para el chat
-            const [users] = await pool.query(
+            const [receptor] = await pool.query(
                 'SELECT idUsuario, nombreUsuario FROM usuario WHERE idUsuario != ?',
                 [req.session.usuarioId]
             )
             
             // Renderizar la vista con los datos necesarios
             res.render('chat', {
-                users,
+                receptor,
                 currentUser: {
                     id: req.session.usuarioId,
                     name: req.session.name
@@ -23,7 +26,9 @@ export class ChatController {
                 // Incluir variables de sesión necesarias para el layout
                 login: req.session.loggedin,
                 name: req.session.name,
-                usuarioId: req.session.usuarioId
+                usuarioId: req.session.usuarioId,
+                oficios,
+                oficioSeleccionado
             })
         } catch (error) {
             console.error('Error al renderizar chat:', error)
@@ -95,6 +100,9 @@ export class ChatController {
 
     static async renderChatWithUser(req, res) {
         try {
+            // Lógica de los oficios
+            const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
+
             if (!req.session.loggedin) {
                 return res.redirect('/login');
             }
@@ -116,7 +124,9 @@ export class ChatController {
                 currentUser: {
                     id: req.session.usuarioId,
                     name: req.session.name
-                }
+                },
+                oficios,
+                oficioSeleccionado
             });
         } catch (error) {
             console.error('Error al renderizar chat:', error);
