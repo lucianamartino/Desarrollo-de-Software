@@ -5,34 +5,39 @@ export class ChatController {
     static async renderChat(req, res) {
         try {
             const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
-            
-            if (!req.session.loggedin) {
-                return res.redirect('/login')
-            }
 
-            // Obtener lista de usuarios para el chat
-            const [receptor] = await pool.query(
-                'SELECT idUsuario, nombreUsuario FROM usuario WHERE idUsuario != ?',
+            if (!req.session.loggedin) {
+                return res.redirect('/login');
+            }
+    
+            // Obtener la lista de chats
+            const [chats] = await pool.query(
+                `SELECT DISTINCT 
+                    u.idUsuario, 
+                    u.nombreUsuario 
+                 FROM usuario u 
+                 JOIN mensaje m 
+                 ON (u.idUsuario = m.Usuario_idUsuario OR u.idUsuario = m.Receptor_idUsuario)
+                 WHERE u.idUsuario != ?`,
                 [req.session.usuarioId]
-            )
-            
-            // Renderizar la vista con los datos necesarios
+            );
+    
             res.render('chat', {
-                receptor,
+                receptor: { idUsuario: null, nombreUsuario: 'Selecciona un chat' },
+                chats,
                 currentUser: {
                     id: req.session.usuarioId,
                     name: req.session.name
                 },
-                // Incluir variables de sesión necesarias para el layout
                 login: req.session.loggedin,
                 name: req.session.name,
                 usuarioId: req.session.usuarioId,
                 oficios,
                 oficioSeleccionado
-            })
+            });
         } catch (error) {
-            console.error('Error al renderizar chat:', error)
-            res.status(500).send('Error al cargar el chat')
+            console.error('Error al renderizar chat:', error);
+            res.status(500).send('Error al cargar el chat');
         }
     }
 
@@ -100,27 +105,39 @@ export class ChatController {
 
     static async renderChatWithUser(req, res) {
         try {
-            // Lógica de los oficios
             const { oficios, oficioSeleccionado } = await getOficiosFiltro(req, res);
 
             if (!req.session.loggedin) {
                 return res.redirect('/login');
             }
-            
+    
             const receptorId = req.params.receptorId;
-            
+    
             // Obtener información del receptor
             const [receptor] = await pool.query(
                 'SELECT idUsuario, nombreUsuario FROM usuario WHERE idUsuario = ?',
                 [receptorId]
             );
-            
+    
             if (!receptor.length) {
                 return res.status(404).send('Usuario no encontrado');
             }
     
+            // Obtener la lista de chats
+            const [chats] = await pool.query(
+                `SELECT DISTINCT 
+                    u.idUsuario, 
+                    u.nombreUsuario 
+                 FROM usuario u 
+                 JOIN mensaje m 
+                 ON (u.idUsuario = m.Usuario_idUsuario OR u.idUsuario = m.Receptor_idUsuario)
+                 WHERE u.idUsuario != ?`,
+                [req.session.usuarioId]
+            );
+    
             res.render('chat', {
                 receptor: receptor[0],
+                chats,
                 currentUser: {
                     id: req.session.usuarioId,
                     name: req.session.name
@@ -130,7 +147,7 @@ export class ChatController {
             });
         } catch (error) {
             console.error('Error al renderizar chat:', error);
-            res.status(500).send('Error al cargar el chat');
-        }
+            res.status(500).send('Error al cargar el chat');
+        }
     }   
 }

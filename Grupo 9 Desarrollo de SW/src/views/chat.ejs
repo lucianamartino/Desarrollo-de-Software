@@ -2,13 +2,23 @@
 
 <link rel="stylesheet" href="/css/app.css">
 <div class="chat-container">
-    <div class="chat-header">
-        <h3>Chat con <%= receptor.nombreUsuario %></h3>
+    <div class="chat-sidebar">
+        <h2>Chats</h2>
+        <ul id="chat-list">
+            <% chats.forEach(chat => { %>
+                <li class="chat-user">
+                    <a href="/chat/<%= chat.idUsuario %>">
+                        <%= chat.nombreUsuario %>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
     </div>
-
     <div class="chat-main">
+        <div class="chat-header">
+            <h3><%= receptor.nombreUsuario %></h3>
+        </div>
         <div id="messages" class="messages"></div>
-        
         <div class="input-container">
             <input type="text" id="message-input" placeholder="Escribe tu mensaje...">
             <button id="send-button">Enviar</button>
@@ -222,6 +232,100 @@
 .input-container button:hover {
     background: #0056b3;
 }
+</style>
+<style>
+    .chat-container {
+    display: flex;
+    height: 80vh;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.chat-sidebar {
+    width: 30%;
+    background: #f7f7f7;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.chat-sidebar h2 {
+    font-size: 1.2em;
+    margin-bottom: 1rem;
+}
+
+.chat-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.chat-sidebar .chat-user {
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.chat-sidebar .chat-user a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.chat-sidebar .chat-user:hover {
+    background: #eaeaea;
+}
+
+.chat-main {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+}
+
+.chat-header {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background: #f9f9f9;
+}
+
+.input-container {
+    display: flex;
+    border-top: 1px solid #ddd;
+    padding: 1rem;
+}
+
+#message-input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#send-button {
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#send-button:hover {
+    background-color: #0056b3;
+}
+
 </style>
 
 <%- include('partials/_footer.ejs'); %>
