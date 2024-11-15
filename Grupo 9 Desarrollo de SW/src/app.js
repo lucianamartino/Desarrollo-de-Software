@@ -14,6 +14,7 @@ import ubicacionRoutes from './routes/ubicacion.routes.js'
 import usuariorolRoutes from './routes/usuariorol.routes.js'
 import usuariosRoutes from './routes/usuarios.routes.js'
 import loginRoutes from './routes/login.routes.js'
+import chatRoutes from './routes/chat.routes.js'
 
 import session from 'express-session'
 
@@ -79,6 +80,7 @@ app.use('/ubicaciones', ubicacionRoutes)
 app.use('/usuariorol', usuariorolRoutes)
 app.use('/api', usuariosRoutes)
 app.use('/', loginRoutes)
+app.use('/chat', chatRoutes)
 
 
 export default app
