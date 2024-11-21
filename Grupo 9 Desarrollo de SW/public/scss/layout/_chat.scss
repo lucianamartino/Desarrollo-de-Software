@@ -248,3 +248,22 @@ ul#chat-list a  {
 #send-button:hover {
     background-color: #0056b3;
 }
+.notification-badge {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 0.2em 0.6em;
+    font-size: 0.8em;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.mensajes-sin-leer {
+    color: green;
+    font-weight: bold;
+}
+
+.sin-mensajes, .todos-leidos {
+    color: gray;
+}
